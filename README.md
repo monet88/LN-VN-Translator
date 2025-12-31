@@ -128,7 +128,7 @@ Tự động loại bỏ các cụm từ "dịch máy":
 
 ### Yêu cầu
 
-- Tài khoản **Gemini Advanced** (hoặc API key với Gemini 1.5 Pro)
+- Tài khoản **Gemini Advanced** (hoặc API key với Gemini Pro)
 - Truy cập vào tính năng **Gems** (Custom AI)
 
 ### Các bước Setup
