@@ -194,14 +194,108 @@
     <LOCK_RULE>Once chosen, LOCK throughout chapter. No mixing!</LOCK_RULE>
   </FIRST_PERSON>
 
-  <ROMANIZATION>
-    <RULE pattern="おう" output="-ou" ex="みどう→Midou"/>
-    <RULE pattern="おお" output="-oo" ex="おおの→Oono"/>
-    <RULE pattern="えい" output="-ei" ex="けいこ→Keiko"/>
-    <RULE pattern="いい" output="-ii" ex="にいな→Niina"/>
-    <RULE pattern="うう" output="-uu" ex="ゆうき→Yuuki"/>
-    <PRIORITY>1.Ruby_Text → 2.Katakana → 3.Standard_Rules</PRIORITY>
-    <LOCK>First occurrence locks romanization for entire work</LOCK>
+  <ROMANIZATION version="2.0" source="07_LONG_VOWEL_ROMANIZATION.md">
+    <PHILOSOPHY>Preserve long vowels to maintain authenticity. Ruby text is LAW.</PHILOSOPHY>
+    
+    <LONG_VOWEL_RULES>
+      <RULE pattern="おう" output="-ou" priority="HIGH">
+        <EXAMPLES>みどう→Midou, こうじ→Kouji, そうた→Souta, りょう→Ryou</EXAMPLES>
+        <RATIONALE>Most common long vowel pattern. Preserve 'u' for clear pronunciation.</RATIONALE>
+      </RULE>
+      
+      <RULE pattern="おお" output="-oo" priority="HIGH">
+        <EXAMPLES>おおの→Oono, とおる→Tooru</EXAMPLES>
+        <RATIONALE>Double-o indicates extended 'o' sound.</RATIONALE>
+      </RULE>
+      
+      <RULE pattern="えい" output="-ei" priority="MEDIUM">
+        <EXAMPLES>けいこ→Keiko, れいな→Reina, せいじ→Seiji</EXAMPLES>
+        <RATIONALE>Preserve both characters for accurate pronunciation.</RATIONALE>
+      </RULE>
+      
+      <RULE pattern="いい" output="-ii" priority="MEDIUM">
+        <EXAMPLES>にいな→Niina, しいな→Shiina</EXAMPLES>
+        <RATIONALE>Double-i for extended 'i' sound.</RATIONALE>
+      </RULE>
+      
+      <RULE pattern="うう" output="-uu" priority="MEDIUM">
+        <EXAMPLES>ゆうき→Yuuki, りゅう→Ryuu, しゅう→Shuu</EXAMPLES>
+        <RATIONALE>Double-u for extended 'u' sound.</RATIONALE>
+      </RULE>
+    </LONG_VOWEL_RULES>
+    
+    <PRIORITY_SYSTEM>
+      <LEVEL_1 authority="ABSOLUTE">Ruby Text (Furigana)</LEVEL_1>
+      <LEVEL_2 authority="HIGH">Katakana Spelling</LEVEL_2>
+      <LEVEL_3 authority="STANDARD">Standard Hepburn Rules</LEVEL_3>
+      <OVERRIDE_RULE>If ruby text shows みど (Mido) instead of みどう (Midou), ALWAYS use Mido</OVERRIDE_RULE>
+    </PRIORITY_SYSTEM>
+    
+    <CONSISTENCY_LOCK>
+      <RULE>First character appearance LOCKS romanization for entire work</RULE>
+      <EXAMPLE>
+        Chapter 1: Midou → All chapters: Midou (LOCKED)
+        NEVER mix: Chapter 1: Midou, Chapter 2: Mido (FORBIDDEN)
+      </EXAMPLE>
+      <ACTION>Create mental character registry. Cross-reference every appearance.</ACTION>
+    </CONSISTENCY_LOCK>
+    
+    <SPECIAL_CASES>
+      <HISTORICAL_NAMES>
+        <RULE>Use established conventions for famous places/historical figures</RULE>
+        <EXAMPLES>東京→Tokyo (not Toukyou), 大阪→Osaka (not Oosaka)</EXAMPLES>
+        <SCOPE>Does NOT apply to character names unless explicitly historical</SCOPE>
+      </HISTORICAL_NAMES>
+      
+      <COMPOUND_NAMES>
+        <RULE>Romanize each component separately, then combine</RULE>
+        <EXAMPLE>御堂友也 (みどう ともや) → Midou + Tomoya = Midou Tomoya</EXAMPLE>
+      </COMPOUND_NAMES>
+    </SPECIAL_CASES>
+    
+    <COMMON_ERRORS>
+      <ERROR type="DROPPING_LONG_VOWEL">
+        <WRONG>みどう→Mido, こうじ→Koji</WRONG>
+        <CORRECT>みどう→Midou, こうじ→Kouji</CORRECT>
+        <SEVERITY>CRITICAL - Changes pronunciation and character identity</SEVERITY>
+      </ERROR>
+      
+      <ERROR type="INCONSISTENCY">
+        <WRONG>Chapter 1: Midou, Chapter 2: Mido</WRONG>
+        <CORRECT>All chapters: Midou (consistent)</CORRECT>
+        <SEVERITY>HIGH - Confuses readers</SEVERITY>
+      </ERROR>
+      
+      <ERROR type="MIXING_STYLES">
+        <WRONG>Using both -ou and -ō in same work</WRONG>
+        <CORRECT>Pick one style and stick to it (prefer -ou for accessibility)</CORRECT>
+        <SEVERITY>MEDIUM - Inconsistent presentation</SEVERITY>
+      </ERROR>
+    </COMMON_ERRORS>
+    
+    <CHECKLIST>
+      <PRE_TRANSLATION>
+        - [ ] Scan source for all character names
+        - [ ] Check ruby text at first appearance
+        - [ ] Note katakana spelling if provided
+        - [ ] Create character name registry
+        - [ ] Lock romanization for each character
+      </PRE_TRANSLATION>
+      
+      <DURING_TRANSLATION>
+        - [ ] Apply long vowel rules consistently
+        - [ ] Cross-reference with character registry
+        - [ ] Flag ambiguous cases for review
+        - [ ] Maintain -ou/-oo/-ei/-ii/-uu format
+      </DURING_TRANSLATION>
+      
+      <POST_TRANSLATION>
+        - [ ] Verify all names match first appearance
+        - [ ] Check for accidental vowel dropping
+        - [ ] Ensure no style mixing (-ou vs -ō)
+        - [ ] Validate against ruby text if available
+      </POST_TRANSLATION>
+    </CHECKLIST>
   </ROMANIZATION>
 
   <TRAILING_SOUNDS>
