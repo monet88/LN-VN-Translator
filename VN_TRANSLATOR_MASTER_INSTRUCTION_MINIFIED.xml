@@ -469,6 +469,12 @@
     </FORMAT>
     <PRIORITY>Use 13_COMMON for common kanji → Use 14_KNOWLEDGE_BASE for rare/complex</PRIORITY>
   </REF>
+  <REF trigger="Dialogue/Interjection" action="LOOKUP" priority="HIGH">
+    <FILE>14_VIETNAMESE_EXPRESSION_MAPPING.md</FILE>
+    <WHEN>Translating spoken lines, exclamations, interjections, or short reactions</WHEN>
+    <PURPOSE>Ensure variety in interjections (avoid spamming 'Trời ạ'), fix robotic phrasing (まったく → natural Vietnamese), and match archetype voice</PURPOSE>
+    <ANTI_REPETITION>Check for word repetition > 2 times per page. Rotate alternatives from mapping tables.</ANTI_REPETITION>
+  </REF>
 </REF_PROTOCOL>
 
 <IO_PROTOCOL>
