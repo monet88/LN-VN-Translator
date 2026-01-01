@@ -133,8 +133,6 @@ Tự động loại bỏ các cụm từ "dịch máy":
 
 ### Các bước Setup
 
-### Các bước Setup
-
 #### Bước 1: Tạo Gem mới
 
 1. Truy cập [Google AI Studio](https://aistudio.google.com/) hoặc Gemini Advanced
