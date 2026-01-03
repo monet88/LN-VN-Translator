@@ -212,6 +212,25 @@ JP-VN/
 
 ---
 
+## 📚 Documentation
+
+**Tài liệu kỹ thuật đầy đủ:** [`docs/`](./docs/)
+
+| File | Mô tả |
+|------|-------|
+| [`docs/project-overview-pdr.md`](./docs/project-overview-pdr.md) | Product Development Requirements - Mục tiêu, tính năng, roadmap |
+| [`docs/codebase-summary.md`](./docs/codebase-summary.md) | Tổng quan kiến trúc codebase, file organization, data flow |
+| [`docs/code-standards.md`](./docs/code-standards.md) | Code conventions, XML structure, naming patterns |
+| [`docs/system-architecture.md`](./docs/system-architecture.md) | Chi tiết kỹ thuật: RTAS engine, Boldness Module, Ruby Parsing |
+
+**Quick Reference:**
+- Muốn hiểu dự án làm gì? → [`project-overview-pdr.md`](./docs/project-overview-pdr.md)
+- Muốn contribute code? → [`code-standards.md`](./docs/code-standards.md)
+- Muốn hiểu workflow? → [`codebase-summary.md`](./docs/codebase-summary.md)
+- Muốn hiểu thuật toán? → [`system-architecture.md`](./docs/system-architecture.md)
+
+---
+
 ## Ví dụ So sánh
 
 ### Cảnh 1: Tỏ tình (RTAS 4.9)

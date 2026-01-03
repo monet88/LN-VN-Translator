@@ -35,3 +35,6 @@ build/
 
 # Gemini artifacts (local planning files)
 .gemini/
+
+# bv (beads viewer) local config and caches
+.bv/
