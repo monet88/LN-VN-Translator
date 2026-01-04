@@ -1,9 +1,9 @@
 # Ref_COMBAT_CHOREOGRAPHY.md
 
 **Purpose:** Extended fight scene patterns and energy integration for Korean Murim translation
-**Version:** 1.0
-**Target Size:** 20KB
-**Focus:** Choreography patterns, multi-move combos, pacing rules, energy flow
+**Version:** 2.0 (Extended Edition)
+**Target Size:** 35KB
+**Focus:** 30 choreography patterns, multi-move combos, pacing rules, energy flow
 
 ---
 
@@ -521,6 +521,553 @@ Tất cả quỳ gối.
 
 ---
 
+### Pattern 16: Chase Sequence
+
+**Context:** Pursuit combat while moving at high speed.
+
+**Structure:**
+```
+[Pursuit]. [Attack while running]. [Obstacle]. [Closing distance]. [Catch/Escape].
+```
+
+**Korean Example:**
+```korean
+도망쳤다. 전력으로.
+뒤에서 검기가 날아왔다. 피했다. 가까스로.
+나무 사이를 빠져나갔다.
+거리가 좁혀졌다.
+더 이상 도망칠 수 없었다. 돌아섰다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Chạy. Hết tốc lực.
+Kiếm khí phóng từ phía sau. Né. Suýt nữa dính.
+Luồn qua hàng cây.
+Khoảng cách thu hẹp.
+Không thể chạy thêm. Quay đầu.
+```
+
+**Usage Notes:**
+- Speed emphasis (전력으로 / hết tốc lực)
+- Attacks during pursuit are projectile-based
+- Obstacles briefly buy time
+- Catch or escape - one must happen
+
+---
+
+### Pattern 17: Weapon Break
+
+**Context:** Destroying opponent's weapon mid-combat.
+
+**Structure:**
+```
+[Clash]. [Pressure]. [Crack]. [Shatter]. [Disarmed reaction].
+```
+
+**Korean Example:**
+```korean
+검이 부딪쳤다.
+청명이 내공을 검에 실었다. 강하게.
+상대의 검에서 금이 갔다.
+한 번 더 쳤다.
+검이 두 동강 났다.
+상대의 얼굴이 창백해졌다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Kiếm va kiếm.
+Chung Myung dồn nội lực vào kiếm. Mạnh.
+Vết nứt xuất hiện trên kiếm đối phương.
+Chém thêm lần nữa.
+Kiếm gãy đôi.
+Mặt đối phương tái nhợt.
+```
+
+**Usage Notes:**
+- Progressive damage: gold → crack → shatter
+- Internal energy differential is the cause
+- Psychological impact emphasized
+
+---
+
+### Pattern 18: Internal Injury Recovery
+
+**Context:** Fighting while managing internal damage.
+
+**Structure:**
+```
+[Pain surge]. [Suppression]. [Continue fighting]. [Limit]. [Decision].
+```
+
+**Korean Example:**
+```korean
+내상이 터졌다. 피가 목구멍으로 차올랐다.
+억눌렀다. 삼켰다.
+다시 검을 들었다.
+몸이 비명을 질렀다. 한계였다.
+더 이상은 안 된다. 지금 끝내야 한다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Nội thương bùng phát. Máu trào lên cổ họng.
+Đè nén. Nuốt xuống.
+Lại nâng kiếm.
+Thân thể gào thét. Đã đến giới hạn.
+Không thể nữa. Phải kết thúc ngay.
+```
+
+**Usage Notes:**
+- Visible internal damage: blood in throat
+- Willpower suppression attempts
+- Creates urgency for decisive action
+
+---
+
+### Pattern 19: Mid-Battle Breakthrough
+
+**Context:** Realm advancement during combat.
+
+**Structure:**
+```
+[Desperate moment]. [Insight]. [Energy surge]. [Transformation]. [Overwhelm].
+```
+
+**Korean Example:**
+```korean
+죽는다. 이대로라면 죽는다.
+그 순간, 무언가 깨달았다.
+천지의 기운이 몸으로 쏟아져 들어왔다.
+경지가 올랐다.
+\"뭐야...?\"
+청명이 웃었다. 검이 달라져 있었다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Chết. Cứ thế này sẽ chết.
+Khoảnh khắc đó, ngộ ra điều gì đó.
+Thiên địa chi khí ào ào đổ vào người.
+Cảnh giới thăng tiến.
+\"Cái gì...?\"
+Chung Myung mỉm cười. Kiếm đã khác.
+```
+
+**Usage Notes:**
+- Death threat triggers breakthrough
+- Cosmic energy description
+- Enemy surprise confirms change
+- Power shift immediate
+
+---
+
+### Pattern 20: Weapon Throw
+
+**Context:** Throwing weapon as surprise attack.
+
+**Structure:**
+```
+[Setup]. [Throw]. [Target reaction]. [Follow-up].
+```
+
+**Korean Example:**
+```korean
+거리가 벌어졌다.
+청명이 검을 던졌다.
+검이 회전하며 날아갔다.
+상대가 피했다. 하지만 시선이 검에 쏠린 사이—
+청명이 이미 앞에 있었다.
+주먹이 날아왔다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Khoảng cách giãn ra.
+Chung Myung ném kiếm.
+Kiếm xoay tròn bay tới.
+Đối phương né. Nhưng trong lúc mắt dõi theo kiếm—
+Chung Myung đã ở ngay trước mặt.
+Quyền đánh tới.
+```
+
+**Usage Notes:**
+- Throw is feint, not primary attack
+- Exploits visual tracking instinct
+- Follow-up is the real danger
+
+---
+
+### Pattern 21: Grapple / Close Combat
+
+**Context:** Weapons locked, fighting at point-blank range.
+
+**Structure:**
+```
+[Lock]. [Struggle]. [Close-range attack]. [Break or Throw].
+```
+
+**Korean Example:**
+```korean
+검이 맞물렸다. 밀고 당겼다.
+눈앞에 상대의 얼굴이 있었다.
+머리로 들이받았다.
+상대가 휘청였다.
+다리를 걸었다. 넘어졌다.
+검을 내리꽂았다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Kiếm khóa chặt. Đẩy qua kéo lại.
+Mặt đối phương ngay trước mắt.
+Húc đầu.
+Đối phương chao đảo.
+Quét chân. Ngã.
+Đâm kiếm xuống.
+```
+
+**Usage Notes:**
+- Dirty fighting acceptable
+- Head, elbows, knees, feet all valid
+- Breaking the lock = victory opportunity
+
+---
+
+### Pattern 22: Environmental Combat
+
+**Context:** Using surroundings as weapon.
+
+**Structure:**
+```
+[Environment scan]. [Use]. [Effect]. [Advantage].
+```
+
+**Korean Example:**
+```korean
+뒤로 밀렸다. 벽이었다.
+기회다.
+벽을 박차고 뛰어올랐다.
+상대의 머리 위로 넘어갔다.
+뒤통수를 노렸다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Bị đẩy lùi. Là tường.
+Cơ hội.
+Đạp tường nhảy lên.
+Vượt qua đầu đối phương.
+Nhắm gáy.
+```
+
+**Usage Notes:**
+- Disadvantage → advantage flip
+- Walls, trees, pillars, water, etc.
+- Environment interaction brief but decisive
+
+---
+
+### Pattern 23: Mercy / Sparing
+
+**Context:** Choosing not to kill a defeated opponent.
+
+**Structure:**
+```
+[Victory achieved]. [Kill position]. [Hesitation/Choice]. [Spare]. [Warning/Departure].
+```
+
+**Korean Example:**
+```korean
+상대가 쓰러졌다. 검이 목에 닿아 있었다.
+한 번 누르면 끝이다.
+청명이 검을 거두었다.
+\"살려둔다. 다음은 없다.\"
+돌아섰다. 떠났다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Đối phương ngã. Kiếm kề cổ.
+Nhấn một cái là xong.
+Chung Myung thu kiếm.
+\"Tha mạng. Không có lần sau.\"
+Quay đầu. Rời đi.
+```
+
+**Usage Notes:**
+- Kill position established clearly
+- Choice must be conscious
+- Warning adds weight
+- Turning back shows confidence
+
+---
+
+### Pattern 24: Interrupted Technique
+
+**Context:** Technique disrupted mid-execution.
+
+**Structure:**
+```
+[Technique begin]. [Interrupt attack]. [Failure/Backlash]. [Vulnerability].
+```
+
+**Korean Example:**
+```korean
+\"천마신공!\"
+기운이 모이기 시작했다.
+청명이 기다리지 않았다. 즉시 돌진했다.
+기술이 끊겼다. 역류했다.
+상대가 피를 토했다.
+\"비겁하—\"
+검이 목을 스쳤다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+\"Thiên Ma Thần Công!\"
+Khí lực bắt đầu tập trung.
+Chung Myung không đợi. Lập tức xông tới.
+Chiêu thức bị gián đoạn. Nghịch lưu.
+Đối phương phun máu.
+\"Đồ hèn—\"
+Kiếm lướt qua cổ.
+```
+
+**Usage Notes:**
+- Technique activation = vulnerability window
+- No honor in waiting
+- Backlash from interrupted qi flow
+- Victim's protest cut short
+
+---
+
+### Pattern 25: Consecutive Kills
+
+**Context:** Slaughtering multiple enemies in rapid succession.
+
+**Structure:**
+```
+[Body count start]. [Kill]. [Kill]. [Kill]. [Total]. [Aftermath].
+```
+
+**Korean Example:**
+```korean
+첫 번째. 베었다.
+두 번째. 찔렀다.
+세 번째. 목을 쳤다.
+네 번째, 다섯 번째. 한 번에.
+여섯 번째. 도망치려 했다. 허락하지 않았다.
+여섯 구의 시체가 널렸다.
+피가 검에서 떨어졌다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Tên đầu tiên. Chém.
+Tên thứ hai. Đâm.
+Tên thứ ba. Cắt cổ.
+Tên thứ tư, thứ năm. Một lúc.
+Tên thứ sáu. Định chạy. Không được.
+Sáu xác nằm la liệt.
+Máu nhỏ từ kiếm.
+```
+
+**Usage Notes:**
+- Numerical count creates rhythm
+- Each kill method varies
+- Escape attempt denied
+- Aftermath image: bodies + dripping blood
+
+---
+
+### Pattern 26: Qi Pressure Confrontation
+
+**Context:** Clash of auras before physical combat.
+
+**Structure:**
+```
+[Aura release A]. [Aura release B]. [Pressure clash]. [Weaker yields]. [Combat begins].
+```
+
+**Korean Example:**
+```korean
+두 사람의 기세가 충돌했다.
+공기가 무거워졌다. 주변 사람들이 숨을 쉴 수 없었다.
+대기가 갈라졌다.
+한쪽이 밀렸다. 무릎이 꺾이려 했다.
+이를 악물었다. 버텼다.
+\"좋아.\" 검을 뽑았다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Khí thế hai người va chạm.
+Không khí nặng trĩu. Người xung quanh nghẹt thở.
+Đại khí bị xé toạc.
+Một bên bị đẩy. Đầu gối suýt khuỵu.
+Nghiến răng. Chống đỡ.
+\"Tốt lắm.\" Rút kiếm.
+```
+
+**Usage Notes:**
+- Bystander effects establish scale
+- Yielding is not defeat, just disadvantage
+- Resistance earns acknowledgment
+
+---
+
+### Pattern 27: Execution Strike
+
+**Context:** Killing a defenseless or restrained enemy.
+
+**Structure:**
+```
+[Captive state]. [Preparation]. [Final words (optional)]. [Kill]. [Aftermath].
+```
+
+**Korean Example:**
+```korean
+무릎을 꿇려 있었다. 손이 묶여 있었다.
+청명이 검을 들어올렸다.
+\"할 말 있나?\"
+\"...없다.\"
+검이 내려왔다.
+머리가 굴렀다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Đang quỳ. Tay bị trói.
+Chung Myung nâng kiếm.
+\"Còn gì muốn nói?\"
+\"...Không.\"
+Kiếm hạ xuống.
+Đầu lăn.
+```
+
+**Usage Notes:**
+- Cold, clinical description
+- Final words optional but add weight
+- Execution is swift, not torture
+- Result stated bluntly
+
+---
+
+### Pattern 28: Weapon Upgrade Mid-Fight
+
+**Context:** Switching to better weapon or picking up enemy's.
+
+**Structure:**
+```
+[Current weapon fails]. [New weapon acquired]. [Quality difference]. [Renewed attack].
+```
+
+**Korean Example:**
+```korean
+검이 부러졌다.
+바닥에 떨어진 적의 검을 집었다.
+무게가 달랐다. 명검이었다.
+\"빌린다.\"
+다시 싸웠다. 이번엔 달랐다.
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Kiếm gãy.
+Nhặt kiếm địch rơi trên đất.
+Trọng lượng khác hẳn. Là danh kiếm.
+\"Mượn tạm.\"
+Lại chiến. Lần này khác.
+```
+
+**Usage Notes:**
+- Weapon failure creates crisis
+- New weapon quality noted
+- Acknowledgment (borrowing) optional
+- Performance boost immediate
+
+---
+
+### Pattern 29: Mutual Destruction Attempt
+
+**Context:** Both fighters attempt killing blows simultaneously.
+
+**Structure:**
+```
+[Stalemate]. [Both commit]. [Exchange]. [Both injured]. [Determination].
+```
+
+**Korean Example:**
+```korean
+어느 쪽도 물러서지 않았다.
+동시에 공격했다.
+검이 교차했다.
+둘 다 피를 흘렸다.
+둘 다 죽지 않았다.
+\"다시.\"
+\"좋아.\"
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Không bên nào lùi.
+Đồng thời ra đòn.
+Kiếm giao nhau.
+Cả hai đều chảy máu.
+Cả hai đều chưa chết.
+\"Lại nữa.\"
+\"Được.\"
+```
+
+**Usage Notes:**
+- Mutual respect through violence
+- Neither willing to defend
+- Injuries confirm seriousness
+- Continuation shows spirit
+
+---
+
+### Pattern 30: Hidden Technique Reveal
+
+**Context:** Using a secret technique for the first time.
+
+**Structure:**
+```
+[Being pushed]. [Decision to reveal]. [Technique declaration]. [Transformation]. [Opponent shock].
+```
+
+**Korean Example:**
+```korean
+밀리고 있었다. 정공법으로는 이길 수 없었다.
+어쩔 수 없다. 보여주마.
+\"...매화비천검.\"
+아무도 본 적 없는 검이었다.
+검에서 자줏빛 기운이 피어올랐다.
+상대의 표정이 굳었다.
+\"그게... 화산파의 비전...\"
+```
+
+**Vietnamese Translation:**
+```vietnamese
+Đang bị dồn ép. Đấu chính diện không thể thắng.
+Không còn cách nào. Cho ngươi xem.
+\"...Muội Hoa Phi Thiên Kiếm.\"
+Đó là kiếm chưa ai từng thấy.
+Khí tím nở rộ từ kiếm.
+Biểu cảm đối phương cứng lại.
+\"Đó là... bí truyền của Hoa Sơn...\"
+```
+
+**Usage Notes:**
+- Reluctance to reveal adds mystique
+- Technique name in Hán Việt + dramatic pause
+- Visual transformation
+- Enemy recognition confirms significance
+
+---
+
 ## Energy Integration Guide
 
 ### Principle: Qi and Physical Actions Interweave
@@ -867,32 +1414,48 @@ Thế giới gào thét.
 
 ## Quick Reference Table
 
-| Pattern | Use Case | Key Element |
-|---------|----------|-------------|
-| Opening Strike | Fight start | Tension → Action |
-| Sword Exchange | Standard combat | Fragment rhythm |
-| Power Gap | Dominance display | Effortless counter |
-| Energy Clash | High-level combat | Shockwave effects |
-| Desperate Defense | Last stand | Repetition → Failure |
-| Counter Attack | Reversal | "That moment" insight |
-| Group Combat | 1 vs Many | Direction indicators |
-| Assassination | Stealth kill | Silence emphasis |
-| Technique Showdown | Named moves | Hán Việt + visual |
-| Near-Death | Final effort | Spirit vs body |
-| Master-Disciple | Training | Lesson in dialogue |
-| Ambush | Sudden attack | Danger sense |
-| Duel Finale | Decisive end | Silence → Exchange |
-| Formation Battle | Group technique | Synchronized attack |
-| Supreme Entrance | Power arrival | Pressure → Awe |
+| # | Pattern | Use Case | Key Element |
+|---|---------|----------|-------------|
+| 1 | Opening Strike | Fight start | Tension → Action |
+| 2 | Sword Exchange | Standard combat | Fragment rhythm |
+| 3 | Power Gap | Dominance display | Effortless counter |
+| 4 | Energy Clash | High-level combat | Shockwave effects |
+| 5 | Desperate Defense | Last stand | Repetition → Failure |
+| 6 | Counter Attack | Reversal | "That moment" insight |
+| 7 | Group Combat | 1 vs Many | Direction indicators |
+| 8 | Assassination | Stealth kill | Silence emphasis |
+| 9 | Technique Showdown | Named moves | Hán Việt + visual |
+| 10 | Near-Death | Final effort | Spirit vs body |
+| 11 | Master-Disciple | Training | Lesson in dialogue |
+| 12 | Ambush | Sudden attack | Danger sense |
+| 13 | Duel Finale | Decisive end | Silence → Exchange |
+| 14 | Formation Battle | Group technique | Synchronized attack |
+| 15 | Supreme Entrance | Power arrival | Pressure → Awe |
+| 16 | Chase Sequence | Pursuit combat | Speed + obstacles |
+| 17 | Weapon Break | Disarming | Progressive damage |
+| 18 | Internal Injury | Fighting wounded | Pain suppression |
+| 19 | Mid-Battle Breakthrough | Realm up in combat | Desperate insight |
+| 20 | Weapon Throw | Surprise feint | Distraction + follow-up |
+| 21 | Grapple | Close combat | Lock → dirty fighting |
+| 22 | Environmental Combat | Using surroundings | Disadvantage → advantage |
+| 23 | Mercy/Sparing | Choosing not to kill | Warning + departure |
+| 24 | Interrupted Technique | Disrupting qi flow | Backlash vulnerability |
+| 25 | Consecutive Kills | Mass slaughter | Numerical rhythm |
+| 26 | Qi Pressure | Aura confrontation | Bystander effects |
+| 27 | Execution Strike | Killing defenseless | Cold + clinical |
+| 28 | Weapon Upgrade | Mid-fight switch | Quality boost |
+| 29 | Mutual Destruction | Both commit | Mutual respect |
+| 30 | Hidden Technique | Secret reveal | Reluctant disclosure |
 
 ---
 
 ## Summary
 
-- **Total Patterns:** 15 core + variations
+- **Total Patterns:** 30 combat choreography templates
 - **Energy Types:** 8 with visual descriptions
-- **Pacing Guidelines:** 3 battle lengths
+- **Pacing Guidelines:** 3 battle lengths (Quick/Standard/Extended)
 - **Example Scenes:** 5 complete fights
-- **File Size:** ~20KB
+- **Multi-Move Sequences:** Each pattern contains 4-6 step structures
+- **File Size:** ~35KB
 
-**Version:** 1.0 - Complete for translation reference
+**Version:** 2.0 - Extended edition with 30 patterns for comprehensive KR Murim translation
