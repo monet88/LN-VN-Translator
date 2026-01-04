@@ -303,51 +303,435 @@
   <!-- Honorific Address Terms by Sect Hierarchy -->
   <HONORIFIC_SYSTEM>
     <DESCRIPTION>
-      Sect hierarchy determines address terms. Refer to Ref_KR_HONORIFIC_SYSTEM.md
-      for complete decision tree and formality levels.
+      Korean Murim honorific system based on sect hierarchy (generation, rank, lineage)
+      rather than age or social status. Complete logic from Ref_KR_HONORIFIC_SYSTEM.md.
+
+      Core Principle: Generation-based seniority (사형/사제 by master lineage) determines
+      address terms and speech formality levels.
     </DESCRIPTION>
 
-    <SAME_GENERATION>
-      <SENIOR korean="사형" hanja="師兄" vn="Sư huynh" gender="male">
-        Senior brother (same generation, older)
-      </SENIOR>
-      <JUNIOR korean="사제" hanja="師弟" vn="Sư đệ" gender="male">
-        Junior brother (same generation, younger)
-      </JUNIOR>
-      <SENIOR_FEMALE korean="사저" hanja="師姐" vn="Sư tỷ" gender="female">
-        Senior sister (same generation, older)
-      </SENIOR_FEMALE>
-      <JUNIOR_FEMALE korean="사매" hanja="師妹" vn="Sư muội" gender="female">
-        Junior sister (same generation, younger)
-      </JUNIOR_FEMALE>
-    </SAME_GENERATION>
+    <!-- Context Detection Logic: Decision Tree -->
+    <CONTEXT_DETECTION>
+      <DECISION_TREE>
+        <STEP_1>Is speaker addressing someone?</STEP_1>
+        <IF_YES>
+          <STEP_2>Same sect?</STEP_2>
+          <IF_YES_SAME_SECT>
+            <STEP_3>Same generation?</STEP_3>
+            <IF_YES_SAME_GEN>
+              <STEP_4>Who entered first?</STEP_4>
+              <OTHER_FIRST>Use 사형/사저 + 존댓말 (polite)</OTHER_FIRST>
+              <SELF_FIRST>Use 사제/사매 + 반말/존댓말 (context-dependent)</SELF_FIRST>
+            </IF_YES_SAME_GEN>
+            <IF_NO_DIFF_GEN>
+              <STEP_4_ALT>Who is senior generation?</STEP_4_ALT>
+              <OTHER_SENIOR>Use 사숙/사고 + 존댓말 (respectful)</OTHER_SENIOR>
+              <SELF_SENIOR>Use 사질 + 반말 (but kind tone)</SELF_SENIOR>
+            </IF_NO_DIFF_GEN>
+          </IF_YES_SAME_SECT>
+          <IF_NO_DIFF_SECT>
+            <STEP_3_ALT>What is their role/affiliation?</STEP_3_ALT>
+            <SECT_LEADER>Use [Sect]장문 + 존댓말</SECT_LEADER>
+            <MONK_TAOIST>Use 화상/도장 + 존댓말</MONK_TAOIST>
+            <YOUNG_WARRIOR>Use 소협 + 해요체 (polite)</YOUNG_WARRIOR>
+            <FAMOUS_WARRIOR>Use 대협 + 존댓말</FAMOUS_WARRIOR>
+          </IF_NO_DIFF_SECT>
+        </IF_YES>
+        <IF_NO>
+          <NARRATION>Use Vietnamese pronouns (anh/chị/họ)</NARRATION>
+        </IF_NO>
+      </DECISION_TREE>
 
-    <GENERATION_GAP>
-      <MASTER korean="사부" hanja="師父" vn="Sư phụ">
-        Direct master (-1 generation)
-      </MASTER>
-      <UNCLE korean="사숙" hanja="師叔" vn="Sư thúc">
-        Master's peer (-1 generation, not direct master)
-      </UNCLE>
-      <GRAND_MASTER korean="사조" hanja="師祖" vn="Sư tổ">
-        Master's master (-2 generations)
-      </GRAND_MASTER>
-      <DISCIPLE korean="제자" hanja="弟子" vn="Đệ tử">
-        Direct disciple (+1 generation)
-      </DISCIPLE>
-    </GENERATION_GAP>
+      <CONTEXT_RULES>
+        <RULE_1 name="Entrance Order">
+          Within same generation, who entered sect first determines seniority.
+          Earlier entry = 사형/사저, Later entry = 사제/사매
+        </RULE_1>
+        <RULE_2 name="Absolute Leader">
+          장문인 (Sect Leader) commands absolute respect, even from senior generation elders.
+          Address with "장문인님" + extreme formality (합쇼체).
+        </RULE_2>
+        <RULE_3 name="External Politeness">
+          When meeting other sects, always use formal titles to maintain sect honor.
+          Even enemies receive polite address until hostilities begin.
+        </RULE_3>
+        <RULE_4 name="Combat Urgency">
+          In battle, honorifics remain but speech drops to 해라체 (casual).
+          Urgency trumps politeness. "사형, 뒤다!" (Sahyeong, behind!)
+        </RULE_4>
+        <RULE_5 name="Teacher-Student Bond">
+          사부 relationship transcends generation. Lifetime respect to original master.
+        </RULE_5>
+      </CONTEXT_RULES>
+    </CONTEXT_DETECTION>
 
-    <SECT_LEADER_TITLES>
-      <SECT_LEADER korean="장문인" hanja="掌門人" vn="Chưởng môn nhân">
-        Sect leader, highest authority
-      </SECT_LEADER>
-      <ELDER korean="장로" hanja="長老" vn="Trưởng lão">
-        Sect elder, advisory council
-      </ELDER>
-      <PEAK_MASTER korean="봉주" hanja="峰主" vn="Phong chủ">
-        Peak/Division master (large sects)
-      </PEAK_MASTER>
-    </SECT_LEADER_TITLES>
+    <!-- Speech Level System: Korean Formality -->
+    <SPEECH_LEVELS>
+      <OVERVIEW>
+        Korean has 4 formality levels. Murim context determines which to use based
+        on sect hierarchy, relationship, and situation.
+      </OVERVIEW>
+
+      <LEVEL name="합쇼체" formality="very_high">
+        <USAGE>To sect leader, grand elders, formal ceremonies</USAGE>
+        <VERB_ENDINGS>-습니다, -ㅂ니다</VERB_ENDINGS>
+        <EXAMPLE korean="배알합니다" vn="Bái yết">I pay my respects</EXAMPLE>
+      </LEVEL>
+
+      <LEVEL name="해요체" formality="polite">
+        <USAGE>To seniors (사형), martial uncles (사숙), general respect</USAGE>
+        <VERB_ENDINGS>-아요, -어요</VERB_ENDINGS>
+        <EXAMPLE korean="가르쳐 주세요" vn="Xin chỉ giáo">Please teach me</EXAMPLE>
+      </LEVEL>
+
+      <LEVEL name="하오체" formality="formal_old">
+        <USAGE>Historical formal, cold distance, enemies pre-combat</USAGE>
+        <VERB_ENDINGS>-소, -오</VERB_ENDINGS>
+        <EXAMPLE korean="무슨 일로 오셨소?" vn="Đến vì việc gì?">What brings you?</EXAMPLE>
+      </LEVEL>
+
+      <LEVEL name="해라체" formality="casual">
+        <USAGE>To juniors (사제), martial nephews (사질), equals in informal settings</USAGE>
+        <VERB_ENDINGS>-다, -라, -냐</VERB_ENDINGS>
+        <EXAMPLE korean="잘 지내냐?" vn="Có khỏe không?">Are you well?</EXAMPLE>
+      </LEVEL>
+
+      <MURIM_MAPPING>
+        <TO_SECT_LEADER>합쇼체 (highest formality)</TO_SECT_LEADER>
+        <TO_SENIOR_SAHYEONG>해요체 (polite)</TO_SENIOR_SAHYEONG>
+        <TO_JUNIOR_SAJE>해라체 OR 해요체 (context-dependent)</TO_JUNIOR_SAJE>
+        <TO_EQUAL_SAME_RANK>해요체 OR 해라체 (varies by closeness)</TO_EQUAL_SAME_RANK>
+        <TO_ENEMY>해라체 (casual-hostile) OR 하오체 (formal-cold)</TO_ENEMY>
+        <IN_COMBAT>해라체 (urgent), honorifics remain but formality drops</IN_COMBAT>
+      </MURIM_MAPPING>
+    </SPEECH_LEVELS>
+
+    <!-- Internal Sect Honorifics (50+ Terms) -->
+    <INTERNAL_SECT_TERMS>
+      <SAME_GENERATION>
+        <TERM id="1" korean="사형" hanja="師兄" vn="Sư huynh" gender="male">
+          Senior brother (same generation, entered earlier)
+        </TERM>
+        <TERM id="2" korean="사저" hanja="師姐" vn="Sư tỷ" gender="female">
+          Senior sister (same generation, entered earlier)
+        </TERM>
+        <TERM id="3" korean="사제" hanja="師弟" vn="Sư đệ" gender="male">
+          Junior brother (same generation, entered later)
+        </TERM>
+        <TERM id="4" korean="사매" hanja="師妹" vn="Sư muội" gender="female">
+          Junior sister (same generation, entered later)
+        </TERM>
+        <TERM id="5" korean="대사형" hanja="大師兄" vn="Đại Sư Huynh" gender="male">
+          Great Senior Brother (eldest male of generation)
+        </TERM>
+        <TERM id="6" korean="대사저" hanja="大師姐" vn="Đại Sư Tỷ" gender="female">
+          Great Senior Sister (eldest female of generation)
+        </TERM>
+        <TERM id="7" korean="수제자" hanja="首弟子" vn="Thủ Đệ Tử">
+          Chief Disciple (successor candidate)
+        </TERM>
+        <TERM id="8" korean="사형제" hanja="師兄弟" vn="Sư huynh đệ">
+          Martial brothers (collective term)
+        </TERM>
+        <TERM id="9" korean="동문" hanja="同門" vn="Đồng môn">
+          Same sect member (general)
+        </TERM>
+      </SAME_GENERATION>
+
+      <CROSS_GENERATION>
+        <TERM id="10" korean="사부" hanja="師父" vn="Sư phụ">
+          Master (direct teacher, -1 generation)
+        </TERM>
+        <TERM id="11" korean="사숙" hanja="師叔" vn="Sư thúc" gender="male">
+          Martial uncle (master's peer, -1 generation)
+        </TERM>
+        <TERM id="12" korean="사고" hanja="師姑" vn="Sư cô" gender="female">
+          Martial aunt (master's peer, -1 generation)
+        </TERM>
+        <TERM id="13" korean="사백" hanja="師伯" vn="Sư bá" gender="male">
+          Elder martial uncle (senior to master's peers)
+        </TERM>
+        <TERM id="14" korean="사질" hanja="師姪" vn="Sư chất">
+          Martial nephew/niece (+1 generation below)
+        </TERM>
+        <TERM id="15" korean="사조" hanja="師祖" vn="Sư tổ">
+          Grand master (master's master, -2 generations)
+        </TERM>
+        <TERM id="16" korean="사숙조" hanja="師叔祖" vn="Sư Thúc Tổ">
+          Great martial uncle (-2 generations)
+        </TERM>
+        <TERM id="17" korean="사태" hanja="師太" vn="Sư Thái" gender="female">
+          Grand martial aunt (-2 generations)
+        </TERM>
+      </CROSS_GENERATION>
+
+      <GENERAL_DISCIPLES>
+        <TERM id="18" korean="제자" hanja="弟子" vn="Đệ tử">
+          Disciple (general term)
+        </TERM>
+        <TERM id="19" korean="입문제자" hanja="入門弟子" vn="Nhập môn đệ tử">
+          Entered disciple (officially accepted)
+        </TERM>
+        <TERM id="20" korean="속가제자" hanja="俗家弟子" vn="Tục gia đệ tử">
+          Lay disciple (secular, not monk/Taoist)
+        </TERM>
+        <TERM id="21" korean="문도" hanja="門徒" vn="Môn đồ">
+          Sect member (general follower)
+        </TERM>
+        <TERM id="22" korean="수습" hanja="修習" vn="Tập sự">
+          Trainee (not yet officially entered)
+        </TERM>
+        <TERM id="23" korean="신입" hanja="新入" vn="Tân nhập">
+          Newcomer (recently entered)
+        </TERM>
+      </GENERAL_DISCIPLES>
+    </INTERNAL_SECT_TERMS>
+
+    <!-- Sect Leadership Titles -->
+    <LEADERSHIP_TITLES>
+      <TERM id="24" korean="장문인" hanja="掌門人" vn="Chưởng môn nhân">
+        Sect Leader (supreme authority)
+      </TERM>
+      <TERM id="25" korean="장문" hanja="掌門" vn="Chưởng môn">
+        Sect Leader (short form)
+      </TERM>
+      <TERM id="26" korean="문주" hanja="門主" vn="Môn chủ">
+        Sect Master (alternative title)
+      </TERM>
+      <TERM id="27" korean="태상장문인" hanja="太上掌門人" vn="Thái Thượng Chưởng Môn">
+        Retired Sect Leader (advisor)
+      </TERM>
+      <TERM id="28" korean="부장문" hanja="副掌門" vn="Phó Chưởng Môn">
+        Vice Sect Leader (second-in-command)
+      </TERM>
+      <TERM id="29" korean="장로" hanja="長老" vn="Trưởng lão">
+        Elder (council member)
+      </TERM>
+      <TERM id="30" korean="태상장로" hanja="太上長老" vn="Thái Thượng Trưởng Lão">
+        Grand Elder (retired leader)
+      </TERM>
+      <TERM id="31" korean="전투장로" hanja="戰鬪長老" vn="Chiến Đấu Trưởng Lão">
+        Combat Elder (martial specialist)
+      </TERM>
+      <TERM id="32" korean="형법장로" hanja="刑法長老" vn="Hình Pháp Trưởng Lão">
+        Discipline Elder (enforces rules)
+      </TERM>
+      <TERM id="33" korean="전수장로" hanja="傳授長老" vn="Truyền Thụ Trưởng Lão">
+        Teaching Elder (trains disciples)
+      </TERM>
+      <TERM id="34" korean="봉주" hanja="峰主" vn="Phong chủ">
+        Peak Master (division leader in large sects)
+      </TERM>
+    </LEADERSHIP_TITLES>
+
+    <!-- External Relations Honorifics -->
+    <EXTERNAL_RELATIONS>
+      <POLITE_FORMAL>
+        <TERM id="35" korean="도장" hanja="道長" vn="Đạo trưởng">
+          Taoist master (polite to Taoist martial artist)
+        </TERM>
+        <TERM id="36" korean="소도장" hanja="小道長" vn="Tiểu Đạo Trưởng">
+          Young Taoist (lower status)
+        </TERM>
+        <TERM id="37" korean="화상" hanja="和尙" vn="Hòa thượng">
+          Buddhist monk (respectful)
+        </TERM>
+        <TERM id="38" korean="사부" hanja="師父" vn="Sư phụ">
+          Master (respectful to anyone's teacher)
+        </TERM>
+        <TERM id="39" korean="방장" hanja="方丈" vn="Phương trượng">
+          Abbot (Shaolin Temple leader)
+        </TERM>
+      </POLITE_FORMAL>
+
+      <MARTIAL_COMMUNITY>
+        <TERM id="40" korean="소협" hanja="小俠" vn="Tiểu hiệp">
+          Young warrior (polite to young martial artist)
+        </TERM>
+        <TERM id="41" korean="대협" hanja="大俠" vn="Đại hiệp">
+          Great warrior (famous/powerful warrior)
+        </TERM>
+        <TERM id="42" korean="협객" hanja="俠客" vn="Hiệp khách">
+          Chivalrous warrior (wandering righteous)
+        </TERM>
+        <TERM id="43" korean="협녀" hanja="俠女" vn="Hiệp nữ">
+          Chivalrous woman (female warrior)
+        </TERM>
+        <TERM id="44" korean="여협" hanja="女俠" vn="Nữ hiệp">
+          Female warrior (alternative)
+        </TERM>
+        <TERM id="45" korean="고수" hanja="高手" vn="Cao thủ">
+          Expert (skilled martial artist)
+        </TERM>
+        <TERM id="46" korean="선배" hanja="先輩" vn="Tiền bối">
+          Senior (general, non-sect)
+        </TERM>
+        <TERM id="47" korean="후배" hanja="後輩" vn="Hậu bối">
+          Junior (general, non-sect)
+        </TERM>
+      </MARTIAL_COMMUNITY>
+
+      <SECT_SPECIFIC_EXTERNAL>
+        <TERM id="48" korean="가주" hanja="家主" vn="Gia chủ">
+          Family Clan Head (e.g., Tang Family)
+        </TERM>
+        <TERM id="49" korean="소가주" hanja="小家主" vn="Tiểu Gia Chủ">
+          Young Clan Heir
+        </TERM>
+        <TERM id="50" korean="방주" hanja="幇主" vn="Bang chủ">
+          Union Leader (Beggars' Sect)
+        </TERM>
+        <TERM id="51" korean="채주" hanja="寨主" vn="Trại chủ">
+          Stronghold Commander (bandits)
+        </TERM>
+        <TERM id="52" korean="맹주" hanja="盟主" vn="Minh chủ">
+          Alliance Leader (Murim Alliance)
+        </TERM>
+        <TERM id="53" korean="교주" hanja="敎主" vn="Giáo chủ">
+          Cult Leader (Demonic Cult)
+        </TERM>
+        <TERM id="54" korean="호법" hanja="護法" vn="Hộ pháp">
+          Protector (elite guard, Demonic Cult)
+        </TERM>
+      </SECT_SPECIFIC_EXTERNAL>
+
+      <GENDER_SPECIFIC>
+        <TERM id="55" korean="소저" hanja="小姐" vn="Tiểu thư">
+          Young lady (unmarried woman, respectful)
+        </TERM>
+      </GENDER_SPECIFIC>
+
+      <CASUAL_INFORMAL>
+        <TERM id="56" korean="형님" hanja="兄-" vn="Huynh nim">
+          Big Brother (casual, common in Beggars' Sect)
+        </TERM>
+        <TERM id="57" korean="아우" hanja="--" vn="Anh em">
+          Younger brother (casual)
+        </TERM>
+      </CASUAL_INFORMAL>
+    </EXTERNAL_RELATIONS>
+
+    <!-- Sect-Specific Variations -->
+    <SECT_VARIATIONS>
+      <SHAOLIN type="Buddhist">
+        <UNIQUE_TERMS>
+          <TERM korean="사형" usage="Same as general, but with Buddhist names (법륜, 법허)"/>
+          <TERM korean="방장" hanja="方丈" vn="Phương trượng">Abbot (temple leader)</TERM>
+          <GREETING korean="아미타불" vn="A-di-đà Phật">Buddhist greeting (Amitabha)</GREETING>
+        </UNIQUE_TERMS>
+        <SPEECH_PATTERN>
+          More formal, compassionate tone. Buddhist terminology integrated.
+        </SPEECH_PATTERN>
+      </SHAOLIN>
+
+      <WUDANG type="Taoist">
+        <UNIQUE_TERMS>
+          <TERM korean="도형" hanja="道兄" vn="Đạo huynh">Dao Brother (alternative to 사형)</TERM>
+          <TERM korean="도우" hanja="道友" vn="Đạo hữu">Dao Friend (equals)</TERM>
+          <GREETING korean="무량천존" vn="Vô lượng thiên tôn">Taoist greeting</GREETING>
+        </UNIQUE_TERMS>
+        <SPEECH_PATTERN>
+          Taoist philosophical language. Emphasis on balance and non-action.
+        </SPEECH_PATTERN>
+      </WUDANG>
+
+      <DEMONIC_CULT type="Demonic">
+        <UNIQUE_TERMS>
+          <TERM korean="교주" hanja="敎主" vn="Giáo chủ">Cult Leader (supreme authority)</TERM>
+          <TERM korean="호법" hanja="護法" vn="Hộ pháp">Protector (elite guards)</TERM>
+          <SLOGAN korean="마교만세!" vn="Ma Giáo vạn tuế!">Long live the Demonic Cult!</SLOGAN>
+        </UNIQUE_TERMS>
+        <SPEECH_PATTERN>
+          Less formal, more brutal and commanding. Arrogant pronouns.
+        </SPEECH_PATTERN>
+      </DEMONIC_CULT>
+
+      <BEGGARS_SECT type="Casual">
+        <UNIQUE_TERMS>
+          <TERM korean="방주" hanja="幇主" vn="Bang chủ">Union Leader</TERM>
+          <TERM korean="형님" usage="More common than 사형">Big Brother (casual)</TERM>
+          <BAG_SYSTEM>9-bag elders > 8-bag members (rank system)</BAG_SYSTEM>
+        </UNIQUE_TERMS>
+        <SPEECH_PATTERN>
+          More casual, street-smart language. Brotherhood emphasis.
+        </SPEECH_PATTERN>
+      </BEGGARS_SECT>
+    </SECT_VARIATIONS>
+
+    <!-- Common Honorific Patterns -->
+    <COMMON_PATTERNS>
+      <PATTERN_1 name="Seeking Permission">
+        <STRUCTURE>[Title] + [request verb] + 겠습니까?</STRUCTURE>
+        <EXAMPLE korean="사형, 가르침을 주시겠습니까?" vn="Sahyeong, anh có thể chỉ giáo em được không?">
+          Sahyeong, will you teach me?
+        </EXAMPLE>
+        <EXAMPLE korean="장문인님, 출타를 허락해 주시겠습니까?" vn="Jangmunin, xin cho phép đệ tử xuất ngoại?">
+          Jangmunin, will you permit me to leave?
+        </EXAMPLE>
+      </PATTERN_1>
+
+      <PATTERN_2 name="Reporting to Superiors">
+        <STRUCTURE>[Title] + [humble self] + [report]</STRUCTURE>
+        <EXAMPLE korean="장문인님, 제자가 돌아왔습니다" vn="Jangmunin, đệ tử đã trở về">
+          Jangmunin, this disciple has returned
+        </EXAMPLE>
+        <EXAMPLE korean="사형, 소제가 임무를 완료했습니다" vn="Sahyeong, tiểu đệ đã hoàn thành nhiệm vụ">
+          Sahyeong, this junior has completed the mission
+        </EXAMPLE>
+      </PATTERN_2>
+
+      <PATTERN_3 name="Giving Orders (Senior to Junior)">
+        <STRUCTURE>[Title] + [command verb] + 라/거라</STRUCTURE>
+        <EXAMPLE korean="사제, 이것을 가져가거라" vn="Saje, hãy mang cái này đi">
+          Saje, take this
+        </EXAMPLE>
+        <EXAMPLE korean="제자들, 집합하라!" vn="Đệ tử, tập hợp!">
+          Disciples, assemble!
+        </EXAMPLE>
+      </PATTERN_3>
+
+      <PATTERN_4 name="Casual Between Equals">
+        <STRUCTURE>[Name] + suffix (-아/-이) + casual speech</STRUCTURE>
+        <EXAMPLE korean="윤종아, 잘 지내냐?" vn="Yoon Jong-a, cậu có khỏe không?">
+          Yoon Jong, are you well?
+        </EXAMPLE>
+        <EXAMPLE korean="형, 오늘 같이 수련할래?" vn="Hyeong, hôm nay luyện cùng nhau nhé?">
+          Hyeong, want to train together today?
+        </EXAMPLE>
+      </PATTERN_4>
+
+      <PATTERN_5 name="Formal Introductions">
+        <STRUCTURE>[Sect] + [generation/title] + [name] + 입니다</STRUCTURE>
+        <EXAMPLE korean="화산파 삼대제자 청명입니다" vn="Tại hạ là Chung Myung, đệ tử đời thứ ba Hoa Sơn Phái">
+          I am Chung Myung, third-generation disciple of Mount Hua
+        </EXAMPLE>
+      </PATTERN_5>
+    </COMMON_PATTERNS>
+
+    <!-- Translation Guidelines for Vietnamese -->
+    <TRANSLATION_GUIDELINES>
+      <KEEP_KOREAN_IN_DIALOGUE>
+        Honorifics to preserve in Vietnamese dialogue for cultural flavor:
+        사형, 사저, 사제, 사매, 장문인, 도장, 대협, 소협
+
+        Readers recognize these Murim terms. Avoid awkward Vietnamese equivalents.
+      </KEEP_KOREAN_IN_DIALOGUE>
+
+      <TRANSLATE_IN_NARRATION>
+        In narration, translate for clarity:
+        - 사형 → "người sư huynh" (the senior martial brother)
+        - 장문인 → "chưởng môn của phái" (the sect leader)
+        - 장로 → "các trưởng lão" (the elders)
+      </TRANSLATE_IN_NARRATION>
+
+      <HYBRID_APPROACH>
+        First mention: Korean + Vietnamese gloss
+        "Jangmunin (chưởng môn), đệ tử xin hầu."
+
+        Later mentions: Korean term alone
+        "Jangmunin gật đầu."
+      </HYBRID_APPROACH>
+    </TRANSLATION_GUIDELINES>
   </HONORIFIC_SYSTEM>
 </MURIM_LOC>
 
@@ -827,6 +1211,251 @@
       Minor achievement (rare mention)
     </ENTRY>
   </SAMPLE_ENTRIES>
+
+  <!-- Name Consistency System -->
+  <NAME_CONSISTENCY>
+    <DESCRIPTION>
+      Character names, place names, and technique names must maintain consistent
+      romanization throughout entire translation. Once locked, never change.
+    </DESCRIPTION>
+
+    <LOCK_RULES>
+      <CHARACTER_NAMES>
+        <RULE>First mention → Romanize Korean pronunciation + Vietnamese phonetic</RULE>
+        <EXAMPLE>
+          청명 → Chung Myung (Thanh Minh)
+          First appearance: "Tôi là Chung Myung (Thanh Minh), đệ tử thế hệ thứ ba."
+          All later: "Chung Myung"
+        </EXAMPLE>
+        <LOCK>Once established, NEVER use "Thanh Minh" later, always "Chung Myung"</LOCK>
+      </CHARACTER_NAMES>
+
+      <PLACE_NAMES>
+        <RULE>Use Hán Việt for sect/location names, Korean romanization optional</RULE>
+        <EXAMPLE>
+          화산파 → Hoa Sơn Phái (華山派)
+          소림사 → Thiểu Lâm Tự (少林寺)
+        </EXAMPLE>
+        <LOCK>Consistent Hán Việt form throughout novel</LOCK>
+      </PLACE_NAMES>
+
+      <TECHNIQUE_NAMES>
+        <RULE>Named techniques → Hán Việt translation + Korean romanization in parentheses</RULE>
+        <EXAMPLE>
+          매화검법 → Muội Hoa Kiếm Pháp (梅花劍法 / Maehwa Geombeop)
+          First mention: "Muội Hoa Kiếm Pháp (Plum Blossom Sword)"
+          Later: "Muội Hoa Kiếm Pháp"
+        </EXAMPLE>
+        <LOCK>Never translate technique names differently mid-novel</LOCK>
+      </TECHNIQUE_NAMES>
+
+      <GENERIC_TERMS>
+        <RULE>Common nouns → Use Hán Việt consistently</RULE>
+        <EXAMPLE>
+          강호 → ALWAYS "Giang hồ" (never switch to "võ lâm")
+          내공 → ALWAYS "Nội công" (never "nội lực" unless different term)
+        </EXAMPLE>
+      </GENERIC_TERMS>
+    </LOCK_RULES>
+
+    <CONSISTENCY_CHECK>
+      <STEP_1>Track all names in glossary on first appearance</STEP_1>
+      <STEP_2>Before translating new occurrence, check glossary for established form</STEP_2>
+      <STEP_3>If not found, establish new entry and lock it</STEP_3>
+      <STEP_4>Flag inconsistencies for review if detected mid-translation</STEP_4>
+    </CONSISTENCY_CHECK>
+  </NAME_CONSISTENCY>
+
+  <!-- Translation vs Romanization Logic -->
+  <TRANSLATION_DECISION>
+    <DESCRIPTION>
+      Determine when to translate to Hán Việt vs romanize Korean pronunciation.
+    </DESCRIPTION>
+
+    <TRANSLATE_TO_HANVIET>
+      <CATEGORY name="Generic Murim Terms">
+        <RULE>Common nouns with established Hán Việt equivalents → Translate</RULE>
+        <EXAMPLES>
+          강호 (Gangho) → Giang hồ (江湖)
+          내공 (Naegong) → Nội công (內功)
+          검법 (Geombeop) → Kiếm pháp (劍法)
+          고수 (Gosu) → Cao thủ (高手)
+        </EXAMPLES>
+      </CATEGORY>
+
+      <CATEGORY name="Sect Names">
+        <RULE>Established sects → Use Hán Việt reading of Hanja</RULE>
+        <EXAMPLES>
+          화산파 (Hwasan-pa) → Hoa Sơn Phái (華山派)
+          소림사 (Sorim-sa) → Thiểu Lâm Tự (少林寺)
+          무당파 (Mudang-pa) → Vô Đang Phái (武當派)
+        </EXAMPLES>
+      </CATEGORY>
+
+      <CATEGORY name="Cultivation Terms">
+        <RULE>Abstract cultivation concepts → Translate to Hán Việt</RULE>
+        <EXAMPLES>
+          경지 (Gyeongji) → Cảnh giới (境地)
+          돌파 (Dolpa) → Đột phá (突破)
+          깨달음 (Kkaedareom) → Giác ngộ (覺悟) [if Hanja available]
+        </EXAMPLES>
+      </CATEGORY>
+    </TRANSLATE_TO_HANVIET>
+
+    <ROMANIZE_KOREAN>
+      <CATEGORY name="Character Names">
+        <RULE>Personal names → Romanize Korean pronunciation</RULE>
+        <EXAMPLES>
+          청명 → Chung Myung (NOT Thanh Minh)
+          윤종 → Yoon Jong (NOT Doãn Chung)
+          조걸 → Jo Gul (NOT Tào Cật)
+        </EXAMPLES>
+        <REASON>Preserves character identity, familiar to readers</REASON>
+      </CATEGORY>
+
+      <CATEGORY name="Unique Technique Names">
+        <RULE>Proprietary/creative technique names → Romanize Korean + Hán Việt gloss</RULE>
+        <EXAMPLES>
+          매화검무 (Maehwa Geommu) → Muội Hoa Kiếm Vũ (梅花劍舞)
+          First: "thi triển Muội Hoa Kiếm Vũ (Maehwa Geommu - Plum Blossom Sword Dance)"
+          Later: "Muội Hoa Kiếm Vũ"
+        </EXAMPLES>
+        <REASON>Unique techniques benefit from Hán Việt + Korean dual branding</REASON>
+      </CATEGORY>
+
+      <CATEGORY name="Pure Korean Terms">
+        <RULE>Korean-origin words without Hanja → Direct Vietnamese translation</RULE>
+        <EXAMPLES>
+          깨달음 → Giác ngộ / Khai ngộ (if context allows Hanja)
+          But: 허공 (Heogong - empty sky) → Hư không (虛空)
+        </EXAMPLES>
+      </CATEGORY>
+    </ROMANIZE_KOREAN>
+
+    <HYBRID_APPROACH>
+      <DESCRIPTION>
+        Some terms benefit from both romanization AND translation.
+      </DESCRIPTION>
+
+      <PATTERN name="First Mention Verbosity">
+        First appearance: 매화검법 (Maehwa Geombeop) → "Muội Hoa Kiếm Pháp (梅花劍法 / Maehwa Geombeop - Plum Blossom Sword Technique)"
+        Subsequent: "Muội Hoa Kiếm Pháp"
+      </PATTERN>
+
+      <PATTERN name="Dialogue vs Narration">
+        Dialogue: "Sahyeong, em muốn học Muội Hoa Kiếm Pháp."
+        Narration: "Anh ấy bắt đầu tu luyện Muội Hoa Kiếm Pháp (Plum Blossom Sword), một trong những tuyệt kỹ của Hoa Sơn Phái."
+      </PATTERN>
+    </HYBRID_APPROACH>
+  </TRANSLATION_DECISION>
+
+  <!-- Fallback Handling -->
+  <FALLBACK_SYSTEM>
+    <DESCRIPTION>
+      Handle terms not found in Library databases.
+    </DESCRIPTION>
+
+    <FALLBACK_PRIORITY>
+      <STEP_1>
+        <ACTION>Search Library_ROTMHS_GLOSSARY.md (novel-specific)</ACTION>
+        <IF_FOUND>Use established translation</IF_FOUND>
+        <IF_NOT_FOUND>Go to STEP 2</IF_NOT_FOUND>
+      </STEP_1>
+
+      <STEP_2>
+        <ACTION>Search Library_HANJA_MURIM_TERMS.md (generic Murim)</ACTION>
+        <IF_FOUND>Use Hán Việt mapping + assign frequency tier</IF_FOUND>
+        <IF_NOT_FOUND>Go to STEP 3</IF_NOT_FOUND>
+      </STEP_2>
+
+      <STEP_3>
+        <ACTION>Search Library_GENERIC_MURIM_TERMS.md (common vocabulary)</ACTION>
+        <IF_FOUND>Use direct Vietnamese translation</IF_FOUND>
+        <IF_NOT_FOUND>Go to STEP 4</IF_NOT_FOUND>
+      </STEP_3>
+
+      <STEP_4>
+        <ACTION>Analyze Korean term structure</ACTION>
+        <HAS_HANJA>
+          If term is Sino-Korean (Hanja-based):
+          - Infer Hán Việt reading from Hanja components
+          - Example: 검(劍) + 황(皇) = Kiếm Hoàng (Sword Emperor)
+        </HAS_HANJA>
+        <NO_HANJA>
+          If term is pure Korean:
+          - Translate meaning to Vietnamese directly
+          - Example: 깨달음 (enlightenment) → giác ngộ / khai ngộ
+        </NO_HANJA>
+      </STEP_4>
+
+      <STEP_5>
+        <ACTION>Manual review flag</ACTION>
+        <FLAG>
+          If unable to determine confident translation:
+          - Mark term with [TBD: 검황] in output
+          - Add to review queue for manual glossary entry
+          - Use placeholder: "Kiếm Hoàng [cần xác nhận]"
+        </FLAG>
+      </STEP_5>
+    </FALLBACK_PRIORITY>
+
+    <EMERGENCY_TRANSLATION>
+      <DESCRIPTION>
+        Quick fallback rules when databases unavailable.
+      </DESCRIPTION>
+
+      <RULE_1>
+        Sino-Korean term → Use Vietnamese Hán Việt reading
+        검(劍) → kiếm, 왕(王) → vương, 파(派) → phái
+      </RULE_1>
+
+      <RULE_2>
+        Pure Korean → Direct Vietnamese meaning
+        싸우다 → chiến đấu, 빠르다 → nhanh
+      </RULE_2>
+
+      <RULE_3>
+        Unknown proper noun → Romanize Korean
+        청명 → Chung Myung, 매화곡 → Maehwa-gok
+      </RULE_3>
+
+      <RULE_4>
+        Complex compound → Break into components + translate each
+        검황신공 (Sword Emperor Divine Art) → Kiếm Hoàng Thần Công
+        Break: 검(劍/kiếm) + 황(皇/hoàng) + 신(神/thần) + 공(功/công)
+      </RULE_4>
+    </EMERGENCY_TRANSLATION>
+
+    <QUALITY_ASSURANCE>
+      <CHECK_1>Does translation maintain martial arts context?</CHECK_1>
+      <CHECK_2>Is Hán Việt reading consistent with established sect terminology?</CHECK_2>
+      <CHECK_3>Would Vietnamese wuxia readers recognize this term?</CHECK_3>
+      <CHECK_4>Does it sound natural in Vietnamese martial arts dialogue?</CHECK_4>
+    </QUALITY_ASSURANCE>
+  </FALLBACK_SYSTEM>
+
+  <!-- Integration with Other Modules -->
+  <MODULE_INTEGRATION>
+    <ROTMHS_GLOSSARY>
+      Library_ROTMHS_GLOSSARY.md provides novel-specific overrides.
+      Always check here FIRST for Return of Mount Hua Sect terms.
+    </ROTMHS_GLOSSARY>
+
+    <HANJA_MURIM_TERMS>
+      Library_HANJA_MURIM_TERMS.md provides generic 500KB database.
+      Primary source for frequency tiers and Hán Việt mappings.
+    </HANJA_MURIM_TERMS>
+
+    <HONORIFIC_SYSTEM>
+      Ref_KR_HONORIFIC_SYSTEM.md determines when to use formal vs casual variants.
+      Example: 사형 (sahyeong) uses different speech levels based on context.
+    </HONORIFIC_SYSTEM>
+
+    <CULTIVATION_STAGES>
+      Ref_CULTIVATION_STAGES.md determines language intensity scaling.
+      Higher realms use more poetic Hán Việt, lower realms use simpler terms.
+    </CULTIVATION_STAGES>
+  </MODULE_INTEGRATION>
 </HANJA_PROTOCOL>
 
 <!-- ========================================================================
@@ -1388,5 +2017,620 @@
     </HEALING>
   </INJURY_HEALING>
 </COMBAT_LEXICON>
+
+<!-- ========================================================================
+     SECTION 8: GUARD - Anti-Translationese Guardrails
+     ======================================================================== -->
+<GUARD>
+  <DESCRIPTION>
+    Anti-translationese rules to prevent robotic Vietnamese output.
+    80% reused from JP-LN guardrails, 20% adapted for Korean Murim context
+    with combat term preferences and passive voice adaptation.
+  </DESCRIPTION>
+
+  <!-- Core Principle -->
+  <CORE_PRINCIPLE>
+    Before translating each sentence, check mentally:
+    1. Does this sound like a Vietnamese person speaking or a machine translator?
+    2. Would a native speaker say this naturally in conversation?
+    3. Am I using dictionary words or living language?
+
+    If the answer is "machine translator" or "dictionary", STOP and rewrite.
+  </CORE_PRINCIPLE>
+
+  <!-- Virus 1: Adverb Inflation (80% reuse from JP-LN) -->
+  <VIRUS_1 name="Adverb Inflation - 'một cách + adjective'">
+    <PROBLEM>
+      AI translates Korean adverbs "-게" or Japanese "-ly" as "một cách + adjective".
+      This is robotic and unnatural.
+    </PROBLEM>
+
+    <SOLUTION>
+      Use direct adverbs, manner-integrated verbs, or restructure sentence.
+    </SOLUTION>
+
+    <EXAMPLES>
+      <EXAMPLE>
+        <SOURCE korean="빠르게 달렸다">He ran fast</SOURCE>
+        <BAD>Anh ấy chạy một cách nhanh chóng.</BAD>
+        <GOOD>Anh ấy vội vã chạy đi. / Anh phóng đi.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="조용히 걷다">Walk quietly</SOURCE>
+        <BAD>Đi bộ một cách yên lặng.</BAD>
+        <GOOD>Đi lặng lẽ. / Bước chân thầm lặng.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="부드럽게 말하다">Speak gently</SOURCE>
+        <BAD>Nói một cách dịu dàng.</BAD>
+        <GOOD>Nói nhẹ nhàng. / Giọng dịu dàng.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="갑자기 나타나다">Appear suddenly</SOURCE>
+        <BAD>Xuất hiện một cách đột ngột.</BAD>
+        <GOOD>Bỗng nhiên xuất hiện. / Thình lình hiện ra.</GOOD>
+      </EXAMPLE>
+    </EXAMPLES>
+
+    <RULE>
+      Ban "một cách" unless truly necessary for emphasis. Use:
+      - Direct adverbs: vội vã, lặng lẽ, nhẹ nhàng
+      - Manner verbs: phóng (rush), rón rén (tiptoe), lẳng lặng (silently)
+      - Restructure: "Nói một cách dịu dàng" → "Giọng dịu dàng"
+    </RULE>
+  </VIRUS_1>
+
+  <!-- Virus 2: Passive Voice Overload (Adapted for KR-VN) -->
+  <VIRUS_2 name="Passive Voice Overload - 'bị/được' spam">
+    <PROBLEM>
+      Korean likes passive voice (-되다/-당하다). Vietnamese hates it unless negative
+      or emphasizing recipient. KR Murim novels have frequent passive constructions.
+    </PROBLEM>
+
+    <SOLUTION>
+      Use active voice. Only use "bị" for negative actions, "được" for positive
+      actions when emphasizing recipient. NEVER use "đang được".
+    </SOLUTION>
+
+    <EXAMPLES>
+      <EXAMPLE>
+        <SOURCE korean="머리를 쓰다듬었다">Stroked head</SOURCE>
+        <BAD>Tôi được cô ấy xoa đầu.</BAD>
+        <GOOD>Cô ấy xoa đầu tôi. (Active)</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="화를 냈다">Got angry</SOURCE>
+        <BAD>Tôi bị tức giận.</BAD>
+        <GOOD>Tôi bị mắng. / Bị ăn chửi.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="문이 잠겨 있다">Door is locked</SOURCE>
+        <BAD>Cửa đang được khóa.</BAD>
+        <GOOD>Cửa khóa rồi. / Cửa đã khóa.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="칭찬받았다">Was praised</SOURCE>
+        <BAD>Tôi được khen ngợi.</BAD>
+        <GOOD>Cô ấy khen tôi. / Được khen. (OK if emphasizing)</GOOD>
+      </EXAMPLE>
+    </EXAMPLES>
+
+    <RULE>
+      - Default: Use active voice (Subject + Verb + Object)
+      - "Bị": Only for negative actions (bị mắng, bị đánh, bị lừa)
+      - "Được": Only when emphasizing recipient's luck (được khen, được chọn)
+      - NEVER: "Đang được" (always sounds robotic)
+    </RULE>
+  </VIRUS_2>
+
+  <!-- Virus 3: Possession Spam (80% reuse) -->
+  <VIRUS_3 name="Possession Spam - 'của' overuse">
+    <PROBLEM>
+      AI inserts "của" for every "의" (eui). Vietnamese drops it for fluency
+      and intimacy.
+    </PROBLEM>
+
+    <SOLUTION>
+      Drop "của" unless necessary for clarity or emphasis. Use direct possession.
+    </SOLUTION>
+
+    <EXAMPLES>
+      <EXAMPLE>
+        <SOURCE korean="내 여자친구">My girlfriend</SOURCE>
+        <BAD>Bạn gái của tôi.</BAD>
+        <GOOD>Bạn gái tôi. / Người yêu tôi.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="학교 정문">School gate</SOURCE>
+        <BAD>Cổng chính của trường.</BAD>
+        <GOOD>Cổng trường. / Cổng chính trường.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="마음의 아픔">Heart pain</SOURCE>
+        <BAD>Nỗi đau của tim.</BAD>
+        <GOOD>Nỗi đau trong tim. / Tim nhói đau.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="그녀의 미소">Her smile</SOURCE>
+        <BAD>Nụ cười của cô ấy.</BAD>
+        <GOOD>Nụ cười cô ấy. / Cô ấy cười.</GOOD>
+      </EXAMPLE>
+    </EXAMPLES>
+
+    <RULE>
+      - Drop "của": For intimate relationships (bạn gái tôi, nhà bạn)
+      - Keep "của": For emphasis or formal context (tài sản của công ty)
+      - Restructure: "Nỗi đau của tim" → "Tim nhói đau" (use verb instead)
+    </RULE>
+  </VIRUS_3>
+
+  <!-- Virus 4: Abstract Noun Inflation (80% reuse) -->
+  <VIRUS_4 name="Abstract Noun Inflation - Academic language">
+    <PROBLEM>
+      AI uses abstract nouns from dictionary instead of concrete verbs/adjectives.
+    </PROBLEM>
+
+    <SOLUTION>
+      Use verbs and adjectives. Vietnamese prioritizes action over abstraction.
+    </SOLUTION>
+
+    <EXAMPLES>
+      <EXAMPLE>
+        <SOURCE korean="그녀의 아름다움">Her beauty</SOURCE>
+        <BAD>Vẻ đẹp của cô ấy.</BAD>
+        <GOOD>Cô ấy đẹp quá. / Cô ấy xinh thật.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="그 중요성">Its importance</SOURCE>
+        <BAD>Tầm quan trọng của nó.</BAD>
+        <GOOD>Việc này quan trọng lắm. / Rất quan trọng.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="행복감">Feeling of happiness</SOURCE>
+        <BAD>Cảm giác hạnh phúc.</BAD>
+        <GOOD>Cảm thấy hạnh phúc. / Sung sướng quá.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="불안감">Feeling of anxiety</SOURCE>
+        <BAD>Cảm giác bất an.</BAD>
+        <GOOD>Cảm thấy bất an. / Lo lắng quá.</GOOD>
+      </EXAMPLE>
+    </EXAMPLES>
+
+    <RULE>
+      Ban: "Vẻ đẹp của," "Tầm quan trọng của," "Sự hài lòng"
+      Use: Direct adjective/verb + "quá/lắm/thật" for emphasis
+    </RULE>
+  </VIRUS_4>
+
+  <!-- Virus 5: Word-for-Word Idioms (80% reuse) -->
+  <VIRUS_5 name="Word-for-Word Idioms - Literal translation">
+    <PROBLEM>
+      AI translates idioms and expressions literally instead of finding Vietnamese
+      equivalents.
+    </PROBLEM>
+
+    <SOLUTION>
+      Use natural Vietnamese idioms and expressions.
+    </SOLUTION>
+
+    <EXAMPLES>
+      <EXAMPLE>
+        <SOURCE korean="가슴이 두근거리다">Heart pounds</SOURCE>
+        <BAD>Tim đập thình thịch.</BAD>
+        <GOOD>Tim đập loạn xạ. / Tim hồi hộp.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="얼굴이 빨개지다">Face turns red</SOURCE>
+        <BAD>Mặt trở nên đỏ.</BAD>
+        <GOOD>Mặt đỏ bừng. / Đỏ mặt lên.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="눈이 빛나다">Eyes shine</SOURCE>
+        <BAD>Mắt tỏa sáng.</BAD>
+        <GOOD>Mắt sáng rực. / Mắt long lanh.</GOOD>
+      </EXAMPLE>
+
+      <EXAMPLE>
+        <SOURCE korean="머리가 하얗다">Head is white (mind blank)</SOURCE>
+        <BAD>Đầu hoàn toàn trắng.</BAD>
+        <GOOD>Đầu óc trống rỗng. / Ngơ ngác hết cả.</GOOD>
+      </EXAMPLE>
+    </EXAMPLES>
+
+    <RULE>
+      Don't translate idioms literally. Find Vietnamese equivalents or restructure.
+    </RULE>
+  </VIRUS_5>
+
+  <!-- KR-SPECIFIC: Combat Term Preferences (20+ patterns) -->
+  <KR_COMBAT_PREFERENCES>
+    <DESCRIPTION>
+      Korean Murim combat terminology has specific Vietnamese preferences.
+      Ban generic/casual terms, use martial arts-specific terms.
+    </DESCRIPTION>
+
+    <COMBAT_TERMS>
+      <TERM id="1">
+        <KOREAN>싸우다 / 싸움</KOREAN>
+        <BAD>đánh nhau (too casual, street fight)</BAD>
+        <GOOD>giao chiến, đối đầu, chiến đấu</GOOD>
+        <REASON>Murim context requires formal martial combat terms</REASON>
+      </TERM>
+
+      <TERM id="2">
+        <KOREAN>때리다</KOREAN>
+        <BAD>đánh (too generic)</BAD>
+        <GOOD>ra đòn, tấn công, công kích</GOOD>
+        <REASON>Martial arts context needs technique-focused verbs</REASON>
+      </TERM>
+
+      <TERM id="3">
+        <KOREAN>죽이다</KOREAN>
+        <BAD>giết (blunt)</BAD>
+        <GOOD>hạ sát, trảm sát, đoạt mạng</GOOD>
+        <REASON>Wuxia genre prefers poetic killing verbs</REASON>
+      </TERM>
+
+      <TERM id="4">
+        <KOREAN>공격하다</KOREAN>
+        <BAD>tấn công (OK but prefer Hán Việt)</BAD>
+        <GOOD>công kích, phát động đòn tấn công</GOOD>
+        <REASON>Hán Việt adds gravitas to combat scenes</REASON>
+      </TERM>
+
+      <TERM id="5">
+        <KOREAN>방어하다</KOREAN>
+        <BAD>phòng thủ (OK)</BAD>
+        <GOOD>đỡ đòn, phản kích, hóa giải</GOOD>
+        <REASON>Use varied defensive verbs for better flow</REASON>
+      </TERM>
+
+      <TERM id="6">
+        <KOREAN>피하다 (공격을)</KOREAN>
+        <BAD>tránh (too simple)</BAD>
+        <GOOD>né tránh, lánh mình, thoát thân</GOOD>
+        <REASON>Combat evasion needs dynamic verbs</REASON>
+      </TERM>
+
+      <TERM id="7">
+        <KOREAN>검을 휘두르다</KOREAN>
+        <BAD>vung kiếm (OK but prefer technique names)</BAD>
+        <GOOD>thi triển kiếm pháp, bức kiếm khai lộ</GOOD>
+        <REASON>Named techniques sound more authentic</REASON>
+      </TERM>
+
+      <TERM id="8">
+        <KOREAN>기를 모으다</KOREAN>
+        <BAD>thu thập khí (too literal)</BAD>
+        <GOOD>tụ khí, vận công, ngưng tụ nội lực</GOOD>
+        <REASON>Cultivation terminology requires Hán Việt</REASON>
+      </TERM>
+
+      <TERM id="9">
+        <KOREAN>상처를 입다</KOREAN>
+        <BAD>bị thương (OK)</BAD>
+        <GOOD>trúng thương, thủng lỗ chân lông (internal), vết thương</GOOD>
+        <REASON>Differentiate external vs internal injuries</REASON>
+      </TERM>
+
+      <TERM id="10">
+        <KOREAN>피를 토하다</KOREAN>
+        <BAD>nôn ra máu (too medical)</BAD>
+        <GOOD>nhả máu, khạc máu, máu văng tung toé</GOOD>
+        <REASON>Wuxia uses vivid injury descriptions</REASON>
+      </TERM>
+
+      <TERM id="11">
+        <KOREAN>쓰러지다 (전투에서)</KOREAN>
+        <BAD>ngã xuống (too casual)</BAD>
+        <GOOD>bại trận, hạ sát, trọng thương ngã gục</GOOD>
+        <REASON>Combat defeat needs dramatic verbs</REASON>
+      </TERM>
+
+      <TERM id="12">
+        <KOREAN>힘이 세다</KOREAN>
+        <BAD>khỏe (too simple)</BAD>
+        <GOOD>nội công thâm hậu, lực lượng dồi dào, cường tráng</GOOD>
+        <REASON>Power descriptions use cultivation terms</REASON>
+      </TERM>
+
+      <TERM id="13">
+        <KOREAN>빠르다 (움직임)</KOREAN>
+        <BAD>nhanh (too plain)</BAD>
+        <GOOD>tốc độ kinh nhân, thân pháp mau lẹ, như chớp như gió</GOOD>
+        <REASON>Movement speed uses poetic comparisons</REASON>
+      </TERM>
+
+      <TERM id="14">
+        <KOREAN>강하다 (무공)</KOREAN>
+        <BAD>mạnh (generic)</BAD>
+        <GOOD>cường đại, uy lực, bá đạo</GOOD>
+        <REASON>Technique strength needs Hán Việt intensity</REASON>
+      </TERM>
+
+      <TERM id="15">
+        <KOREAN>이기다 (싸움)</KOREAN>
+        <BAD>thắng (OK but prefer)</BAD>
+        <GOOD>chiến thắng, đánh bại, hạ gục</GOOD>
+        <REASON>Victory verbs add dramatic weight</REASON>
+      </TERM>
+
+      <TERM id="16">
+        <KOREAN>지다 (싸움)</KOREAN>
+        <BAD>thua (blunt)</BAD>
+        <GOOD>bại trận, thất bại, không địch nổi</GOOD>
+        <REASON>Defeat descriptions maintain face-saving nuance</REASON>
+      </TERM>
+
+      <TERM id="17">
+        <KOREAN>날아가다 (공격에)</KOREAN>
+        <BAD>bay đi (too simple)</BAD>
+        <GOOD>hất văng, bị chấn thoái, thổ huyết bay lùi</GOOD>
+        <REASON>Impact descriptions use vivid combat verbs</REASON>
+      </TERM>
+
+      <TERM id="18">
+        <KOREAN>막다 (공격을)</KOREAN>
+        <BAD>chặn (OK)</BAD>
+        <GOOD>đỡ đòn, cản phá, hóa giải</GOOD>
+        <REASON>Blocking techniques have specialized terms</REASON>
+      </TERM>
+
+      <TERM id="19">
+        <KOREAN>반격하다</KOREAN>
+        <BAD>phản công (OK)</BAD>
+        <GOOD>phản kích, hồi đòn, đánh trả</GOOD>
+        <REASON>Counter-attacks use varied martial verbs</REASON>
+      </TERM>
+
+      <TERM id="20">
+        <KOREAN>기술을 쓰다</KOREAN>
+        <BAD>dùng kỹ năng (too game-like)</BAD>
+        <GOOD>thi triển chiêu thức, ra chiêu, bức chiêu khai lộ</GOOD>
+        <REASON>Technique execution needs Murim terminology</REASON>
+      </TERM>
+
+      <TERM id="21">
+        <KOREAN>달려들다</KOREAN>
+        <BAD>lao vào (OK)</BAD>
+        <GOOD>phi thân tấn công, bức tiến, xung phong</GOOD>
+        <REASON>Charge/rush verbs use martial terminology</REASON>
+      </TERM>
+
+      <TERM id="22">
+        <KOREAN>도망가다 (전투)</KOREAN>
+        <BAD>chạy trốn (too casual)</BAD>
+        <GOOD>thoát thân, rút lui, thối lui</GOOD>
+        <REASON>Tactical retreat needs face-saving terms</REASON>
+      </TERM>
+
+      <TERM id="23">
+        <KOREAN>뛰어오르다</KOREAN>
+        <BAD>nhảy lên (too simple)</BAD>
+        <GOOD>tung thân, phi thân lên cao, thân ảnh chớp lên</GOOD>
+        <REASON>Lightness skill descriptions use poetic language</REASON>
+      </TERM>
+
+      <TERM id="24">
+        <KOREAN>땅에 떨어지다</KOREAN>
+        <BAD>rơi xuống đất (plain)</BAD>
+        <GOOD>ngã sấp xuống đất, hạ địa, thân thể đập xuống</GOOD>
+        <REASON>Fall descriptions add dramatic impact</REASON>
+      </TERM>
+
+      <TERM id="25">
+        <KOREAN>숨을 거두다</KOREAN>
+        <BAD>chết (too blunt)</BAD>
+        <GOOD>tắt thở, nhắm mắt xuôi tay, mệnh chung, tử vong</GOOD>
+        <REASON>Death descriptions use euphemistic/poetic terms</REASON>
+      </TERM>
+    </COMBAT_TERMS>
+
+    <INTENSITY_SCALING>
+      <DESCRIPTION>
+        Combat verb intensity should match cultivation realm (see MURIM_LOC).
+        Higher realms use more poetic/mythical language.
+      </DESCRIPTION>
+
+      <BEGINNER_REALM>
+        <LEVEL>입문 (Nhập môn)</LEVEL>
+        <VERBS>ra đòn, chém, đâm, chặn</VERBS>
+        <STYLE>Direct, simple action verbs</STYLE>
+      </BEGINNER_REALM>
+
+      <INTERMEDIATE_REALM>
+        <LEVEL>화경 (Hóa cảnh)</LEVEL>
+        <VERBS>thi triển, hóa giải, phản kích, đánh trả</VERBS>
+        <STYLE>Technique-focused, refined descriptions</STYLE>
+      </INTERMEDIATE_REALM>
+
+      <ADVANCED_REALM>
+        <LEVEL>현경 (Huyền cảnh)</LEVEL>
+        <VERBS>bức kiếm khai lộ, thiên địa sắc biến, cường khí bạt phá</VERBS>
+        <STYLE>Poetic, cosmic-scale descriptions</STYLE>
+      </ADVANCED_REALM>
+
+      <SUPREME_REALM>
+        <LEVEL>천하제일 (Thiên hạ đệ nhất)</LEVEL>
+        <VERBS>nhất kiếm phá vạn pháp, thiên địa sắc biến, vũ trụ chấn động</VERBS>
+        <STYLE>Mythical, universe-shaking language</STYLE>
+      </SUPREME_REALM>
+    </INTENSITY_SCALING>
+  </KR_COMBAT_PREFERENCES>
+
+  <!-- Banned Phrase List (Blacklist) -->
+  <BANNED_PHRASES>
+    <DESCRIPTION>
+      These phrases are BANNED. They mark you as a machine translator.
+    </DESCRIPTION>
+
+    <CATEGORY name="Academic/Formal Inflation">
+      <PHRASE>❌ "Hiệu suất chi phí" → ✅ "Tiếc tiền" / "Đáng tiền"</PHRASE>
+      <PHRASE>❌ "Thực hiện hành động" → ✅ "Làm" / "Hành động"</PHRASE>
+      <PHRASE>❌ "Tiến hành kiểm tra" → ✅ "Kiểm tra" / "Xem xét"</PHRASE>
+      <PHRASE>❌ "Đưa ra quyết định" → ✅ "Quyết định"</PHRASE>
+      <PHRASE>❌ "Thực thi kế hoạch" → ✅ "Thực hiện" / "Làm theo kế hoạch"</PHRASE>
+    </CATEGORY>
+
+    <CATEGORY name="Robotic Structures">
+      <PHRASE>❌ "Một cách + [adjective]" → ✅ Use direct adverb or restructure</PHRASE>
+      <PHRASE>❌ "Sự + [adjective]" → ✅ Use adjective directly</PHRASE>
+      <PHRASE>❌ "Việc + [verb]" → ✅ Use verb directly</PHRASE>
+      <PHRASE>❌ "Cảm giác + [adjective]" → ✅ "Cảm thấy + [adjective]"</PHRASE>
+      <PHRASE>❌ "Trở nên + [adjective]" → ✅ "[Adjective] + lên/ra"</PHRASE>
+    </CATEGORY>
+
+    <CATEGORY name="Passive Voice Spam">
+      <PHRASE>❌ "Đang được + [verb]" → ✅ Use active voice</PHRASE>
+      <PHRASE>❌ "Được + [verb]" (when not emphasizing) → ✅ Active voice</PHRASE>
+      <PHRASE>❌ "Bị + [neutral verb]" → ✅ Active voice or "bị" only for negative</PHRASE>
+    </CATEGORY>
+
+    <CATEGORY name="KR Murim-Specific Bans">
+      <PHRASE>❌ "đánh nhau" (street fight) → ✅ "giao chiến" (martial combat)</PHRASE>
+      <PHRASE>❌ "đánh" (hit) → ✅ "ra đòn, công kích" (attack)</PHRASE>
+      <PHRASE>❌ "giết" (kill) → ✅ "hạ sát, trảm sát" (slay)</PHRASE>
+      <PHRASE>❌ "chạy trốn" (run away) → ✅ "thoát thân, rút lui" (retreat)</PHRASE>
+      <PHRASE>❌ "nhanh" (fast) → ✅ "tốc độ kinh nhân, như chớp" (swift)</PHRASE>
+      <PHRASE>❌ "mạnh" (strong) → ✅ "cường đại, bá đạo" (powerful)</PHRASE>
+      <PHRASE>❌ "khỏe" (healthy/strong) → ✅ "nội công thâm hậu" (deep internal energy)</PHRASE>
+    </CATEGORY>
+  </BANNED_PHRASES>
+
+  <!-- Quality Self-Check -->
+  <QUALITY_CHECKLIST>
+    <DESCRIPTION>
+      After translating each paragraph, ask yourself:
+    </DESCRIPTION>
+
+    <CHECK id="1">
+      ✅ Would a Vietnamese teenager say this?
+      - If no → Rewrite more colloquially
+    </CHECK>
+
+    <CHECK id="2">
+      ✅ Can I read this aloud smoothly?
+      - If no → Sentence too long or awkward
+    </CHECK>
+
+    <CHECK id="3">
+      ✅ Did I use more than 2 "một cách" in this paragraph?
+      - If yes → Delete them
+    </CHECK>
+
+    <CHECK id="4">
+      ✅ Did I use more than 3 "của" in this paragraph?
+      - If yes → Delete unnecessary ones
+    </CHECK>
+
+    <CHECK id="5">
+      ✅ Did I use abstract nouns instead of verbs?
+      - If yes → Convert to verbs/adjectives
+    </CHECK>
+
+    <CHECK id="6">
+      ✅ Does this sound like a human or a textbook?
+      - If textbook → Simplify and add emotion
+    </CHECK>
+
+    <CHECK id="7">
+      ✅ Did I use casual terms ("đánh nhau") in martial combat scenes?
+      - If yes → Replace with Murim terms ("giao chiến")
+    </CHECK>
+
+    <CHECK id="8">
+      ✅ Does the combat intensity match the character's cultivation realm?
+      - If mismatch → Adjust verb choice (see INTENSITY_SCALING)
+    </CHECK>
+  </QUALITY_CHECKLIST>
+
+  <!-- Style Reference -->
+  <STYLE_REFERENCE>
+    <DESCRIPTION>
+      Target Output Style: Read the passage below to calibrate your language register.
+      Don't translate this passage, just MIMIC its rhythm, vocabulary density, and
+      sentence structure.
+    </DESCRIPTION>
+
+    <PASSAGE lang="vi">
+      Nắng chiều đổ dài trên sân trường vắng lặng. Gió luồn qua kẽ lá, mang theo
+      chút hơi lạnh se sắt cuối đông khiến người ta khẽ rùng mình. Cậu ấy đứng đó,
+      nụ cười vẫn rạng rỡ như ngày đầu tiên, nhưng trong ánh mắt đã thoáng nét ưu
+      tư của một người vừa bước qua ngưỡng cửa trưởng thành. Không cần lời hoa mỹ,
+      chỉ cần một cái nắm tay siết nhẹ cũng đủ để thay cho ngàn vạn câu từ.
+
+      Có những khoảnh khắc trong đời, ta không cần giải thích, không cần phân tích.
+      Chỉ cần cảm nhận. Chỉ cần để tim mình rung động theo nhịp của thời gian, để
+      hơi thở hòa quyện với gió, để ánh mắt nói lên tất cả những gì lời nói không
+      thể diễn tả.
+    </PASSAGE>
+
+    <KEY_FEATURES>
+      - Short, crisp sentences: "Chỉ cần cảm nhận. Chỉ cần để tim mình rung động."
+      - Sensory verbs: đổ, luồn, siết, rung động, hòa quyện
+      - Drop pronouns: "Không cần lời hoa mỹ" (not "Chúng ta không cần")
+      - Poetic imagery: "gió luồn qua kẽ lá," "hơi lạnh se sắt"
+      - Natural rhythm: Mix short and medium sentences, no long academic structures
+    </KEY_FEATURES>
+  </STYLE_REFERENCE>
+
+  <!-- Pre-Translation Style Planning -->
+  <STYLE_PLANNING>
+    <DESCRIPTION>
+      Before translating each chapter, perform a mental "Translationese Trap Scan":
+    </DESCRIPTION>
+
+    <STEP id="1">
+      Identify 3-5 sentences likely to lead to:
+      - "Một cách" structures
+      - Awkward passive voice ("được/bị" spam)
+      - "Của" overuse
+      - Abstract noun inflation
+      - Casual combat terms in martial scenes
+    </STEP>
+
+    <STEP id="2">
+      Write "Bad" version in your head (what dictionary would produce)
+    </STEP>
+
+    <STEP id="3">
+      Write "Good" version (what a human would say)
+    </STEP>
+
+    <STEP id="4">
+      Proceed with translation using "Good" mindset
+    </STEP>
+
+    <EXAMPLE_DIALOGUE>
+      [STYLE_PLAN]
+      - Trap: "그를 좋아한다"
+        Bad: "Việc thích anh ấy"
+        Fixed: "Tình cảm dành cho anh ấy" / "Thích anh ấy"
+
+      - Trap: "기쁘다"
+        Bad: "Vui sướng một cách không chịu nổi"
+        Fixed: "Vui sướng tột độ" / "Sướng rơn"
+
+      - Trap: "검을 휘둘렀다"
+        Bad: "Vung kiếm"
+        Fixed: "Thi triển kiếm pháp" / "Bức kiếm khai lộ"
+    </EXAMPLE_DIALOGUE>
+  </STYLE_PLANNING>
+</GUARD>
 
 </TRANSLATION_SYSTEM>
