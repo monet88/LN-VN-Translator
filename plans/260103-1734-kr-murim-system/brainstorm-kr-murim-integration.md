@@ -346,10 +346,11 @@ Kiếm khí thoáng hiện trong mắt Thanh Minh. Nội công của hắn đã 
 - [ ] Implement qi description templates
 - [ ] Create extended choreography patterns
 
-### Step 4: Reference Modules (Week 4)
-- [ ] Write `Ref_KR_HONORIFIC_SYSTEM.md`
-- [ ] Write `Ref_CULTIVATION_STAGES.md`
-- [ ] Write `Ref_HANJA_ROMANIZATION_KR.md`
+### Step 4: Reference Modules (Week 4) ✅ COMPLETE (2026-01-04)
+- [x] Write `Ref_KR_HONORIFIC_SYSTEM.md` (40.5KB, target 30KB)
+- [x] Write `Ref_CULTIVATION_STAGES.md` (36.8KB, target 25KB)
+- [x] Write `Ref_COMBAT_CHOREOGRAPHY.md` (35KB, target 20KB)
+- [x] Write `Ref_HANJA_ROMANIZATION_KR.md` (16KB, target 15KB)
 
 ### Step 5: Golden Samples (Week 5)
 - [ ] Translate 15-20 benchmark passages from Return of Mount Hua Sect

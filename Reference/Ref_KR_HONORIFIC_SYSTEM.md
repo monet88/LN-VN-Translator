@@ -413,6 +413,534 @@ Combat: "사형, 뒤다!" (Sahyeong, behind you!)
 
 ---
 
+## Family Clan Hierarchy (가문 계급)
+
+### Blood vs Martial Rank Systems
+
+Family clans (세가/世家) use **dual hierarchy**: blood lineage + martial achievement.
+
+**Blood Lineage (혈족 순위):**
+
+| Korean | Hanja | Hán Việt | Role | Authority |
+|--------|-------|----------|------|-----------|
+| 가주 | 家主 | Gia chủ | Family head | Supreme |
+| 소가주 | 小家主 | Tiểu gia chủ | Heir/Young lord | Successor |
+| 대공자 | 大公子 | Đại công tử | Eldest son | High |
+| 이공자 | 二公子 | Nhị công tử | Second son | Medium |
+| 막내 | 末內 | Mạt nội | Youngest | Low (but protected) |
+| 서자 | 庶子 | Thứ tử | Illegitimate son | Complex |
+| 소저 | 小姐 | Tiểu thư | Daughter | Protected |
+
+**Martial Rank (무력 순위):**
+
+| Korean | Hanja | Hán Việt | Martial Status |
+|--------|-------|----------|----------------|
+| 무백 | 武伯 | Vũ Bá | Martial Elder |
+| 호법 | 護法 | Hộ pháp | Clan Protector |
+| 친위대장 | 親衛隊長 | Thân vệ đội trưởng | Guard Captain |
+| 무사 | 武士 | Vũ sĩ | Warrior |
+| 문객 | 門客 | Môn khách | Retainer |
+
+### Tang Family (당가) Hierarchy Example
+
+**Blood + Poison Mastery Combined:**
+
+| Title | Korean | Hanja | Hán Việt | Requirements |
+|-------|--------|-------|----------|--------------|
+| Tang Family Head | 당가주 | 唐家主 | Đường Gia Chủ | Blood + Poison God mastery |
+| Young Lord Tang | 당소가주 | 唐小家主 | Đường Tiểu Gia Chủ | Blood heir + poison training |
+| Poison Elder | 독로 | 毒老 | Độc Lão | Master of poisons (non-blood) |
+| Hidden Weapon Elder | 암기로 | 暗器老 | Ám Khí Lão | Hidden weapon master |
+
+**Speech Patterns:**
+- To family head: "가주님" (Gaju-nim) + extreme 존댓말
+- Between siblings: Blood seniority first, then martial rank
+- "형님/동생" (hyeong-nim/dongsaeng) for blood, "사형/사제" for martial
+
+### Namgung Family (남궁세가) Hierarchy Example
+
+**Imperial Sword Lineage:**
+
+| Title | Korean | Hanja | Hán Việt | Authority |
+|-------|--------|-------|----------|-----------|
+| Namgung Family Head | 남궁가주 | 南宮家主 | Nam Cung Gia Chủ | Supreme |
+| Sword Saint Heir | 검성전인 | 劍聖傳人 | Kiếm Thánh Truyền Nhân | Successor |
+| Clan Elder | 종로 | 宗老 | Tông Lão | Council member |
+| Noble Guard | 귀위 | 貴衛 | Quý Vệ | Elite protector |
+
+**Speech Patterns:**
+- Aristocratic, formal even among family
+- Pride-focused: "우리 남궁" (our Namgung) emphasized
+- Less casual even between siblings
+
+### Conflict: Blood vs Martial Seniority
+
+**When Younger Blood Outranks Elder Martial:**
+```korean
+막내 공자 (화경) vs 서자 형 (절정):
+막내: "형님, 한 수 배우겠습니다." (Hyeong-nim, I'll learn a move.)
+서자: "공자님께서 먼저 초식을 보이시죠." (Young Lord, please demonstrate first.)
+```
+**Rule:** In formal settings, blood wins. In combat/training, martial rank wins.
+
+---
+
+## Multi-Sect Conference Protocols (연합회의 예법)
+
+### Assembly Hierarchy
+
+**Seating Arrangement (좌석 배치):**
+
+| Position | Korean | Who Sits Here | Address From Others |
+|----------|--------|---------------|---------------------|
+| Main seat | 주좌 | Host sect leader | "주인장" (Host Master) |
+| Left honor | 좌빈석 | Highest guest | "상객" (Honored Guest) |
+| Right honor | 우빈석 | Second highest | "귀빈" (Distinguished Guest) |
+| Lower seats | 하좌 | Junior sects | "도반" (Fellow Practitioners) |
+
+### Diplomatic Titles (12+ Terms)
+
+| Korean | Hanja | Hán Việt | Usage Context |
+|--------|-------|----------|---------------|
+| 맹주 | 盟主 | Minh chủ | Alliance Leader |
+| 부맹주 | 副盟主 | Phó Minh Chủ | Vice Alliance Leader |
+| 회의장 | 會議長 | Hội Nghị Trưởng | Conference Chairman |
+| 대표 | 代表 | Đại biểu | Sect Representative |
+| 사절 | 使節 | Sứ tiết | Envoy/Emissary |
+| 중재자 | 仲裁者 | Trọng tài giả | Mediator |
+| 보증인 | 保證人 | Bảo chứng nhân | Guarantor |
+| 증인 | 證人 | Chứng nhân | Witness |
+| 기록관 | 記錄官 | Ký lục quan | Record Keeper |
+| 호위무사 | 護衛武士 | Hộ vệ vũ sĩ | Guard Escort |
+| 통역관 | 通譯官 | Thông dịch quan | Interpreter (rare) |
+| 객빈 | 客賓 | Khách tân | Guest |
+
+### Assembly Etiquette Phrases
+
+**Opening Conference:**
+```korean
+회의장: "정파 맹회를 선언합니다. 각 문파 대표님들, 자리에 앉아주십시오."
+(I declare the Righteous Alliance meeting open. Representatives, please take your seats.)
+```
+
+**Proposing Motion:**
+```korean
+대표: "소생이 의견을 올리겠습니다. 마교 토벌을 제안합니다."
+(This humble one offers an opinion. I propose subjugating the Demonic Cult.)
+```
+
+**Seconding Motion:**
+```korean
+타 대표: "무당파에서 동의합니다."
+(Wudang Sect agrees.)
+```
+
+**Objecting:**
+```korean
+대표: "잠시 이의를 제기하겠습니다."
+(I raise an objection for a moment.)
+```
+
+**Formal Agreement:**
+```korean
+맹주: "만장일치로 가결되었습니다."
+(Passed unanimously.)
+```
+
+---
+
+## Age/Rank Conflict Resolution (나이/직급 충돌)
+
+### 8 Complex Scenarios
+
+**Scenario 1: Child Prodigy (신동)**
+- 15-year-old reaches 화경, older 사제들 still at 절정
+- Rule: Martial rank in training, age in social settings
+```korean
+Training: 신동이 이끈다 (Prodigy leads)
+Dining: 형들이 먼저 (Seniors eat first)
+```
+
+**Scenario 2: Reincarnation (환생)**
+- Old master reincarnates as young child (청명 case)
+- Rule: Past life seniority doesn't transfer officially
+```korean
+청명 (past life master, current young disciple):
+Public: Uses "사형" to seniors
+Private: May drop formality with close friends who know
+```
+
+**Scenario 3: Late Bloomer (대기만성)**
+- 50-year-old enters sect, 20-year-old 사형 entered earlier
+- Rule: Entrance order always wins for 사형/사제
+```korean
+50세 신입: "사형, 가르침을 청합니다." (to 20-year-old)
+20세 사형: May use 존댓말 out of age respect
+```
+
+**Scenario 4: Sect Leader's Child (장문인 자녀)**
+- Child of sect leader vs senior disciples
+- Rule: Sect hierarchy trumps blood in martial matters
+```korean
+장문인 아들 (입문) to 대사형:
+"대사형님, 가르쳐 주세요." (Must use honorifics)
+대사형 may be gentler, but hierarchy stands.
+```
+
+**Scenario 5: Married Into Sect (혼인)**
+- Wife of sect leader from external sect
+- Rule: Gains honorary status, specific address
+```korean
+Address: "부인" (Buin - Madam) or "사모님" (Samonim - Master's Wife)
+She doesn't enter 사형/사제 hierarchy.
+```
+
+**Scenario 6: Returned Elder (귀환 장로)**
+- Elder returns after 30-year seclusion, doesn't know current leader
+- Rule: Generation always trumps current position
+```korean
+귀환 장로 to 현 장문인 (his 사질):
+"장문인, 잘 하고 있구나." (May use casual tone)
+장문인: "사숙님, 돌아오셔서 기쁩니다." (Must be formal)
+```
+
+**Scenario 7: Demoted Master (강등 사부)**
+- Former elder loses status due to crime
+- Rule: Disciples may drop formality if crimes severe
+```korean
+Severe crime: 사부 → 배신자 (traitor), no honorifics
+Minor crime: Maintain "전 사부님" (former master)
+```
+
+**Scenario 8: Equal Rank Different Fame (동급 다명성)**
+- Both 화경, but one is famous "Sword Demon," other unknown
+- Rule: Fame doesn't change address, but tone shifts
+```korean
+Both use: "도우" (Dao Friend) equally
+But: Lesser-known may be more deferential in practice
+```
+
+---
+
+## Crisis Communication Protocols (위기 소통)
+
+### 15 Emergency Scenarios with Formality Rules
+
+**Category A: Combat Urgency (전투 긴급)**
+
+| Scenario | Normal | Crisis | Rule |
+|----------|--------|--------|------|
+| Warning senior | "사형님, 뒤를 조심하세요" | "사형, 뒤다!" | Drop -님, shorten |
+| Calling for help | "도와주시겠습니까?" | "도와줘!" | Drop 존댓말 entirely |
+| Coordinating attack | "함께 공격하시죠" | "같이 쳐!" | Command form |
+| Retreat order | "후퇴하시는 것이 좋겠습니다" | "물러나!" | Direct command |
+| Injury report | "부상을 입었습니다" | "다쳤어!" | Casual |
+
+**Category B: Sect Emergency (문파 위기)**
+
+| Scenario | Normal | Crisis | Rule |
+|----------|--------|--------|------|
+| Fire alert | "화재가 발생했습니다" | "불이야!" | Shout form |
+| Invasion | "적이 침입했습니다" | "적이다!" | Alert form |
+| Poisoning | "독에 중독되신 것 같습니다" | "독이야, 해독단!" | Immediate |
+| Sect leader down | "장문인님께서 쓰러지셨습니다" | "장문인이 쓰러졌다!" | Report urgency |
+| Traitor identified | "배신자가 있습니다" | "저놈이 배신자다!" | Accusation |
+
+**Category C: Personal Crisis (개인 위기)**
+
+| Scenario | Normal | Crisis | Rule |
+|----------|--------|--------|------|
+| Near death | "제 수명이 다했습니다" | "형... 미안해..." | Intimate |
+| Breakthrough danger | "돌파 중 문제가 있습니다" | "도와줘, 내공 역류야!" | Drop all formality |
+| Emotional breakdown | (maintains composure) | "왜... 왜 이래야 하는 거야!" | Breaks speech level |
+| Final words | "모든 것을 부탁드립니다" | "부탁해..." | Intimate trust |
+| Sacrifice | "저를 두고 가십시오" | "가! 여긴 내가 막는다!" | Command to senior |
+
+**Vietnamese Translation for Crisis:**
+- Crisis speech = informal Vietnamese, but keep honorific titles
+```vietnamese
+Normal: "Sahyeong, xin hãy cẩn thận phía sau!"
+Crisis: "Sahyeong, phía sau!"
+```
+
+---
+
+## Discipline & Trial Language (징계 및 재판)
+
+### Accusation Terminology
+
+| Korean | Hanja | Hán Việt | Severity |
+|--------|-------|----------|----------|
+| 배신 | 背信 | Bội tín | Betrayal - capital |
+| 반역 | 反逆 | Phản nghịch | Rebellion - capital |
+| 살동문 | 殺同門 | Sát đồng môn | Killing sect member - capital |
+| 절기유출 | 絕技流出 | Tuyệt kỹ lưu xuất | Leaking techniques - major |
+| 불경 | 不敬 | Bất kính | Disrespect - minor |
+| 규율위반 | 規律違反 | Quy luật vi phạm | Rule violation - minor |
+
+### Trial Proceedings
+
+**Accusation (고발):**
+```korean
+형법장로: "제자 [이름], [죄목]의 혐의로 고발한다!"
+(Discipline Elder: "Disciple [name], you are accused of [crime]!")
+```
+
+**Defense (변호):**
+```korean
+피고: "소제자가 변명을 올리겠습니다."
+(Accused: "This humble disciple will offer an explanation.")
+```
+
+**Verdict (판결):**
+```korean
+장문인: "죄명 [죄목], 형벌 [형벌]을 선고한다."
+(Sect Leader: "For the crime of [crime], I sentence [punishment].")
+```
+
+### Punishment Terminology
+
+| Korean | Hanja | Hán Việt | Description |
+|--------|-------|----------|-------------|
+| 축출 | 逐出 | Trục xuất | Expulsion from sect |
+| 폐공 | 廢功 | Phế công | Cripple martial arts |
+| 면벽 | 面壁 | Diện bích | Wall-facing meditation |
+| 금족 | 禁足 | Cấm túc | House arrest |
+| 곤장 | 棍杖 | Côn trượng | Beating with staff |
+| 사죄 | 謝罪 | Tạ tội | Formal apology |
+
+---
+
+## Vietnamese Translation Integration (25 Examples)
+
+### Pronoun Selection Logic
+
+**Rule 1: Speaker to Senior (화자→선배)**
+| Speaker Status | Vietnamese Pronoun | Example |
+|----------------|-------------------|---------|
+| Junior disciple | Em/con | "Em xin hỏi sahyeong" |
+| Same generation but newer | Em | "Em theo anh" |
+| Lower rank | Con/đệ tử | "Con xin bái kiến jangmunin" |
+
+**Rule 2: Speaker to Junior (화자→후배)**
+| Speaker Status | Vietnamese Pronoun | Example |
+|----------------|-------------------|---------|
+| Senior disciple | Anh/ta | "Anh sẽ dạy ngươi" |
+| Master | Ta/lão | "Ta đã quyết định" |
+| Elder | Lão phu | "Lão phu không đồng ý" |
+
+**Rule 3: Third Person Reference**
+| Referring to | Vietnamese | Example |
+|--------------|-----------|---------|
+| Sect leader | Ngài/người | "Ngài jangmunin đã nói" |
+| Senior | Huynh ấy | "Sahyeong ấy rất mạnh" |
+| Junior | Hắn/y | "Saje ấy còn non" |
+| Enemy | Tên/gã | "Tên kia phải chết" |
+
+### 25 Contextual Examples
+
+**1. Disciple greeting master:**
+```korean
+"사부님, 제자가 배알합니다."
+```
+```vietnamese
+"Sư phụ, đệ tử xin bái kiến."
+```
+
+**2. Senior teaching junior:**
+```korean
+"사제, 이 초식을 따라 해봐라."
+```
+```vietnamese
+"Saje, hãy thử theo chiêu thức này đi."
+```
+
+**3. Reporting victory:**
+```korean
+"장문인님, 적을 물리쳤습니다."
+```
+```vietnamese
+"Jangmunin, chúng con đã đánh lui địch."
+```
+
+**4. Requesting permission:**
+```korean
+"사숙님, 출타를 허락해 주시겠습니까?"
+```
+```vietnamese
+"Sasuk, ngài có thể cho phép con ra ngoài không ạ?"
+```
+
+**5. Casual between close peers:**
+```korean
+"야, 오늘 술 한잔 할래?"
+```
+```vietnamese
+"Ê, hôm nay uống rượu không?"
+```
+
+**6. Formal introduction:**
+```korean
+"화산파 삼대제자 청명입니다."
+```
+```vietnamese
+"Tôi là Chung Myung, đệ tử đời thứ ba phái Hoa Sơn."
+```
+
+**7. Challenge:**
+```korean
+"본좌와 한판 겨뤄보겠느냐!"
+```
+```vietnamese
+"Ngươi có dám đấu với ta một trận không!"
+```
+
+**8. Surrender:**
+```korean
+"패배를 인정합니다."
+```
+```vietnamese
+"Ta nhận thua."
+```
+
+**9. Swearing loyalty:**
+```korean
+"목숨을 바쳐 충성하겠습니다."
+```
+```vietnamese
+"Con nguyện hiến dâng mạng sống để trung thành."
+```
+
+**10. Expressing gratitude:**
+```korean
+"사형의 은혜를 평생 잊지 않겠습니다."
+```
+```vietnamese
+"Em sẽ không bao giờ quên ơn sahyeong suốt đời."
+```
+
+**11. Mourning:**
+```korean
+"사부님... 왜 떠나시는 겁니까..."
+```
+```vietnamese
+"Sư phụ... sao ngài lại ra đi..."
+```
+
+**12. Encouragement:**
+```korean
+"포기하지 마, 넌 할 수 있어."
+```
+```vietnamese
+"Đừng bỏ cuộc, ngươi làm được mà."
+```
+
+**13. Warning enemy:**
+```korean
+"여기서 물러나면 목숨만은 살려주마."
+```
+```vietnamese
+"Nếu lui đi bây giờ, ta sẽ tha mạng cho ngươi."
+```
+
+**14. Begging for mercy:**
+```korean
+"제발 목숨만은 살려주십시오!"
+```
+```vietnamese
+"Xin hãy tha mạng cho tôi!"
+```
+
+**15. Arrogant declaration:**
+```korean
+"이 강호에 본좌를 막을 자가 있느냐!"
+```
+```vietnamese
+"Trong giang hồ này, có ai ngăn được ta!"
+```
+
+**16. Humble request:**
+```korean
+"소인이 한 가지 부탁드려도 되겠습니까?"
+```
+```vietnamese
+"Tiểu nhân có thể xin một việc được không ạ?"
+```
+
+**17. Accepting mission:**
+```korean
+"명을 받들겠습니다, 장문인님."
+```
+```vietnamese
+"Con tuân lệnh, Jangmunin."
+```
+
+**18. Refusing order:**
+```korean
+"죄송하지만, 그 명령은 따를 수 없습니다."
+```
+```vietnamese
+"Xin lỗi, nhưng con không thể tuân theo mệnh lệnh đó."
+```
+
+**19. Confession:**
+```korean
+"모든 것이 제 잘못입니다."
+```
+```vietnamese
+"Tất cả là lỗi của con."
+```
+
+**20. Forgiveness:**
+```korean
+"지난 일은 잊어라. 앞으로 잘하면 된다."
+```
+```vietnamese
+"Hãy quên chuyện đã qua. Từ giờ làm tốt là được."
+```
+
+**21. Final teaching:**
+```korean
+"내 마지막 가르침을 새겨들어라."
+```
+```vietnamese
+"Hãy khắc ghi lời dạy cuối cùng của ta."
+```
+
+**22. Promise:**
+```korean
+"반드시 복수하겠습니다, 사형."
+```
+```vietnamese
+"Em nhất định sẽ báo thù, sahyeong."
+```
+
+**23. Denial:**
+```korean
+"그런 적 없습니다!"
+```
+```vietnamese
+"Không hề có chuyện đó!"
+```
+
+**24. Threat:**
+```korean
+"한 발자국만 더 움직이면 죽는다."
+```
+```vietnamese
+"Bước thêm một bước nữa là chết."
+```
+
+**25. Farewell:**
+```korean
+"언젠가 다시 만나자, 도우."
+```
+```vietnamese
+"Hẹn ngày gặp lại, đạo hữu."
+```
+
+---
+
 ## Translation Guidelines for Vietnamese
 
 ### Keep Korean Terms in Dialogue
@@ -712,9 +1240,15 @@ Yoon Jong: "Ừ. Lúc đó tốt nhỉ."
 ## Summary Statistics
 
 - **Total Terms:** 50+ core honorifics
-- **Categories:** 5 (Internal, External, Leadership, Speech Levels, Regional)
-- **Examples:** 10+ contextual scenarios
+- **Categories:** 8 (Internal, External, Leadership, Speech Levels, Regional, Family Clan, Conference, Crisis)
+- **Examples:** 35+ contextual scenarios (10 original + 25 Vietnamese translation)
 - **Decision Trees:** 1 comprehensive flowchart
+- **Family Clan Systems:** 2 detailed examples (Tang, Namgung)
+- **Conference Protocols:** 12+ diplomatic titles
+- **Age/Rank Conflicts:** 8 complex scenarios
+- **Crisis Communication:** 15 emergency patterns
+- **Discipline/Trial Terms:** 12+ accusation/punishment terms
+- **Vietnamese Integration:** 25 Korean→Vietnamese examples with pronoun logic
 - **File Size:** ~30KB ✓
 
-**Version:** 1.0 - Complete for basic implementation
+**Version:** 2.0 - Expanded for comprehensive translation reference
