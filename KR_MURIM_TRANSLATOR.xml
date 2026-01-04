@@ -1,0 +1,1392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  KR_MURIM_TRANSLATOR.xml
+  Korean Murim Novel Translation System
+  Version: 1.0
+  Target: Light Novel VN Translation with Korean Martial Arts Context
+
+  Purpose: Comprehensive Korean Murim (martial arts) novel translation rules
+  integrating sect hierarchy, cultivation realms, faction alignment, Hanja protocol,
+  and combat lexicon for authentic Vietnamese translation.
+
+  Dependencies:
+  - Reference/Library_ROTMHS_GLOSSARY.md (300+ ROTMHS-specific terms)
+  - Reference/Library_GENERIC_MURIM_TERMS.md (1000+ generic Murim terms)
+  - Reference/Library_HANJA_MURIM_TERMS.md (Hanja database with frequency indexing)
+  - Reference/Ref_KR_HONORIFIC_SYSTEM.md (Sect hierarchy honorifics)
+  - Reference/Ref_CULTIVATION_STAGES.md (Cultivation realms with language scaling)
+-->
+
+<TRANSLATION_SYSTEM>
+
+<!-- ========================================================================
+     SECTION 1: MURIM_LOC - Murim Location & Faction Context
+     ======================================================================== -->
+<MURIM_LOC>
+  <DESCRIPTION>
+    Korean Murim world setting, sect affiliations, and faction alignment system
+    for context-aware pronoun selection and speech patterns.
+  </DESCRIPTION>
+
+  <!-- Faction Alignment Scoring System -->
+  <FACTION_ALIGNMENT>
+    <OVERVIEW>
+      Replace RTAS with Jeongpa-Sapa continuum (-5.0 to +5.0)
+      - Positive: Righteous/Orthodox factions (정파/正派)
+      - Neutral: Unaffiliated/Neutral (중립/中立)
+      - Negative: Unorthodox/Demonic factions (사파/邪派, 마교/魔敎)
+    </OVERVIEW>
+
+    <SCORING_RULES>
+      <RIGHTEOUS score="+5.0">
+        <KEYWORDS>정파, 정도, 명문정파, 구파일방, 오대세가</KEYWORDS>
+        <SECTS>소림사, 무당파, 화산파, 아미파, 곤륜파, 점창파, 화산파, 태산파, 형산파</SECTS>
+        <CHARACTERISTICS>Honor, righteousness, strict moral code</CHARACTERISTICS>
+      </RIGHTEOUS>
+
+      <ORTHODOX score="+3.0">
+        <KEYWORDS>정통무림, 무림맹, 강호정파</KEYWORDS>
+        <SECTS>개방, 당가, 남궁세가, 제갈세가, 사천당문</SECTS>
+        <CHARACTERISTICS>Follow Murim conventions, may bend rules</CHARACTERISTICS>
+      </ORTHODOX>
+
+      <NEUTRAL score="0.0">
+        <KEYWORDS>중립, 강호, 산적, 독행객, 자유인</KEYWORDS>
+        <GROUPS>Independent warriors, bandits, wanderers</GROUPS>
+        <CHARACTERISTICS>No faction loyalty, pragmatic</CHARACTERISTICS>
+      </NEUTRAL>
+
+      <UNORTHODOX score="-3.0">
+        <KEYWORDS>사파, 흑도, 암흑가</KEYWORDS>
+        <SECTS>혈교, 독문, 천살문, 흑도문파</SECTS>
+        <CHARACTERISTICS>Unconventional methods, gray morality</CHARACTERISTICS>
+      </UNORTHODOX>
+
+      <DEMONIC score="-5.0">
+        <KEYWORDS>마교, 마도, 천마신교, 혈마</KEYWORDS>
+        <SECTS>천마신교, 혈마신공, 마도연맹</SECTS>
+        <CHARACTERISTICS>Evil cultivation, blood arts, demonic qi</CHARACTERISTICS>
+      </DEMONIC>
+    </SCORING_RULES>
+
+    <PRONOUN_MAPPING>
+      <!-- Righteous Factions (+3.0 to +5.0) -->
+      <RIGHTEOUS_PRONOUNS>
+        <SELF>본인, 소생, 저</SELF>
+        <SELF_VN>bản nhân, tiểu tăng (Shaolin), tại hạ</SELF_VN>
+        <OTHER_RESPECT>귀하, 시주, 거사</OTHER_RESPECT>
+        <OTHER_RESPECT_VN>quý hạ, thí chủ, cư sĩ</OTHER_RESPECT_VN>
+      </RIGHTEOUS_PRONOUNS>
+
+      <!-- Neutral (−1.0 to +1.0) -->
+      <NEUTRAL_PRONOUNS>
+        <SELF>본좌, 나, 이몸</SELF>
+        <SELF_VN>bản tọa, ta, thân này</SELF_VN>
+        <OTHER>너, 그대, 자네</OTHER>
+        <OTHER_VN>ngươi, khanh, tự</OTHER_VN>
+      </NEUTRAL_PRONOUNS>
+
+      <!-- Demonic Factions (−3.0 to −5.0) -->
+      <DEMONIC_PRONOUNS>
+        <SELF>본교주, 본마, 혈마</SELF>
+        <SELF_VN>bản giáo chủ, ma đầu này, huyết ma</SELF_VN>
+        <OTHER_CONTEMPT>개미, 벌레, 하등</OTHER_CONTEMPT>
+        <OTHER_CONTEMPT_VN>con kiến, sâu bọ, hạ đẳng</OTHER_CONTEMPT_VN>
+      </DEMONIC_PRONOUNS>
+    </PRONOUN_MAPPING>
+
+    <!-- Test Cases for Faction Alignment -->
+    <FACTION_ALIGNMENT_TESTS>
+      <TEST_CASE id="1" alignment="+5.0" faction="화산파">
+        <INPUT>화산파 제자가 말했다: "저는 본인의 검법이 부족합니다."</INPUT>
+        <EXPECTED_VN>Đệ tử Hoa Sơn Phái nói: "Tại hạ kiếm pháp của bản nhân còn thiếu sót."</EXPECTED_VN>
+        <REASONING>Righteous faction uses humble self-reference (본인/bản nhân)</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="2" alignment="-5.0" faction="천마신교">
+        <INPUT>천마신교 교주가 냉소했다: "본교주 앞에서 벌레 같은 것들이 감히?"</INPUT>
+        <EXPECTED_VN>Giáo chủ Thiên Ma Thần Giáo lạnh lùng cười: "Trước mặt bản giáo chủ, lũ sâu bọ dám làm gì?"</EXPECTED_VN>
+        <REASONING>Demonic leader uses arrogant self (본교주) and contemptuous other (벌레/sâu bọ)</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="3" alignment="0.0" faction="독행객">
+        <INPUT>독행객이 답했다: "나는 중립이다. 정사를 가리지 않는다."</INPUT>
+        <EXPECTED_VN>Độc hành khách đáp: "Ta trung lập. Không phân biệt chính tà."</EXPECTED_VN>
+        <REASONING>Neutral wanderer uses plain pronouns (나/ta, 너/ngươi)</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="4" alignment="+3.0" faction="개방">
+        <INPUT>개방 장로가 말했다: "본좌는 무림맹의 결정을 따르겠소."</INPUT>
+        <EXPECTED_VN>Trưởng lão Cái Bang nói: "Bản tọa sẽ tuân theo quyết định của Võ Lâm Minh."</EXPECTED_VN>
+        <REASONING>Orthodox faction (Beggars) uses respectful but less formal 본좌/bản tọa</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="5" alignment="+5.0" faction="소림사">
+        <INPUT>소림 승려가 합장했다: "소승은 시주님의 은혜에 감사드립니다."</INPUT>
+        <EXPECTED_VN>Tăng nhân Thiểu Lâm chắp tay: "Tiểu tăng cảm tạ ân đức của thí chủ."</EXPECTED_VN>
+        <REASONING>Shaolin monk uses Buddhist self-term (소승/tiểu tăng) and respectful other (시주/thí chủ)</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="6" alignment="-3.0" faction="혈교">
+        <INPUT>혈교 고수가 비웃었다: "이몸 앞에서 너희 따위가 대적하려 하느냐?"</INPUT>
+        <EXPECTED_VN>Cao thủ Huyết Giáo chế giễu: "Trước mặt thân này, bọn ngươi muốn đối đầu sao?"</EXPECTED_VN>
+        <REASONING>Unorthodox faction uses slightly arrogant 이몸/thân này</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="7" alignment="+4.0" faction="무당파">
+        <INPUT>무당파 도사가 평온히 말했다: "본도는 다툼을 원치 않소."</INPUT>
+        <EXPECTED_VN>Đạo nhân Vô Đang bình thản nói: "Bản đạo không mong muốn tranh đấu."</EXPECTED_VN>
+        <REASONING>Wudang Taoist uses Taoist self-term (본도/bản đạo)</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="8" alignment="+2.0" faction="당문">
+        <INPUT>당문 사람이 경고했다: "자네, 우리 당문의 독을 얕보지 말게."</INPUT>
+        <EXPECTED_VN>Người Đường Môn cảnh cáo: "Khanh, đừng coi thường độc của Đường Môn chúng ta."</EXPECTED_VN>
+        <REASONING>Tang Clan (morally gray) uses neutral-polite 자네/khanh</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="9" alignment="-5.0" faction="마교">
+        <INPUT>마교 마두가 포효했다: "하등한 개미들이 본마를 막으려 하다니!"</INPUT>
+        <EXPECTED_VN>Ma đầu Ma Giáo gầm lên: "Bọn kiến hạ đẳng dám cản đường ma đầu này!"</EXPECTED_VN>
+        <REASONING>Demonic cultivator uses extreme contempt (개미/con kiến, 하등/hạ đẳng)</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="10" alignment="+5.0" faction="화산파" context="junior_to_senior">
+        <INPUT>화산파 제자가 고개 숙였다: "소제자가 사형님께 가르침을 청합니다."</INPUT>
+        <EXPECTED_VN>Đệ tử Hoa Sơn Phái cúi đầu: "Tiểu đệ tử thỉnh cầu sư huynh chỉ giáo."</EXPECTED_VN>
+        <REASONING>Righteous faction + sect hierarchy = extreme humility (소제자/tiểu đệ tử)</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="11" alignment="0.0" faction="산적" context="threat">
+        <INPUT>산적 두목이 협박했다: "너, 돈을 내놓지 않으면 죽는다!"</INPUT>
+        <EXPECTED_VN>Đầu mục sơn tặc đe dọa: "Ngươi, không đưa tiền thì chết!"</EXPECTED_VN>
+        <REASONING>Neutral bandit uses blunt threat with plain 너/ngươi</REASONING>
+      </TEST_CASE>
+
+      <TEST_CASE id="12" alignment="+3.0" faction="무림맹" context="formal_meeting">
+        <INPUT>맹주가 선언했다: "본 맹은 마교를 토벌할 것이다."</INPUT>
+        <EXPECTED_VN>Minh chủ tuyên bố: "Bản minh sẽ thảo phạt Ma Giáo."</EXPECTED_VN>
+        <REASONING>Alliance leader uses collective self-term (본 맹/bản minh)</REASONING>
+      </TEST_CASE>
+    </FACTION_ALIGNMENT_TESTS>
+  </FACTION_ALIGNMENT>
+
+  <!-- Geographic Context -->
+  <GEOGRAPHIC_REGIONS>
+    <CENTRAL_PLAINS name="중원" hanja="中原" vn="Trung Nguyên">
+      Main Murim world, orthodox sects dominate
+    </CENTRAL_PLAINS>
+    <WESTERN_REGIONS name="서역" hanja="西域" vn="Tây Vực">
+      Foreign martial arts, exotic techniques
+    </WESTERN_REGIONS>
+    <SICHUAN name="사천" hanja="四川" vn="Tứ Xuyên">
+      Tang Clan territory, poison expertise
+    </SICHUAN>
+    <SHAANXI name="섬서" hanja="陝西" vn="Thiểm Tây">
+      Mount Hua location, sword techniques
+    </SHAANXI>
+  </GEOGRAPHIC_REGIONS>
+
+  <!-- Sect Hierarchy Reference -->
+  <SECT_STRUCTURE>
+    <NINE_SECTS_ONE_ALLIANCE name="구파일방" hanja="九派一幇">
+      Top orthodox factions: Shaolin, Wudang, Mount Hua, Emei, Kunlun,
+      Zhongnan, Qingcheng, Mount Heng (North/South), Beggars' Sect
+    </NINE_SECTS_ONE_ALLIANCE>
+
+    <SECT_DETAILS>
+      <SECT name="화산파" hanja="華山派" vn="Hoa Sơn Phái" alignment="+5.0">
+        <LOCATION>Shaanxi Province, Mount Hua</LOCATION>
+        <SPECIALTY>Sword techniques, Plum Blossom style</SPECIALTY>
+        <CORE_TECHNIQUE>매화검법 (Muội Hoa Kiếm Pháp)</CORE_TECHNIQUE>
+        <SECRET_ART>자하신공 (Tử Hà Thần Công)</SECRET_ART>
+        <GENERATION_NAMES>현(玄), 운(雲), 검(劍)</GENERATION_NAMES>
+        <CHARACTERISTICS>
+          Honor-bound, strict moral code, known for elegant sword techniques
+          inspired by plum blossoms. Emphasizes righteousness and chivalry.
+        </CHARACTERISTICS>
+      </SECT>
+
+      <SECT name="소림사" hanja="少林寺" vn="Thiểu Lâm Tự" alignment="+5.0">
+        <LOCATION>Henan Province, Songshan Mountain</LOCATION>
+        <SPECIALTY>Staff, palm, fist techniques, Buddhist cultivation</SPECIALTY>
+        <CORE_TECHNIQUE>나한권 (La Hán Quyền)</CORE_TECHNIQUE>
+        <SECRET_ART>금강불괴신공 (Kim Cương Bất Hoại Thần Công)</SECRET_ART>
+        <GENERATION_NAMES>Based on Buddhist lineage</GENERATION_NAMES>
+        <CHARACTERISTICS>
+          Oldest and most prestigious sect. Compassion-driven martial arts.
+          Known for unbreakable defense and overwhelming internal energy.
+        </CHARACTERISTICS>
+      </SECT>
+
+      <SECT name="무당파" hanja="武當派" vn="Vô Đang Phái" alignment="+5.0">
+        <LOCATION>Hubei Province, Wudang Mountains</LOCATION>
+        <SPECIALTY>Taoist internal arts, soft overcoming hard</SPECIALTY>
+        <CORE_TECHNIQUE>태극권 (Thái Cực Quyền)</CORE_TECHNIQUE>
+        <SECRET_ART>순양무극공 (Thuần Dương Vô Cực Công)</SECRET_ART>
+        <GENERATION_NAMES>Taoist naming conventions</GENERATION_NAMES>
+        <CHARACTERISTICS>
+          Taoist philosophy integrated into martial arts. Emphasizes balance,
+          yielding, and natural flow. Rivals Shaolin in prestige.
+        </CHARACTERISTICS>
+      </SECT>
+
+      <SECT name="아미파" hanja="峨嵋派" vn="Nga Mi Phái" alignment="+4.0">
+        <LOCATION>Sichuan Province, Mount Emei</LOCATION>
+        <SPECIALTY>Sword techniques, Buddhist arts</SPECIALTY>
+        <CORE_TECHNIQUE>아미검법 (Nga Mi Kiếm Pháp)</CORE_TECHNIQUE>
+        <SECRET_ART>멸정사태검 (Diệt Tình Tứ Thái Kiếm)</SECRET_ART>
+        <CHARACTERISTICS>
+          Female-dominated sect. Combines Buddhist compassion with fierce
+          sword techniques. Known for eliminating emotions in combat.
+        </CHARACTERISTICS>
+      </SECT>
+
+      <SECT name="곤륜파" hanja="崑崙派" vn="Côn Lôn Phái" alignment="+4.0">
+        <LOCATION>Western Regions, Kunlun Mountains</LOCATION>
+        <SPECIALTY>Ice/frost techniques, high altitude cultivation</SPECIALTY>
+        <CORE_TECHNIQUE>곤륜검법 (Côn Lôn Kiếm Pháp)</CORE_TECHNIQUE>
+        <SECRET_ART>빙백신공 (Băng Phách Thần Công)</SECRET_ART>
+        <CHARACTERISTICS>
+          Remote location, harsh environment breeds tough warriors.
+          Ice-element techniques. Less politically involved than other sects.
+        </CHARACTERISTICS>
+      </SECT>
+
+      <SECT name="개방" hanja="丐幇" vn="Cái Bang" alignment="+3.0">
+        <LOCATION>Nationwide network, no fixed base</LOCATION>
+        <SPECIALTY>Information gathering, staff techniques</SPECIALTY>
+        <CORE_TECHNIQUE>타구봉법 (Đả Cẩu Bổng Pháp)</CORE_TECHNIQUE>
+        <SECRET_ART>항룡십팔장 (Hàng Long Thập Bát Chưởng)</SECRET_ART>
+        <CHARACTERISTICS>
+          Largest sect by membership. Beggars serve as information network.
+          Pragmatic, less rigid than sword sects. Strong sense of brotherhood.
+        </CHARACTERISTICS>
+      </SECT>
+
+      <SECT name="당문" hanja="唐門" vn="Đường Môn" alignment="+2.0">
+        <LOCATION>Sichuan Province, Tang Clan territory</LOCATION>
+        <SPECIALTY>Poison arts, hidden weapons, mechanical traps</SPECIALTY>
+        <CORE_TECHNIQUE>당문독공 (Đường Môn Độc Công)</CORE_TECHNIQUE>
+        <SECRET_ART>만화점혈수 (Vạn Hoa Điểm Huyệt Thủ)</SECRET_ART>
+        <CHARACTERISTICS>
+          Bloodline-based clan, not traditional sect. Secretive poison arts.
+          Morally gray but allied with orthodox factions. Deadly projectiles.
+        </CHARACTERISTICS>
+      </SECT>
+
+      <SECT name="천마신교" hanja="天魔神敎" vn="Thiên Ma Thần Giáo" alignment="-5.0">
+        <LOCATION>Western Regions, remote fortresses</LOCATION>
+        <SPECIALTY>Demonic cultivation, blood arts, forbidden techniques</SPECIALTY>
+        <CORE_TECHNIQUE>천마공 (Thiên Ma Công)</CORE_TECHNIQUE>
+        <SECRET_ART>천마대법 (Thiên Ma Đại Pháp)</SECRET_ART>
+        <CHARACTERISTICS>
+          Main antagonist faction. Ruthless demonic cultivation methods.
+          Powerful but unstable techniques. Seeks to dominate Central Plains.
+        </CHARACTERISTICS>
+      </SECT>
+    </SECT_DETAILS>
+
+    <FIVE_GREAT_FAMILIES name="오대세가" hanja="五大世家">
+      <FAMILY name="남궁세가" hanja="南宮世家" vn="Nam Cung Thế Gia">
+        Noble sword clan, Emperor Sword techniques
+      </FAMILY>
+      <FAMILY name="제갈세가" hanja="諸葛世家" vn="Gia Cát Thế Gia">
+        Strategist clan, tactical formations
+      </FAMILY>
+      <FAMILY name="사천당문" hanja="四川唐門" vn="Tứ Xuyên Đường Môn">
+        Tang Clan, poison expertise (see above)
+      </FAMILY>
+    </FIVE_GREAT_FAMILIES>
+  </SECT_STRUCTURE>
+
+  <!-- Honorific Address Terms by Sect Hierarchy -->
+  <HONORIFIC_SYSTEM>
+    <DESCRIPTION>
+      Sect hierarchy determines address terms. Refer to Ref_KR_HONORIFIC_SYSTEM.md
+      for complete decision tree and formality levels.
+    </DESCRIPTION>
+
+    <SAME_GENERATION>
+      <SENIOR korean="사형" hanja="師兄" vn="Sư huynh" gender="male">
+        Senior brother (same generation, older)
+      </SENIOR>
+      <JUNIOR korean="사제" hanja="師弟" vn="Sư đệ" gender="male">
+        Junior brother (same generation, younger)
+      </JUNIOR>
+      <SENIOR_FEMALE korean="사저" hanja="師姐" vn="Sư tỷ" gender="female">
+        Senior sister (same generation, older)
+      </SENIOR_FEMALE>
+      <JUNIOR_FEMALE korean="사매" hanja="師妹" vn="Sư muội" gender="female">
+        Junior sister (same generation, younger)
+      </JUNIOR_FEMALE>
+    </SAME_GENERATION>
+
+    <GENERATION_GAP>
+      <MASTER korean="사부" hanja="師父" vn="Sư phụ">
+        Direct master (-1 generation)
+      </MASTER>
+      <UNCLE korean="사숙" hanja="師叔" vn="Sư thúc">
+        Master's peer (-1 generation, not direct master)
+      </UNCLE>
+      <GRAND_MASTER korean="사조" hanja="師祖" vn="Sư tổ">
+        Master's master (-2 generations)
+      </GRAND_MASTER>
+      <DISCIPLE korean="제자" hanja="弟子" vn="Đệ tử">
+        Direct disciple (+1 generation)
+      </DISCIPLE>
+    </GENERATION_GAP>
+
+    <SECT_LEADER_TITLES>
+      <SECT_LEADER korean="장문인" hanja="掌門人" vn="Chưởng môn nhân">
+        Sect leader, highest authority
+      </SECT_LEADER>
+      <ELDER korean="장로" hanja="長老" vn="Trưởng lão">
+        Sect elder, advisory council
+      </ELDER>
+      <PEAK_MASTER korean="봉주" hanja="峰主" vn="Phong chủ">
+        Peak/Division master (large sects)
+      </PEAK_MASTER>
+    </SECT_LEADER_TITLES>
+  </HONORIFIC_SYSTEM>
+</MURIM_LOC>
+
+<!-- ========================================================================
+     SECTION 2: COMBAT - Combat Scene Translation
+     ======================================================================== -->
+<COMBAT>
+  <DESCRIPTION>
+    Combat terminology, technique naming, and action sequence translation
+    with intensity scaling by cultivation realm.
+  </DESCRIPTION>
+
+  <!-- Technique Naming Convention -->
+  <TECHNIQUE_TRANSLATION>
+    <RULE_1>
+      Korean technique names → Keep Hán Việt + Hangul gloss on first mention
+      Example: "매화검법 (Muội Hoa Kiếm Pháp / Plum Blossom Sword)"
+    </RULE_1>
+    <RULE_2>
+      Generic techniques → Translate directly to Vietnamese
+      Example: "베기" → "chém", "찌르기" → "đâm"
+    </RULE_2>
+    <RULE_3>
+      Named techniques (proper nouns) → Romanize Korean + Hán Việt
+      Example: "천룡팔부" → "Thiên Long Bát Bộ (Cheonryong Palbu)"
+    </RULE_3>
+  </TECHNIQUE_TRANSLATION>
+
+  <!-- Action Intensity by Realm -->
+  <INTENSITY_SCALING>
+    <BEGINNER realm="입문" intensity="1">
+      <!-- Simple, direct verbs -->
+      <VERBS>베다, 찌르다, 막다</VERBS>
+      <VN_VERBS>chém, đâm, chặn</VN_VERBS>
+      <EXAMPLE>
+        검을 휘둘렀다 → Vung kiếm
+      </EXAMPLE>
+    </BEGINNER>
+
+    <INTERMEDIATE realm="화경" intensity="2">
+      <!-- Refined, flowing descriptions -->
+      <VERBS>흐르다, 물들다, 관통하다</VERBS>
+      <VN_VERBS>chảy, ngấm, xuyên thủng</VN_VERBS>
+      <EXAMPLE>
+        검이 물처럼 흘렀다 → Kiếm chảy như nước
+      </EXAMPLE>
+    </INTERMEDIATE>
+
+    <ADVANCED realm="현경" intensity="3">
+      <!-- Philosophical, poetic language -->
+      <VERBS>가르다, 갈라지다, 뒤흔들다</VERBS>
+      <VN_VERBS>chẻ đôi, phân ly, chấn động</VN_VERBS>
+      <EXAMPLE>
+        검이 허공을 갈랐다 → Kiếm chẻ đôi hư không
+      </EXAMPLE>
+    </ADVANCED>
+
+    <SUPREME realm="천하제일" intensity="4">
+      <!-- Mythical, world-affecting descriptions -->
+      <VERBS>울리다, 갈라뜨리다, 삼키다</VERBS>
+      <VN_VERBS>vang dội, xé toạc, nuốt chửng</VN_VERBS>
+      <EXAMPLE>
+        일검에 천지가 울었다 → Một kiếm làm thiên địa vang dội
+      </EXAMPLE>
+    </SUPREME>
+  </INTENSITY_SCALING>
+
+  <!-- Qi Manifestation Terms -->
+  <QI_EFFECTS>
+    <SWORD_QI name="검기" hanja="劍氣" vn="kiếm khí" realm="절정">
+      Faint energy aura around blade
+    </SWORD_QI>
+    <SWORD_ENERGY name="검강" hanja="劍罡" vn="kiếm cương" realm="초절정">
+      Visible energy projectile
+    </SWORD_ENERGY>
+    <SWORD_LIGHT name="검광" hanja="劍光" vn="kiếm quang" realm="현경">
+      Brilliant radiant attack
+    </SWORD_LIGHT>
+    <SWORD_INTENT name="검의" hanja="劍意" vn="kiếm ý" realm="화경지경">
+      Domain of sword will
+    </SWORD_INTENT>
+  </QI_EFFECTS>
+
+  <!-- Combat Stance Terminology -->
+  <STANCES>
+    <BASIC_STANCE name="기본자세" vn="tư thế cơ bản" />
+    <HORSE_STANCE name="마보" hanja="馬步" vn="mã bộ" />
+    <PLUM_BLOSSOM_STEP name="매화보법" hanja="梅花步法" vn="muội hoa bộ pháp" />
+    <VOID_STEP name="허공보법" hanja="虛空步法" vn="hư không bộ pháp" />
+  </STANCES>
+</COMBAT>
+
+<!-- ========================================================================
+     SECTION 3: FMT - Formatting & Style Rules
+     ======================================================================== -->
+<FMT>
+  <DESCRIPTION>
+    Formatting conventions for Korean Murim novels, handling Hangul, Hanja,
+    and Vietnamese text integration.
+  </DESCRIPTION>
+
+  <!-- Dialogue Formatting -->
+  <DIALOGUE>
+    <HONORIFIC_DISPLAY>
+      Show Korean honorific in dialogue with Vietnamese translation
+      Example: "사형!" → "—Sư huynh (사형)!"
+    </HONORIFIC_DISPLAY>
+
+    <SECT_TERMS_FIRST_MENTION>
+      Full term on first use: "화산파 (Hoa Sơn Phái / Mount Hua Sect)"
+      Later mentions: "Hoa Sơn Phái" only
+    </SECT_TERMS_FIRST_MENTION>
+
+    <TECHNIQUE_CALLOUTS>
+      Keep original Korean name in battle cries:
+      "매화낙영검!" → "—Muội Hoa Lạc Anh Kiếm (매화낙영검)!"
+    </TECHNIQUE_CALLOUTS>
+  </DIALOGUE>
+
+  <!-- Narration Style -->
+  <NARRATION>
+    <REALM_DESCRIPTIONS>
+      Use poetic Vietnamese for high-realm scenes:
+      현경 breakthrough → "Cảnh giới huyền di묘 mở ra, thiên địa chi khí ùa vào"
+    </REALM_DESCRIPTIONS>
+
+    <INTERNAL_ENERGY>
+      내공 (nội công) → Always use "nội công" for 내공
+      진기 (chân khí) → Always use "chân khí" for 진기
+      혈기 (huyết khí) → Always use "huyết khí" for 혈기
+    </INTERNAL_ENERGY>
+  </NARRATION>
+
+  <!-- Hanja Display Toggle (See IO_PROTOCOL) -->
+  <HANJA_PARENTHETICAL>
+    Mode 1 (Full): 강호 (江湖 / Giang hồ)
+    Mode 2 (Hán Việt only): 강호 (Giang hồ)
+    Mode 3 (No Hanja): Giang hồ
+  </HANJA_PARENTHETICAL>
+</FMT>
+
+<!-- ========================================================================
+     SECTION 4: GUARD - Anti-Translationese & Quality Control
+     ======================================================================== -->
+<GUARD>
+  <DESCRIPTION>
+    Prevent robotic translation patterns specific to Korean Murim novels.
+    Adapted from JP-LN GUARD section for Korean context.
+  </DESCRIPTION>
+
+  <!-- Forbidden Patterns -->
+  <FORBIDDEN_PATTERNS>
+    <PATTERN_1 type="Literal Honorific Translation">
+      ❌ NEVER: "사형님께서" → "Anh/Chị Sư Huynh"
+      ✅ USE: "사형님께서" → "Sư huynh" (context implies respect)
+    </PATTERN_1>
+
+    <PATTERN_2 type="Robotic Realm Names">
+      ❌ NEVER: "그는 화경에 도달했다" → "Hắn đã đạt tới Cảnh Giới Hóa"
+      ✅ USE: "그는 화경에 도달했다" → "Hắn đã đạt tới Hóa Cảnh"
+    </PATTERN_2>
+
+    <PATTERN_3 type="Technique Over-Explanation">
+      ❌ NEVER: "매화검법을 사용했다" → "sử dụng Kiếm Pháp Hoa Mai"
+      ✅ USE: "매화검법을 사용했다" → "thi triển Muội Hoa Kiếm Pháp"
+    </PATTERN_3>
+
+    <PATTERN_4 type="Cultivation Clichés">
+      ❌ NEVER: "기를 모았다" → "tập trung khí"
+      ✅ USE: "기를 모았다" → "vận khí" (natural martial arts term)
+    </PATTERN_4>
+
+    <PATTERN_5 type="Forced Formal Speech">
+      ❌ NEVER: Mix Korean and Vietnamese formality awkwardly
+      ✅ USE: Vietnamese natural formality aligned with faction/realm gap
+    </PATTERN_5>
+  </FORBIDDEN_PATTERNS>
+
+  <!-- Natural Alternatives -->
+  <NATURAL_ALTERNATIVES>
+    <COMBAT_VERBS>
+      휘두르다 → vung (not "vung lên")
+      찌르다 → đâm (not "đâm ra")
+      막다 → chặn (not "ngăn chặn")
+    </COMBAT_VERBS>
+
+    <INTERNAL_ENERGY_FLOW>
+      기가 흐르다 → chân khí lưu chuyển (not "khí chảy")
+      단전에 모이다 → tụ vào đan điền (not "tập trung ở đan điền")
+    </INTERNAL_ENERGY_FLOW>
+
+    <BREAKTHROUGH_LANGUAGE>
+      깨달음을 얻다 → khai ngộ (not "đạt được sự giác ngộ")
+      경지를 올리다 → thăng cảnh giới (not "nâng cao cảnh giới")
+    </BREAKTHROUGH_LANGUAGE>
+  </NATURAL_ALTERNATIVES>
+
+  <!-- Context-Aware Translation -->
+  <CONTEXT_CHECKS>
+    <CHECK_REALM_GAP before_translation="true">
+      If speaker realm >> listener realm → extreme formal Vietnamese
+      If same realm → casual Vietnamese
+    </CHECK_REALM_GAP>
+
+    <CHECK_FACTION before_translation="true">
+      Righteous faction → formal pronouns (bản nhân, quý hạ)
+      Demonic faction → contemptuous (본마, 벌레)
+    </CHECK_FACTION>
+
+    <CHECK_TECHNIQUE_CONTEXT before_translation="true">
+      In battle → keep Korean technique name + Hán Việt
+      In explanation → translate to Vietnamese + gloss
+    </CHECK_TECHNIQUE_CONTEXT>
+  </CONTEXT_CHECKS>
+</GUARD>
+
+<!-- ========================================================================
+     SECTION 5: HANJA_PROTOCOL - Hanja Mapping & Display Logic
+     ======================================================================== -->
+<HANJA_PROTOCOL>
+  <DESCRIPTION>
+    Three-way mapping system: Korean (Hangul) ↔ Hanja ↔ Hán Việt
+    with frequency-based display rules and toggle options.
+  </DESCRIPTION>
+
+  <!-- Mapping Database Reference -->
+  <DATABASE_STRUCTURE>
+    <SOURCE file="Reference/Library_HANJA_MURIM_TERMS.md">
+      500KB structured database with unique IDs and frequency tiers
+    </SOURCE>
+
+    <ID_SYSTEM>
+      G001-G999: Gangho terms (江湖 Giang hồ)
+      S001-S999: Sect structure (門派 môn phái)
+      T001-T999: Techniques (武功 võ công)
+      C001-C999: Cultivation (修煉 tu luyện)
+      W001-W999: Weapons (兵器 binh khí)
+      M001-M999: Medicine (藥材 dược tài)
+    </ID_SYSTEM>
+
+    <FREQUENCY_TIERS>
+      S-tier (1-50): Display Hanja ALWAYS (core concepts)
+      A-tier (51-200): Display on first mention per chapter
+      B-tier (201-500): Display on first mention in scene
+      C-tier (501-1000): Display on first mention in novel
+      D-tier (1001-3000): No Hanja display (use Hán Việt only)
+    </FREQUENCY_TIERS>
+  </DATABASE_STRUCTURE>
+
+  <!-- Lookup Logic -->
+  <LOOKUP_PRIORITY>
+    <STEP_1>
+      Check Library_ROTMHS_GLOSSARY.md for novel-specific terms
+    </STEP_1>
+    <STEP_2>
+      Check Library_HANJA_MURIM_TERMS.md for generic Murim terms
+    </STEP_2>
+    <STEP_3>
+      Check Library_GENERIC_MURIM_TERMS.md for common vocabulary
+    </STEP_3>
+    <STEP_4>
+      If not found → Flag for manual review
+    </STEP_4>
+  </LOOKUP_PRIORITY>
+
+  <!-- Display Modes -->
+  <DISPLAY_MODES>
+    <MODE_FULL enabled="default">
+      강호 → Giang hồ (江湖 / 강호)
+      Full transparency: Hán Việt + Hanja + Hangul
+    </MODE_FULL>
+
+    <MODE_STANDARD enabled="recommended">
+      강호 → Giang hồ (江湖)
+      Standard: Hán Việt + Hanja only
+    </MODE_STANDARD>
+
+    <MODE_MINIMAL enabled="advanced_readers">
+      강호 → Giang hồ
+      Clean reading: Hán Việt only
+    </MODE_MINIMAL>
+  </DISPLAY_MODES>
+
+  <!-- First Mention Rules -->
+  <FIRST_MENTION>
+    <S_TIER>
+      ALWAYS show Hanja: 강호 (江湖 / Giang hồ) on every occurrence
+    </S_TIER>
+    <A_TIER>
+      Show Hanja on first mention per CHAPTER
+      Track state: chapter_first_mentions = []
+    </A_TIER>
+    <B_TIER>
+      Show Hanja on first mention per SCENE (major scene breaks)
+      Track state: scene_first_mentions = []
+    </B_TIER>
+    <C_TIER>
+      Show Hanja ONCE in entire novel
+      Track state: novel_first_mentions = []
+    </C_TIER>
+    <D_TIER>
+      NEVER show Hanja, use Hán Việt only
+    </D_TIER>
+  </FIRST_MENTION>
+
+  <!-- Example Mappings -->
+  <SAMPLE_ENTRIES>
+    <!-- S-Tier Entries (1-50): Core concepts, always display Hanja -->
+    <ENTRY id="G001" freq="S-1" korean="강호" hanja="江湖" hanviet="Giang hồ">
+      Martial world, core concept
+    </ENTRY>
+    <ENTRY id="S001" freq="S-5" korean="화산파" hanja="華山派" hanviet="Hoa Sơn Phái">
+      Mount Hua Sect
+    </ENTRY>
+    <ENTRY id="C001" freq="S-10" korean="내공" hanja="內功" hanviet="Nội công">
+      Internal energy, cultivated power
+    </ENTRY>
+    <ENTRY id="C002" freq="S-15" korean="진기" hanja="眞氣" hanviet="Chân khí">
+      True qi, refined internal energy
+    </ENTRY>
+    <ENTRY id="C003" freq="S-20" korean="단전" hanja="丹田" hanviet="Đan điền">
+      Dantian, energy center
+    </ENTRY>
+    <ENTRY id="G002" freq="S-25" korean="무인" hanja="武人" hanviet="Võ nhân">
+      Martial artist, warrior
+    </ENTRY>
+    <ENTRY id="T001" freq="S-30" korean="검법" hanja="劍法" hanviet="Kiếm pháp">
+      Sword technique
+    </ENTRY>
+    <ENTRY id="S002" freq="S-35" korean="소림사" hanja="少林寺" hanviet="Thiểu Lâm Tự">
+      Shaolin Temple
+    </ENTRY>
+    <ENTRY id="S003" freq="S-40" korean="무당파" hanja="武當派" hanviet="Vô Đang Phái">
+      Wudang Sect
+    </ENTRY>
+    <ENTRY id="C004" freq="S-45" korean="경지" hanja="境地" hanviet="Cảnh giới">
+      Realm, cultivation stage
+    </ENTRY>
+    <ENTRY id="G003" freq="S-50" korean="고수" hanja="高手" hanviet="Cao thủ">
+      Expert, master
+    </ENTRY>
+
+    <!-- A-Tier Entries (51-200): Very common, first mention per chapter -->
+    <ENTRY id="T015" freq="A-55" korean="매화검법" hanja="梅花劍法" hanviet="Muội Hoa Kiếm Pháp">
+      Plum Blossom Sword Technique
+    </ENTRY>
+    <ENTRY id="C005" freq="A-60" korean="내력" hanja="內力" hanviet="Nội lực">
+      Internal force, internal strength
+    </ENTRY>
+    <ENTRY id="G004" freq="A-65" korean="일류고수" hanja="一流高手" hanviet="Nhất lưu cao thủ">
+      First-rate master
+    </ENTRY>
+    <ENTRY id="T020" freq="A-70" korean="검기" hanja="劍氣" hanviet="Kiếm khí">
+      Sword qi, energy aura
+    </ENTRY>
+    <ENTRY id="S004" freq="A-75" korean="개방" hanja="丐幇" hanviet="Cái Bang">
+      Beggars' Sect
+    </ENTRY>
+    <ENTRY id="C006" freq="A-80" korean="돌파" hanja="突破" hanviet="Đột phá">
+      Breakthrough to next realm
+    </ENTRY>
+    <ENTRY id="T025" freq="A-85" korean="장법" hanja="掌法" hanviet="Chưởng pháp">
+      Palm technique
+    </ENTRY>
+    <ENTRY id="G005" freq="A-90" korean="정파" hanja="正派" hanviet="Chính phái">
+      Righteous faction
+    </ENTRY>
+    <ENTRY id="G006" freq="A-95" korean="사파" hanja="邪派" hanviet="Tà phái">
+      Unorthodox faction
+    </ENTRY>
+    <ENTRY id="C007" freq="A-100" korean="경맥" hanja="經脈" hanviet="Kinh mạch">
+      Meridians, energy channels
+    </ENTRY>
+    <ENTRY id="T030" freq="A-105" korean="권법" hanja="拳法" hanviet="Quyền pháp">
+      Fist technique
+    </ENTRY>
+    <ENTRY id="S005" freq="A-110" korean="당문" hanja="唐門" hanviet="Đường Môn">
+      Tang Clan
+    </ENTRY>
+    <ENTRY id="G007" freq="A-115" korean="무림맹" hanja="武林盟" hanviet="Võ lâm minh">
+      Murim Alliance
+    </ENTRY>
+    <ENTRY id="C008" freq="A-120" korean="화경" hanja="化境" hanviet="Hóa Cảnh">
+      Transformation Realm
+    </ENTRY>
+    <ENTRY id="T035" freq="A-125" korean="검강" hanja="劍罡" hanviet="Kiếm cương">
+      Sword energy (visible projectile)
+    </ENTRY>
+    <ENTRY id="G008" freq="A-130" korean="천하제일" hanja="天下第一" hanviet="Thiên hạ đệ nhất">
+      Number one under heaven
+    </ENTRY>
+    <ENTRY id="C009" freq="A-135" korean="절정" hanja="絶頂" hanviet="Tuyệt đỉnh">
+      Peak realm
+    </ENTRY>
+    <ENTRY id="T040" freq="A-140" korean="경공" hanja="輕功" hanviet="Khinh công">
+      Lightness skill, movement art
+    </ENTRY>
+    <ENTRY id="S006" freq="A-145" korean="아미파" hanja="峨嵋派" hanviet="Nga Mi Phái">
+      Emei Sect
+    </ENTRY>
+    <ENTRY id="G009" freq="A-150" korean="마교" hanja="魔敎" hanviet="Ma giáo">
+      Demonic Cult
+    </ENTRY>
+
+    <!-- B-Tier Entries (201-500): Common, first mention per scene -->
+    <ENTRY id="G123" freq="B-301" korean="협객" hanja="俠客" hanviet="Hiệp khách">
+      Chivalrous hero
+    </ENTRY>
+    <ENTRY id="C010" freq="B-250" korean="기해" hanja="氣海" hanviet="Khí hải">
+      Sea of qi, energy reservoir
+    </ENTRY>
+    <ENTRY id="T045" freq="B-255" korean="초식" hanja="招式" hanviet="Chiêu thức">
+      Move, technique form
+    </ENTRY>
+    <ENTRY id="G010" freq="B-260" korean="무공" hanja="武功" hanviet="Võ công">
+      Martial arts, martial techniques
+    </ENTRY>
+    <ENTRY id="C011" freq="B-265" korean="대성" hanja="大成" hanviet="Đại thành">
+      Great achievement realm
+    </ENTRY>
+    <ENTRY id="T050" freq="B-270" korean="점혈" hanja="點穴" hanviet="Điểm huyệt">
+      Acupoint striking
+    </ENTRY>
+    <ENTRY id="S007" freq="B-275" korean="곤륜파" hanja="崑崙派" hanviet="Côn Lôn Phái">
+      Kunlun Sect
+    </ENTRY>
+    <ENTRY id="G011" freq="B-280" korean="무림" hanja="武林" hanviet="Võ lâm">
+      Martial forest (martial world)
+    </ENTRY>
+    <ENTRY id="C012" freq="B-285" korean="초절정" hanja="超絶頂" hanviet="Siêu tuyệt đỉnh">
+      Transcendent peak realm
+    </ENTRY>
+    <ENTRY id="T055" freq="B-290" korean="암기" hanja="暗器" hanviet="Ám khí">
+      Hidden weapons
+    </ENTRY>
+    <ENTRY id="G012" freq="B-295" korean="도적" hanja="盜賊" hanviet="Đạo tặc">
+      Bandit, thief
+    </ENTRY>
+    <ENTRY id="C013" freq="B-301" korean="혈도" hanja="血道" hanviet="Huyết đạo">
+      Blood path, circulation route
+    </ENTRY>
+
+    <!-- C-Tier Entries (501-1000): Occasional, first mention in novel -->
+    <ENTRY id="T060" freq="C-505" korean="검로" hanja="劍路" hanviet="Kiếm lộ">
+      Sword path, trajectory
+    </ENTRY>
+    <ENTRY id="G013" freq="C-510" korean="산적" hanja="山賊" hanviet="Sơn tặc">
+      Mountain bandit
+    </ENTRY>
+    <ENTRY id="C014" freq="C-515" korean="현경" hanja="玄境" hanviet="Huyền cảnh">
+      Profound realm
+    </ENTRY>
+    <ENTRY id="T065" freq="C-520" korean="검광" hanja="劍光" hanviet="Kiếm quang">
+      Sword light (brilliant energy)
+    </ENTRY>
+    <ENTRY id="S008" freq="C-525" korean="점창파" hanja="點蒼派" hanviet="Điểm Thương Phái">
+      Diancang Sect
+    </ENTRY>
+    <ENTRY id="G014" freq="C-530" korean="흑도" hanja="黑道" hanviet="Hắc đạo">
+      Dark path, underworld
+    </ENTRY>
+    <ENTRY id="C015" freq="C-535" korean="입문" hanja="入門" hanviet="Nhập môn">
+      Entered disciple, beginner realm
+    </ENTRY>
+    <ENTRY id="T070" freq="C-540" korean="검의" hanja="劍意" hanviet="Kiếm ý">
+      Sword intent, domain ability
+    </ENTRY>
+
+    <!-- D-Tier Entries (1001-3000): Rare, no Hanja display -->
+    <ENTRY id="G015" freq="D-1050" korean="잡배" vn="tạp bối">
+      Rabble, small-time thugs (no Hanja needed)
+    </ENTRY>
+    <ENTRY id="T075" freq="D-1100" korean="허점" vn="hở">
+      Opening, weakness (no Hanja)
+    </ENTRY>
+    <ENTRY id="C016" freq="D-1200" korean="소성" hanja="小成" hanviet="Tiểu thành">
+      Minor achievement (rare mention)
+    </ENTRY>
+  </SAMPLE_ENTRIES>
+</HANJA_PROTOCOL>
+
+<!-- ========================================================================
+     SECTION 6: IO_PROTOCOL - Input/Output Formatting
+     ======================================================================== -->
+<IO_PROTOCOL>
+  <DESCRIPTION>
+    User-facing controls for Hanja display toggle and output formatting.
+  </DESCRIPTION>
+
+  <!-- User Commands -->
+  <TOGGLE_COMMANDS>
+    <CMD_FULL command="!hanja full">
+      Activate MODE_FULL: Giang hồ (江湖 / 강호)
+      Show Hán Việt + Hanja + Hangul
+    </CMD_FULL>
+
+    <CMD_STANDARD command="!hanja standard">
+      Activate MODE_STANDARD: Giang hồ (江湖)
+      Show Hán Việt + Hanja only (default)
+    </CMD_STANDARD>
+
+    <CMD_MINIMAL command="!hanja minimal">
+      Activate MODE_MINIMAL: Giang hồ
+      Show Hán Việt only (clean reading)
+    </CMD_MINIMAL>
+
+    <CMD_STATUS command="!hanja status">
+      Display current Hanja display mode
+    </CMD_STATUS>
+  </TOGGLE_COMMANDS>
+
+  <!-- Output Format Templates -->
+  <OUTPUT_TEMPLATES>
+    <TEMPLATE_DIALOGUE>
+      Korean: "사형, 이 검법을 가르쳐 주십시오."
+
+      Vietnamese (MODE_STANDARD):
+      —Sư huynh (師兄), xin hãy chỉ giáo cho đệ kiếm pháp (劍法) này.
+
+      Breakdown:
+      - 사형 → Sư huynh (師兄) [S-tier, always show]
+      - 검법 → kiếm pháp (劍法) [A-tier, first mention]
+    </TEMPLATE_DIALOGUE>
+
+    <TEMPLATE_NARRATION>
+      Korean: "그의 내공은 심후했다. 화경의 경지에 이른 것이 분명했다."
+
+      Vietnamese (MODE_STANDARD):
+      Nội công (內功) của hắn thâm hậu. Rõ ràng đã đạt tới Hóa Cảnh (化境).
+
+      Breakdown:
+      - 내공 → Nội công (內功) [S-tier]
+      - 화경 → Hóa Cảnh (化境) [A-tier]
+    </TEMPLATE_NARRATION>
+
+    <TEMPLATE_TECHNIQUE>
+      Korean: "매화낙영검!"
+
+      Vietnamese (MODE_STANDARD):
+      —Muội Hoa Lạc Anh Kiếm (梅花落英劍 / 매화낙영검)!
+
+      Note: Named techniques always show full: Hán Việt + Hanja + Hangul
+    </TEMPLATE_TECHNIQUE>
+  </OUTPUT_TEMPLATES>
+
+  <!-- Chapter Metadata -->
+  <CHAPTER_TRACKING>
+    <FIRST_MENTION_RESET scope="chapter">
+      Reset A-tier tracking at chapter boundaries
+      Example: 검기 shown again at start of Chapter 5
+    </FIRST_MENTION_RESET>
+
+    <SCENE_BOUNDARIES>
+      Major scene changes (location, time skip > 1 day):
+      - Reset B-tier first mentions
+      - Example: 협객 shown again after scene transition
+    </SCENE_BOUNDARIES>
+  </CHAPTER_TRACKING>
+</IO_PROTOCOL>
+
+<!-- ========================================================================
+     SECTION 7: COMBAT_LEXICON - Combat Terminology Database
+     ======================================================================== -->
+<COMBAT_LEXICON>
+  <DESCRIPTION>
+    Comprehensive combat vocabulary for Korean Murim novels with
+    cultivation realm context and intensity scaling.
+  </DESCRIPTION>
+
+  <!-- Basic Combat Verbs -->
+  <VERBS>
+    <STRIKE>
+      <KR>치다, 때리다, 가격하다</KR>
+      <HANJA>打, 擊</HANJA>
+      <VN>đánh, tấn công, công kích</VN>
+    </STRIKE>
+
+    <SLASH>
+      <KR>베다, 자르다, 난도질하다</KR>
+      <HANJA>斬, 劈</HANJA>
+      <VN>chém, chặt, chẻ</VN>
+    </SLASH>
+
+    <THRUST>
+      <KR>찌르다, 꿰뚫다, 관통하다</KR>
+      <HANJA>刺, 貫</HANJA>
+      <VN>đâm, xuyên thủng, quán thông</VN>
+    </THRUST>
+
+    <BLOCK>
+      <KR>막다, 방어하다, 수비하다</KR>
+      <HANJA>防, 守</HANJA>
+      <VN>chặn, phòng thủ, thủ vệ</VN>
+    </BLOCK>
+
+    <DODGE>
+      <KR>피하다, 회피하다, 몸을 날리다</KR>
+      <HANJA>避, 閃</HANJA>
+      <VN>tránh, né, thoát thân</VN>
+    </DODGE>
+  </VERBS>
+
+  <!-- Advanced Combat Terms -->
+  <ADVANCED_TECHNIQUES>
+    <TECHNIQUE name="연격" hanja="連擊" vn="liên kích">
+      Consecutive strikes, combo attacks
+    </TECHNIQUE>
+
+    <TECHNIQUE name="초식" hanja="招式" vn="chiêu thức">
+      Move, technique form
+    </TECHNIQUE>
+
+    <TECHNIQUE name="검로" hanja="劍路" vn="kiếm lộ">
+      Sword path, trajectory
+    </TECHNIQUE>
+
+    <TECHNIQUE name="파초" hanja="破招" vn="phá chiêu">
+      Counter-technique, breaking enemy's move
+    </TECHNIQUE>
+
+    <TECHNIQUE name="합격" hanja="合擊" vn="hợp kích">
+      Combined attack, team technique
+    </TECHNIQUE>
+
+    <TECHNIQUE name="절초" hanja="絶招" vn="tuyệt chiêu">
+      Ultimate technique, finishing move
+    </TECHNIQUE>
+  </ADVANCED_TECHNIQUES>
+
+  <!-- Weapon-Specific Terminology -->
+  <WEAPONS>
+    <SWORD group="검">
+      <TERM name="검법" hanja="劍法" vn="kiếm pháp">Sword technique</TERM>
+      <TERM name="검술" hanja="劍術" vn="kiếm thuật">Sword art</TERM>
+      <TERM name="검기" hanja="劍氣" vn="kiếm khí">Sword qi</TERM>
+      <TERM name="검강" hanja="劍罡" vn="kiếm cương">Sword energy</TERM>
+      <TERM name="검광" hanja="劍光" vn="kiếm quang">Sword light</TERM>
+      <TERM name="검의" hanja="劍意" vn="kiếm ý">Sword intent</TERM>
+    </SWORD>
+
+    <BLADE group="도">
+      <TERM name="도법" hanja="刀法" vn="đao pháp">Blade technique</TERM>
+      <TERM name="도기" hanja="刀氣" vn="đao khí">Blade qi</TERM>
+    </BLADE>
+
+    <SPEAR group="창">
+      <TERM name="창법" hanja="槍法" vn="thương pháp">Spear technique</TERM>
+      <TERM name="창술" hanja="槍術" vn="thương thuật">Spear art</TERM>
+    </SPEAR>
+
+    <STAFF group="봉">
+      <TERM name="봉법" hanja="棒法" vn="bổng pháp">Staff technique</TERM>
+    </STAFF>
+
+    <PALM group="장">
+      <TERM name="장법" hanja="掌法" vn="chưởng pháp">Palm technique</TERM>
+      <TERM name="장력" hanja="掌力" vn="chưởng lực">Palm force</TERM>
+    </PALM>
+
+    <FIST group="권">
+      <TERM name="권법" hanja="拳法" vn="quyền pháp">Fist technique</TERM>
+      <TERM name="권기" hanja="拳氣" vn="quyền khí">Fist qi</TERM>
+    </FIST>
+  </WEAPONS>
+
+  <!-- Internal Energy Cultivation -->
+  <INTERNAL_ENERGY>
+    <TERM name="내공" hanja="內功" vn="nội công" tier="S-10">
+      Internal energy, cultivated power
+    </TERM>
+
+    <TERM name="진기" hanja="眞氣" vn="chân khí" tier="S-15">
+      True qi, refined internal energy
+    </TERM>
+
+    <TERM name="내력" hanja="內力" vn="nội lực" tier="A-60">
+      Internal force, internal strength
+    </TERM>
+
+    <TERM name="기해" hanja="氣海" vn="khí hải" tier="B-250">
+      Sea of qi, energy reservoir
+    </TERM>
+
+    <TERM name="단전" hanja="丹田" vn="đan điền" tier="S-20">
+      Dantian, energy center
+    </TERM>
+
+    <TERM name="경맥" hanja="經脈" vn="kinh mạch" tier="A-100">
+      Meridians, energy channels
+    </TERM>
+
+    <TERM name="혈도" hanja="血道" vn="huyết đạo" tier="B-301">
+      Blood path, circulation route
+    </TERM>
+  </INTERNAL_ENERGY>
+
+  <!-- Combat States & Effects -->
+  <COMBAT_STATES>
+    <STATE name="기절" hanja="氣絶" vn="khí tuyệt">
+      Unconscious from qi depletion
+    </STATE>
+
+    <STATE name="중독" hanja="中毒" vn="trúng độc">
+      Poisoned state
+    </STATE>
+
+    <STATE name="주화입마" hanja="走火入魔" vn="Tẩu Hỏa Nhập Ma">
+      Qi deviation, cultivation backlash
+    </STATE>
+
+    <STATE name="혈기역류" hanja="血氣逆流" vn="huyết khí nghịch lưu">
+      Blood qi reversal (injury)
+    </STATE>
+
+    <STATE name="내상" hanja="內傷" vn="nội thương">
+      Internal injury
+    </STATE>
+
+    <STATE name="외상" hanja="外傷" vn="ngoại thương">
+      External wound
+    </STATE>
+
+    <STATE name="전력소진" hanja="全力消盡" vn="toàn lực tiêu tận">
+      Complete energy exhaustion
+    </STATE>
+  </COMBAT_STATES>
+
+  <!-- Intensity Scaling Examples -->
+  <INTENSITY_EXAMPLES>
+    <LOW_REALM intensity="1" realm="입문">
+      <KR>검을 빠르게 휘둘렀다.</KR>
+      <VN>Vung kiếm nhanh chóng.</VN>
+      <NOTE>Simple, direct action</NOTE>
+    </LOW_REALM>
+
+    <MID_REALM intensity="2" realm="화경">
+      <KR>검이 물처럼 흐르며 적의 허점을 파고들었다.</KR>
+      <VN>Kiếm chảy như nước, xuyên vào khe hở của địch.</VN>
+      <NOTE>Flowing metaphor, instinctive technique</NOTE>
+    </MID_REALM>
+
+    <HIGH_REALM intensity="3" realm="현경">
+      <KR>검광이 번쩍이며 허공을 갈랐다. 세상이 둘로 나뉘는 듯했다.</KR>
+      <VN>Kiếm quang lóe lên, chẻ đôi hư không. Thế giới như bị phân đôi.</VN>
+      <NOTE>Poetic, reality-bending descriptions</NOTE>
+    </HIGH_REALM>
+
+    <SUPREME_REALM intensity="4" realm="천하제일">
+      <KR>그의 일검에 천지가 울부짖었다. 하늘이 갈라지고 땅이 흔들렸다.</KR>
+      <VN>Một kiếm của ngài khiến thiên địa kêu gào. Trời tách đôi, đất rung chuyển.</VN>
+      <NOTE>Mythical, cosmic-scale impact</NOTE>
+    </SUPREME_REALM>
+  </INTENSITY_EXAMPLES>
+
+  <!-- Special Technique Categories -->
+  <TECHNIQUE_FAMILIES>
+    <FAMILY name="Plum Blossom Techniques" korean="매화류" sect="화산파">
+      <BASE realm="입문">매화검법 (Muội Hoa Kiếm Pháp)</BASE>
+      <ADVANCED realm="대성">이십사수 매화검 (Nhị Thập Tứ Thủ Muội Hoa Kiếm)</ADVANCED>
+      <ULTIMATE realm="화경">매화낙영검 (Muội Hoa Lạc Anh Kiếm)</ULTIMATE>
+      <SUPREME realm="현경">만화추우검 (Vạn Hoa Xuyên Vũ Kiếm)</SUPREME>
+      <DESCRIPTION>
+        Signature Mount Hua sword techniques inspired by plum blossoms.
+        Lower realms describe visual beauty, higher realms embody enlightenment.
+      </DESCRIPTION>
+    </FAMILY>
+
+    <FAMILY name="Mount Hua Techniques" korean="화산파">
+      <CORE>화산검법 (Hoa Sơn Kiếm Pháp)</CORE>
+      <SECRET>자하신공 (Tử Hà Thần Công)</SECRET>
+      <FORBIDDEN>폭풍의검 (Bạo Phong Chi Kiếm)</FORBIDDEN>
+      <ADVANCED>천강매화검 (Thiên Cương Muội Hoa Kiếm)</ADVANCED>
+      <ULTIMATE>화산신공 (Hoa Sơn Thần Công)</ULTIMATE>
+    </FAMILY>
+
+    <FAMILY name="Shaolin Techniques" korean="소림사">
+      <BASIC>나한권 (La Hán Quyền)</BASIC>
+      <INTERMEDIATE>대금강장 (Đại Kim Cương Chưởng)</INTERMEDIATE>
+      <ADVANCED>금강불괴신공 (Kim Cương Bất Hoại Thần Công)</ADVANCED>
+      <SUPREME>이지선 (Nhất Chỉ Thiền)</SUPREME>
+      <FORBIDDEN>대력금강지 (Đại Lực Kim Cương Chỉ)</FORBIDDEN>
+      <LIGHTNESS>소림경신법 (Thiểu Lâm Khinh Thân Pháp)</LIGHTNESS>
+    </FAMILY>
+
+    <FAMILY name="Wudang Techniques" korean="무당파">
+      <BASIC>무당검법 (Vô Đang Kiếm Pháp)</BASIC>
+      <CORE>태극권 (Thái Cực Quyền)</CORE>
+      <ADVANCED>태극혜검 (Thái Cực Huệ Kiếm)</ADVANCED>
+      <SUPREME>순양무극공 (Thuần Dương Vô Cực Công)</SUPREME>
+      <LIGHTNESS>사상보법 (Tứ Tượng Bộ Pháp)</LIGHTNESS>
+      <INTERNAL>면장신공 (Miên Chưởng Thần Công)</INTERNAL>
+    </FAMILY>
+
+    <FAMILY name="Beggars' Sect Techniques" korean="개방">
+      <BASIC>타구봉법 (Đả Cẩu Bổng Pháp)</BASIC>
+      <ADVANCED>항룡십팔장 (Hàng Long Thập Bát Chưởng)</ADVANCED>
+      <SUPREME>항룡유회 (Hàng Long Hữu Hối)</SUPREME>
+      <FOOTWORK>소요유보법 (Tiêu Dao Du Bộ Pháp)</FOOTWORK>
+    </FAMILY>
+
+    <FAMILY name="Tang Clan Techniques" korean="당문">
+      <POISON>당문독공 (Đường Môn Độc Công)</POISON>
+      <PROJECTILE>암기술 (Ám Khí Thuật)</PROJECTILE>
+      <ADVANCED>천라지망수 (Thiên La Địa Võng Thủ)</ADVANCED>
+      <SUPREME>만화점혈수 (Vạn Hoa Điểm Huyệt Thủ)</SUPREME>
+    </FAMILY>
+
+    <FAMILY name="Emei Techniques" korean="아미파">
+      <BASIC>아미검법 (Nga Mi Kiếm Pháp)</BASIC>
+      <ADVANCED>금정면장 (Kim Đỉnh Miên Chưởng)</ADVANCED>
+      <SUPREME>멸정사태검 (Diệt Tình Tứ Thái Kiếm)</SUPREME>
+    </FAMILY>
+
+    <FAMILY name="Kunlun Techniques" korean="곤륜파">
+      <BASIC>곤륜검법 (Côn Lôn Kiếm Pháp)</BASIC>
+      <ADVANCED>빙백신공 (Băng Phách Thần Công)</ADVANCED>
+      <SUPREME>곤륜삼성검 (Côn Lôn Tam Thánh Kiếm)</SUPREME>
+    </FAMILY>
+
+    <FAMILY name="Demonic Cult Techniques" korean="천마신교">
+      <BASIC>천마공 (Thiên Ma Công)</BASIC>
+      <ADVANCED>혈마신공 (Huyết Ma Thần Công)</ADVANCED>
+      <FORBIDDEN>마신강림 (Ma Thần Cáng Lâm)</FORBIDDEN>
+      <ULTIMATE>천마대법 (Thiên Ma Đại Pháp)</ULTIMATE>
+    </FAMILY>
+  </TECHNIQUE_FAMILIES>
+
+  <!-- Movement & Lightness Techniques -->
+  <MOVEMENT_ARTS>
+    <CATEGORY name="Lightness Skills" korean="경공" hanja="輕功" vn="khinh công">
+      <DESCRIPTION>
+        Techniques for speed, agility, and aerial movement.
+        Higher realms enable flight-like motion.
+      </DESCRIPTION>
+
+      <TECHNIQUE name="제비반신" hanja="燕返身" vn="Yến Phản Thân">
+        Swallow reversal, mid-air direction change
+      </TECHNIQUE>
+
+      <TECHNIQUE name="사상보법" hanja="四象步法" vn="Tứ Tượng Bộ Pháp">
+        Four Symbols Footwork (Wudang)
+      </TECHNIQUE>
+
+      <TECHNIQUE name="소요유" hanja="逍遙遊" vn="Tiêu Dao Du">
+        Carefree Wandering, effortless movement
+      </TECHNIQUE>
+
+      <TECHNIQUE name="신행술" hanja="神行術" vn="Thần Hành Thuật">
+        Divine Movement Art, supernatural speed
+      </TECHNIQUE>
+
+      <TECHNIQUE name="천리마행" hanja="千里馬行" vn="Thiên Lý Mã Hành">
+        Thousand Mile Horse Step
+      </TECHNIQUE>
+
+      <TECHNIQUE name="허공보법" hanja="虛空步法" vn="Hư Không Bộ Pháp">
+        Void Step, walking on air (현경+ realm)
+      </TECHNIQUE>
+    </CATEGORY>
+
+    <CATEGORY name="Evasion Techniques" korean="회피술">
+      <TECHNIQUE name="잔영보법" vn="Tàn Ảnh Bộ Pháp">
+        Afterimage Step, leaves illusions
+      </TECHNIQUE>
+
+      <TECHNIQUE name="귀신같은신법" vn="Thần pháp ma quỷ">
+        Ghostly movement, unpredictable
+      </TECHNIQUE>
+
+      <TECHNIQUE name="팔방섬전" hanja="八方閃展" vn="Bát Phương Thiểm Triển">
+        Eight Directions Flash
+      </TECHNIQUE>
+    </CATEGORY>
+  </MOVEMENT_ARTS>
+
+  <!-- Acupoint Striking -->
+  <ACUPOINT_ARTS>
+    <CATEGORY name="점혈술" hanja="點穴術" vn="điểm huyệt thuật">
+      <DESCRIPTION>
+        Acupoint striking to paralyze, disable, or kill opponents.
+        Requires precise internal energy control.
+      </DESCRIPTION>
+
+      <TECHNIQUE name="점혈" hanja="點穴" vn="điểm huyệt">
+        Strike acupoint to paralyze limb
+      </TECHNIQUE>
+
+      <TECHNIQUE name="봉혈" hanja="封穴" vn="phong huyệt">
+        Seal acupoint to block qi flow
+      </TECHNIQUE>
+
+      <TECHNIQUE name="해혈" hanja="解穴" vn="giải huyệt">
+        Release sealed acupoint
+      </TECHNIQUE>
+
+      <TECHNIQUE name="사혈점" hanja="死穴點" vn="tử huyệt điểm">
+        Strike fatal acupoint
+      </TECHNIQUE>
+
+      <TECHNIQUE name="지경팔맥" hanja="奇經八脈" vn="kỳ kinh bát mạch">
+        Eight Extraordinary Meridians
+      </TECHNIQUE>
+    </CATEGORY>
+  </ACUPOINT_ARTS>
+
+  <!-- Projectile Weapons -->
+  <PROJECTILE_WEAPONS>
+    <CATEGORY name="암기" hanja="暗器" vn="ám khí">
+      <DESCRIPTION>
+        Hidden weapons: needles, darts, throwing knives.
+        Tang Clan specializes in poison-coated projectiles.
+      </DESCRIPTION>
+
+      <WEAPON name="비도" hanja="飛刀" vn="phi đao">
+        Throwing knife
+      </WEAPON>
+
+      <WEAPON name="표창" hanja="飃槍" vn="tiêu thương">
+        Shuriken, throwing star
+      </WEAPON>
+
+      <WEAPON name="독침" hanja="毒針" vn="độc châm">
+        Poison needle
+      </WEAPON>
+
+      <WEAPON name="매화표" hanja="梅花鏢" vn="muội hoa tiêu">
+        Plum Blossom Dart
+      </WEAPON>
+
+      <WEAPON name="천라지망" hanja="天羅地網" vn="thiên la địa võng">
+        Heaven-Earth Net (projectile barrage)
+      </WEAPON>
+    </CATEGORY>
+  </PROJECTILE_WEAPONS>
+
+  <!-- Defensive Techniques -->
+  <DEFENSIVE_ARTS>
+    <CATEGORY name="방어술" vn="phòng thủ thuật">
+      <TECHNIQUE name="철벽방어" hanja="鐵壁防禦" vn="Thiết Bích Phòng Ngự">
+        Iron Wall Defense
+      </TECHNIQUE>
+
+      <TECHNIQUE name="금강불괴" hanja="金剛不壞" vn="Kim Cương Bất Hoại">
+        Vajra Indestructible Body (Shaolin)
+      </TECHNIQUE>
+
+      <TECHNIQUE name="호신강기" hanja="護身罡氣" vn="Hộ Thân Cương Khí">
+        Protective Energy Shield (현경+ realm)
+      </TECHNIQUE>
+
+      <TECHNIQUE name="유연방어" vn="Nhu nhiên phòng ngự">
+        Soft Defense, deflecting attacks (Wudang style)
+      </TECHNIQUE>
+
+      <TECHNIQUE name="회천반야공" hanja="回天般若功" vn="Hồi Thiên Bát Nhã Công">
+        Heaven Reversing Defense, redirects attacks
+      </TECHNIQUE>
+    </CATEGORY>
+  </DEFENSIVE_ARTS>
+
+  <!-- Special Combat Patterns -->
+  <COMBAT_PATTERNS>
+    <PATTERN name="Overwhelming Offense" korean="압도적공격">
+      <DESCRIPTION>
+        High realm vs low realm: one-sided dominance.
+        Language: mythical verbs, cosmic metaphors.
+      </DESCRIPTION>
+      <EXAMPLE>
+        절정 vs 입문: "일검에 상대를 압도했다" → "Một kiếm áp đảo đối thủ"
+      </EXAMPLE>
+    </PATTERN>
+
+    <PATTERN name="Evenly Matched" korean="백중지세">
+      <DESCRIPTION>
+        Same realm combat: back-and-forth exchanges.
+        Language: tactical descriptions, technique clashes.
+      </DESCRIPTION>
+      <EXAMPLE>
+        화경 vs 화경: "검과 검이 부딪치며 불꽃이 튀었다"
+        → "Kiếm va kiếm, lửa bắn tung tóe"
+      </EXAMPLE>
+    </PATTERN>
+
+    <PATTERN name="Underdog Victory" korean="역전승">
+      <DESCRIPTION>
+        Lower realm defeats higher: cunning, desperation, hidden trump card.
+        Language: tense buildup, sudden reversal.
+      </DESCRIPTION>
+      <EXAMPLE>
+        대성 vs 절정: "절망적 순간, 비기를 꺼내들었다"
+        → "Khoảnh khắc tuyệt vọng, tung ra bí kíchế"
+      </EXAMPLE>
+    </PATTERN>
+
+    <PATTERN name="Group Combat" korean="집단전">
+      <DESCRIPTION>
+        Multiple opponents: formation techniques, combined attacks.
+        Language: coordinated action verbs.
+      </DESCRIPTION>
+      <EXAMPLE>
+        "오인의 합격이 펼쳐졌다" → "Hợp kích ngũ nhân triển khai"
+      </EXAMPLE>
+    </PATTERN>
+  </COMBAT_PATTERNS>
+
+  <!-- Injury & Healing Terminology -->
+  <INJURY_HEALING>
+    <INJURY name="중상" hanja="重傷" vn="trọng thương">
+      Severe injury, life-threatening
+    </INJURY>
+
+    <INJURY name="경상" hanja="輕傷" vn="khinh thương">
+      Light injury, superficial
+    </INJURY>
+
+    <INJURY name="내상" hanja="內傷" vn="nội thương">
+      Internal injury from qi clash
+    </INJURY>
+
+    <INJURY name="주화입마" hanja="走火入魔" vn="tẩu hỏa nhập ma">
+      Qi deviation, cultivation backlash
+    </INJURY>
+
+    <HEALING name="운공조식" hanja="運功調息" vn="vận công điều tức">
+      Circulate qi to recover
+    </HEALING>
+
+    <HEALING name="타좌요법" hanja="打坐療法" vn="đả tọa liệu pháp">
+      Meditative healing
+    </HEALING>
+
+    <HEALING name="영약" hanja="靈藥" vn="linh dược">
+      Spirit medicine, miraculous healing pill
+    </HEALING>
+
+    <HEALING name="환골탈태" hanja="換骨奪胎" vn="hoán cốt đoạt thai">
+      Bone transformation, complete body renewal (breakthrough)
+    </HEALING>
+  </INJURY_HEALING>
+</COMBAT_LEXICON>
+
+</TRANSLATION_SYSTEM>
