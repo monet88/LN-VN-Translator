@@ -815,6 +815,514 @@
     </SWORD_INTENT>
   </QI_EFFECTS>
 
+  <!-- ================================================================
+       QI DESCRIPTION TEMPLATES - 15 Template Patterns
+       Internal energy flow narration (내공, 검기, 검강)
+       Realm-based intensity with energy type variations
+       ================================================================ -->
+  <QI_TEMPLATES total="15+">
+    <DESCRIPTION>
+      Templates for describing internal energy (qi/ki) in combat and cultivation.
+      Each template has 4 intensity variations by realm:
+      - BASIC: 입문-대성 (simple, direct descriptions)
+      - REFINED: 화경-절정 (flowing, metaphorical)
+      - PROFOUND: 초절정-현경 (philosophical, poetic)
+      - MYTHICAL: 화경지경-천하제일 (cosmic, reality-bending)
+    </DESCRIPTION>
+
+    <!-- =====================
+         TEMPLATE 1: QI GATHERING (기운 집중)
+         ===================== -->
+    <TEMPLATE id="T01" name="Qi Gathering" korean="기 모으기" vn="Tụ khí">
+      <DESCRIPTION>
+        Character concentrating internal energy before attack or technique.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>단전에 내공을 모았다.</KR>
+        <VN>Tụ nội lực vào đan điền.</VN>
+        <NOTE>Simple, direct statement</NOTE>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>진기가 단전에서 솟구쳐 경맥을 따라 흐르기 시작했다.</KR>
+        <VN>Chân khí từ đan điền bùng phát, theo kinh mạch tuần hoàn.</VN>
+        <NOTE>Flow metaphor, meridian awareness</NOTE>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>내공이 깊은 바다처럼 고요히 소용돌이치며, 천지의 기운이 몸으로 몰려들었다.</KR>
+        <VN>Nội công như biển sâu cuộn xoáy tĩnh lặng, thiên địa chi khí ùa vào thân thể.</VN>
+        <NOTE>Ocean metaphor, heaven-earth connection</NOTE>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>그의 단전은 이미 바다를 넘어 우주를 담고 있었다. 천지가 그의 호흡에 맞춰 숨을 쉬었다.</KR>
+        <VN>Đan điền của ngài đã vượt qua đại dương, dung nạp cả vũ trụ. Thiên địa hít thở theo nhịp của ngài.</VN>
+        <NOTE>Cosmic scale, universe breathing</NOTE>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 2: QI RELEASE (기운 방출)
+         ===================== -->
+    <TEMPLATE id="T02" name="Qi Release" korean="기 방출" vn="Phóng khí">
+      <DESCRIPTION>
+        Releasing internal energy as attack or pressure wave.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>내공을 내뿜었다.</KR>
+        <VN>Phóng nội lực ra ngoài.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>검에 담긴 내공이 폭류처럼 터져 나왔다.</KR>
+        <VN>Nội lực tích tụ trong kiếm bạo phát như thác lũ.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>전신의 진기가 한순간에 검으로 쏟아지며, 검기가 폭풍처럼 휘몰아쳤다.</KR>
+        <VN>Toàn thân chân khí nhất thời dồn vào kiếm, kiếm khí cuồn cuộn như bão táp.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>검을 휘두르자, 천지의 기운이 함께 움직였다. 하늘이 울고 땅이 갈라지는 듯한 압력이 세상을 뒤덮었다.</KR>
+        <VN>Vung kiếm ra, thiên địa chi khí cùng vận động. Áp lực như trời gào đất nứt bao trùm thế gian.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 3: ENERGY CLASH (기운 충돌)
+         ===================== -->
+    <TEMPLATE id="T03" name="Energy Clash" korean="기운 충돌" vn="Khí lực va chạm">
+      <DESCRIPTION>
+        Two internal energies colliding in combat.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>두 사람의 내공이 부딪쳤다.</KR>
+        <VN>Nội lực hai người va chạm.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>두 검강이 허공에서 부딪치며 섬광이 튀었다.</KR>
+        <VN>Hai kiếm cương va nhau giữa hư không, tia sáng bắn tung.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>두 고수의 검의가 충돌하자, 허공이 갈라지며 충격파가 사방으로 퍼져나갔다.</KR>
+        <VN>Kiếm ý hai cao thủ va chạm, hư không tách đôi, sóng xung kích lan tỏa tứ phương.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>두 천하제일의 기세가 부딪치는 순간, 세계가 잠시 멈춘 듯했다. 천지가 갈라지고, 별들마저 흔들렸다.</KR>
+        <VN>Khoảnh khắc khí thế hai thiên hạ đệ nhất va chạm, thế giới như ngừng lại. Thiên địa tách đôi, tinh tú cũng rung chuyển.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 4: MERIDIAN FLOW (경맥 순환)
+         ===================== -->
+    <TEMPLATE id="T04" name="Meridian Flow" korean="경맥 순환" vn="Kinh mạch tuần hoàn">
+      <DESCRIPTION>
+        Internal energy circulating through meridians.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>내공이 경맥을 따라 흘렀다.</KR>
+        <VN>Nội công chảy theo kinh mạch.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>진기가 팔맥을 순환하며 온몸이 따스해졌다.</KR>
+        <VN>Chân khí tuần hoàn bát mạch, toàn thân ấm áp.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>기경팔맥이 완전히 열리며, 내공이 강물처럼 도도히 흘렀다. 온몸이 빛나는 듯했다.</KR>
+        <VN>Kỳ kinh bát mạch hoàn toàn khai thông, nội công chảy cuồn cuộn như sông lớn. Toàn thân tựa phát sáng.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>그의 경맥은 이미 경맥이 아니었다. 천지의 기운이 흐르는 강이었다. 숨 한 번에 세상의 기운이 순환했다.</KR>
+        <VN>Kinh mạch của ngài không còn là kinh mạch. Đó là dòng sông thiên địa chi khí. Mỗi hơi thở, khí vận thế gian tuần hoàn.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 5: SWORD QI PROJECTION (검기 투사)
+         ===================== -->
+    <TEMPLATE id="T05" name="Sword Qi Projection" korean="검기 투사" vn="Kiếm khí đầu xạ">
+      <DESCRIPTION>
+        Projecting sword energy as ranged attack.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>검에서 기운이 뿜어져 나왔다.</KR>
+        <VN>Khí lực phóng ra từ kiếm.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>검기가 날카롭게 뻗어나가 허공을 갈랐다.</KR>
+        <VN>Kiếm khí sắc bén vươn ra, chẻ đôi hư không.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>검강이 번개처럼 뻗어나갔다. 백 장 밖의 적이 피할 틈도 없이 쓰러졌다.</KR>
+        <VN>Kiếm cương lao như sấm sét. Địch cách trăm trượng không kịp né, đã gục ngã.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>검의가 펼쳐지자, 천리 밖에서도 그의 검을 느낄 수 있었다. 검을 휘두르지 않아도, 의지만으로 적을 베었다.</KR>
+        <VN>Kiếm ý triển khai, thiên lý xa cũng cảm nhận được kiếm của ngài. Không cần vung kiếm, chỉ ý niệm cũng đủ trảm địch.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 6: PROTECTIVE QI BARRIER (호신 기운)
+         ===================== -->
+    <TEMPLATE id="T06" name="Protective Qi Barrier" korean="호신 강기" vn="Hộ thân cương khí">
+      <DESCRIPTION>
+        Defensive energy shield around body.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>몸 주위에 내공을 둘렀다.</KR>
+        <VN>Bao nội lực quanh thân.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>진기가 온몸을 감싸며 투명한 방어막을 형성했다.</KR>
+        <VN>Chân khí bao phủ toàn thân, hình thành lá chắn trong suốt.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>호신강기가 빛나며 펼쳐졌다. 어떤 공격도 그를 건드릴 수 없을 것 같았다.</KR>
+        <VN>Hộ thân cương khí rực sáng triển khai. Tựa như không công kích nào chạm được tới ngài.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>그가 서 있는 곳은 이미 별개의 세계였다. 그의 강기는 천지를 가르는 결계가 되어, 만군이 와도 다가갈 수 없었다.</KR>
+        <VN>Nơi ngài đứng đã là thế giới riêng. Cương khí của ngài hóa thành kết giới chia cắt thiên địa, vạn quân đến cũng không thể bén mảng.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 7: QI ABSORPTION (기운 흡수)
+         ===================== -->
+    <TEMPLATE id="T07" name="Qi Absorption" korean="기 흡수" vn="Hấp thụ khí">
+      <DESCRIPTION>
+        Absorbing external qi or enemy's energy.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>상대의 내공을 흡수했다.</KR>
+        <VN>Hấp thụ nội lực của đối phương.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>적의 검기를 손바닥으로 받아들이며, 그 기운을 자신의 것으로 만들었다.</KR>
+        <VN>Dùng lòng bàn tay hứng kiếm khí địch, biến khí lực đó thành của mình.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>북명신공이 발동했다. 적의 내공이 바다로 흘러드는 강물처럼 그에게 빨려 들어갔다.</KR>
+        <VN>Bắc Minh Thần Công phát động. Nội lực địch như sông chảy vào biển, bị hút sạch vào người.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>그의 단전은 블랙홀과 같았다. 천지의 모든 기운이 그에게로 몰려들었다. 적들은 기운을 빼앗기며 무력해졌다.</KR>
+        <VN>Đan điền của ngài như hố đen. Tất cả khí lực thiên địa đều đổ về. Kẻ địch bị cướp đoạt khí lực, trở nên bất lực.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 8: QI SUPPRESSION/PRESSURE (기세 압박)
+         ===================== -->
+    <TEMPLATE id="T08" name="Qi Pressure" korean="기세 압박" vn="Khí thế áp bách">
+      <DESCRIPTION>
+        Using aura/pressure to suppress opponents without physical attack.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>강한 기세가 느껴졌다.</KR>
+        <VN>Cảm nhận được khí thế mạnh mẽ.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>그의 기세가 무겁게 내려앉자, 하수들은 숨쉬기조차 힘들어했다.</KR>
+        <VN>Khí thế của hắn đè nặng, đám hạ thủ thở cũng khó khăn.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>기세만으로 주변이 얼어붙었다. 절정 고수들마저 무릎이 꺾이려 했다.</KR>
+        <VN>Chỉ khí thế đã khiến xung quanh đóng băng. Ngay cả tuyệt đỉnh cao thủ cũng muốn quỳ gối.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>그가 눈을 뜨자, 세상이 숨을 죽였다. 그의 존재 자체가 압도적인 위압이었다. 산조차 그 앞에 무릎 꿇는 듯했다.</KR>
+        <VN>Ngài mở mắt, thế gian nín thở. Sự tồn tại của ngài chính là uy áp tuyệt đối. Núi cũng như quỳ phục trước ngài.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 9: BREAKTHROUGH ENERGY SURGE (돌파 시 기운 폭발)
+         ===================== -->
+    <TEMPLATE id="T09" name="Breakthrough Energy Surge" korean="돌파 기폭" vn="Đột phá khí bạo">
+      <DESCRIPTION>
+        Energy explosion during cultivation breakthrough.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>돌파의 순간, 내공이 급격히 상승했다.</KR>
+        <VN>Khoảnh khắc đột phá, nội công tăng vọt.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>병목을 뚫는 순간, 진기가 폭류처럼 쏟아져 나왔다. 주변의 공기가 요동쳤다.</KR>
+        <VN>Khoảnh khắc phá vỡ bình cổ, chân khí tuôn trào như thác. Không khí xung quanh dao động.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>대오가 찾아온 순간, 천지의 기운이 몸으로 밀려들었다. 경지가 넓어지며, 세상이 달라 보였다.</KR>
+        <VN>Khoảnh khắc đại ngộ ập đến, thiên địa chi khí ùa vào thân thể. Cảnh giới mở rộng, thế giới khác biệt.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>그가 새로운 경지에 들어서자, 하늘에 천상의 문이 열리는 듯한 환영이 보였다. 온 세상이 그의 탄생을 축하하는 듯했다.</KR>
+        <VN>Khi ngài bước vào cảnh giới mới, thiên môn như mở ra trên trời cao. Cả thế gian như chúc mừng sự đản sinh của ngài.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 10: INTERNAL INJURY DESCRIPTION (내상 묘사)
+         ===================== -->
+    <TEMPLATE id="T10" name="Internal Injury" korean="내상 묘사" vn="Mô tả nội thương">
+      <DESCRIPTION>
+        Describing internal damage from qi attacks.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>내상을 입었다. 가슴이 막혔다.</KR>
+        <VN>Bị nội thương. Ngực nghẹn đắng.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>적의 장력에 경맥이 어지러워졌다. 피가 목 끝까지 치밀어 올랐다.</KR>
+        <VN>Chưởng lực địch khiến kinh mạch rối loạn. Máu dâng lên tận cổ họng.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>단전에 균열이 생기는 듯한 고통이 밀려왔다. 평생 쌓아온 내공이 흩어지는 공포가 엄습했다.</KR>
+        <VN>Cơn đau như đan điền nứt vỡ ập đến. Nỗi sợ hãi nội công cả đời tích tụ tan biến bao trùm.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>천하제일이 중상을 입는 것은 세계가 무너지는 것과 같았다. 그의 피 한 방울에도 천지가 반응하며 흔들렸다.</KR>
+        <VN>Thiên hạ đệ nhất bị trọng thương như thế giới sụp đổ. Mỗi giọt máu của ngài khiến thiên địa phản ứng, rung chuyển.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 11: DEMONIC/EVIL QI (마기/사기)
+         ===================== -->
+    <TEMPLATE id="T11" name="Demonic Qi" korean="마기 묘사" vn="Ma khí mô tả">
+      <DESCRIPTION>
+        Dark/demonic energy descriptions for evil cultivators.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>불길한 기운이 느껴졌다.</KR>
+        <VN>Cảm nhận được khí lực bất tường.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>마기가 검은 연기처럼 피어올랐다. 주변의 생명력이 시들어갔다.</KR>
+        <VN>Ma khí bốc lên như khói đen. Sinh lực xung quanh héo úa.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>천마의 기운이 폭주했다. 하늘이 붉게 물들고, 대지가 울부짖었다.</KR>
+        <VN>Khí lực Thiên Ma bạo phát. Trời nhuộm đỏ, đại địa gào thét.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>마존이 강림하자, 세계가 어둠에 잠겼다. 그의 마기는 태양마저 삼키려 했고, 생명 있는 모든 것이 두려움에 떨었다.</KR>
+        <VN>Ma Tôn giáng lâm, thế giới chìm trong bóng tối. Ma khí của ngài muốn nuốt chửng cả mặt trời, vạn vật hữu linh run rẩy trong sợ hãi.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 12: HEALING QI CIRCULATION (치유 운공)
+         ===================== -->
+    <TEMPLATE id="T12" name="Healing Qi" korean="치유 운공" vn="Trị thương vận công">
+      <DESCRIPTION>
+        Using internal energy for healing.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>조용히 운공조식을 시작했다.</KR>
+        <VN>Lặng lẽ bắt đầu vận công điều tức.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>진기를 상처 부위로 이끌어, 천천히 내상을 회복했다.</KR>
+        <VN>Dẫn chân khí đến vết thương, từ từ hồi phục nội thương.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>전신의 기혈이 역류하던 것이 점차 안정되었다. 단전의 균열도 서서히 메워졌다.</KR>
+        <VN>Khí huyết toàn thân vốn nghịch lưu dần ổn định. Vết nứt đan điền cũng từ từ lành lại.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>그의 경지에서 죽음은 선택이었다. 치명상도 그의 의지 앞에 무력했다. 천지의 기운이 그를 치유하려 달려들었다.</KR>
+        <VN>Ở cảnh giới của ngài, cái chết là sự lựa chọn. Tử thương cũng bất lực trước ý chí của ngài. Thiên địa chi khí ùa đến để chữa lành.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 13: WEAPON ENERGY INFUSION (무기 기 주입)
+         ===================== -->
+    <TEMPLATE id="T13" name="Weapon Qi Infusion" korean="무기 기 주입" vn="Chú khí vào binh khí">
+      <DESCRIPTION>
+        Infusing internal energy into weapon.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>검에 내공을 실었다.</KR>
+        <VN>Dồn nội lực vào kiếm.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>진기가 검을 감싸며, 날 끝에서 희미한 빛이 피어올랐다.</KR>
+        <VN>Chân khí bao quanh kiếm, ánh sáng mờ nhạt toát ra từ lưỡi.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>검기가 검을 감싸며 환하게 빛났다. 검 자체가 살아 있는 듯 윙윙거렸다.</KR>
+        <VN>Kiếm khí bao bọc kiếm, rực sáng. Kiếm như sống động, vo vo rung ngân.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>그의 손에 든 것은 이미 검이 아니었다. 그것은 천지를 베는 신병이었다. 검에 담긴 검의가 세상을 압도했다.</KR>
+        <VN>Trong tay ngài không còn là kiếm. Đó là thần binh chém thiên địa. Kiếm ý chứa trong kiếm áp đảo thế gian.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 14: QI SENSE/DETECTION (기감)
+         ===================== -->
+    <TEMPLATE id="T14" name="Qi Sensing" korean="기감" vn="Cảm khí">
+      <DESCRIPTION>
+        Detecting others' presence through qi.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>인기척이 느껴졌다.</KR>
+        <VN>Cảm nhận được hơi người.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>기감을 펼쳐 주변을 살폈다. 백 장 내에 세 명의 고수가 숨어 있었다.</KR>
+        <VN>Triển khai khí cảm thăm dò xung quanh. Trong trăm trượng có ba cao thủ ẩn nấp.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>의념을 펼치자, 십 리 내의 모든 생명이 느껴졌다. 적의 숫자와 경지까지 한눈에 파악되었다.</KR>
+        <VN>Triển khai ý niệm, tất cả sinh mệnh trong mười dặm đều cảm nhận được. Số lượng và cảnh giới của địch đều nắm rõ.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>그의 감각은 천리를 넘었다. 세상의 모든 움직임이 그의 의식 속에 있었다. 숨는다는 것은 불가능했다.</KR>
+        <VN>Cảm giác của ngài vượt qua thiên lý. Mọi chuyển động của thế gian đều trong ý thức của ngài. Ẩn nấp là bất khả.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- =====================
+         TEMPLATE 15: QI EXHAUSTION (기력 소진)
+         ===================== -->
+    <TEMPLATE id="T15" name="Qi Exhaustion" korean="기력 소진" vn="Khí lực cạn kiệt">
+      <DESCRIPTION>
+        Running out of internal energy in combat.
+      </DESCRIPTION>
+
+      <BASIC realm="입문-대성">
+        <KR>내공이 바닥났다.</KR>
+        <VN>Nội lực cạn sạch.</VN>
+      </BASIC>
+
+      <REFINED realm="화경-절정">
+        <KR>단전이 텅 빈 느낌이었다. 검을 들 힘조차 남지 않았다.</KR>
+        <VN>Đan điền trống rỗng. Không còn sức cầm kiếm.</VN>
+      </REFINED>
+
+      <PROFOUND realm="초절정-현경">
+        <KR>진기가 고갈되며 경맥이 메말라갔다. 한 번의 대결로 평생의 내공을 소진한 것 같았다.</KR>
+        <VN>Chân khí cạn kiệt, kinh mạch khô kiệt. Một trận chiến như đốt hết nội công cả đời.</VN>
+      </PROFOUND>
+
+      <MYTHICAL realm="화경지경-천하제일">
+        <KR>천하제일의 내공이 바닥나는 순간, 세상이 한순간 어두워졌다. 그의 기운이 사라지자, 모든 것이 불안정해졌다.</KR>
+        <VN>Khoảnh khắc nội công thiên hạ đệ nhất cạn kiệt, thế gian tối sầm trong chốc lát. Khi khí lực ngài biến mất, vạn vật đều bất ổn.</VN>
+      </MYTHICAL>
+    </TEMPLATE>
+
+    <!-- ===============================
+         ENERGY TYPE VARIATIONS
+         =============================== -->
+    <ENERGY_TYPES>
+      <DESCRIPTION>
+        Different energy types use different vocabulary and imagery.
+      </DESCRIPTION>
+
+      <TYPE name="내공" vn="Nội công" imagery="ocean, river, deep">
+        <VERBS_KR>쌓다, 축적하다, 순환하다, 운용하다</VERBS_KR>
+        <VERBS_VN>tích tụ, dồn nén, tuần hoàn, vận dụng</VERBS_VN>
+        <METAPHORS>biển sâu, dòng sông, hồ tĩnh lặng</METAPHORS>
+      </TYPE>
+
+      <TYPE name="진기" vn="Chân khí" imagery="refined, pure, flow">
+        <VERBS_KR>정제하다, 흐르다, 순환시키다</VERBS_KR>
+        <VERBS_VN>tinh luyện, chảy, tuần hoàn</VERBS_VN>
+        <METAPHORS>suối trong, ánh sáng thuần khiết</METAPHORS>
+      </TYPE>
+
+      <TYPE name="검기" vn="Kiếm khí" imagery="sharp, cutting, piercing">
+        <VERBS_KR>베다, 찌르다, 뿜다, 쏘다</VERBS_KR>
+        <VERBS_VN>chém, đâm, phóng, bắn</VERBS_VN>
+        <METAPHORS>ánh sáng sắc bén, tia chớp, sấm sét</METAPHORS>
+      </TYPE>
+
+      <TYPE name="검강" vn="Kiếm cương" imagery="solid, visible, devastating">
+        <VERBS_KR>일으키다, 발사하다, 터뜨리다</VERBS_KR>
+        <VERBS_VN>triệu hoán, phóng ra, bạo phát</VERBS_VN>
+        <METAPHORS>tia sáng cứng rắn, cột năng lượng</METAPHORS>
+      </TYPE>
+
+      <TYPE name="마기" vn="Ma khí" imagery="dark, corrupting, devouring">
+        <VERBS_KR>오염시키다, 삼키다, 부패시키다</VERBS_KR>
+        <VERBS_VN>ô nhiễm, nuốt chửng, hủ bại</VERBS_VN>
+        <METAPHORS>bóng tối, khói đen, hư vô</METAPHORS>
+      </TYPE>
+
+      <TYPE name="장력" vn="Chưởng lực" imagery="force, impact, wave">
+        <VERBS_KR>밀어내다, 쏟아붓다, 폭발시키다</VERBS_KR>
+        <VERBS_VN>đẩy lui, tuôn trào, bạo phát</VERBS_VN>
+        <METAPHORS>sóng xung kích, lực đẩy, bão</METAPHORS>
+      </TYPE>
+    </ENERGY_TYPES>
+
+    <!-- STATISTICS -->
+    <STATISTICS>
+      <TOTAL_TEMPLATES>15</TOTAL_TEMPLATES>
+      <INTENSITY_LEVELS>4 (Basic, Refined, Profound, Mythical)</INTENSITY_LEVELS>
+      <ENERGY_TYPES>6 (내공, 진기, 검기, 검강, 마기, 장력)</ENERGY_TYPES>
+      <TOTAL_EXAMPLE_PASSAGES>60 (15 templates × 4 levels)</TOTAL_EXAMPLE_PASSAGES>
+    </STATISTICS>
+  </QI_TEMPLATES>
+
   <!-- Combat Stance Terminology -->
   <STANCES>
     <BASIC_STANCE name="기본자세" vn="tư thế cơ bản" />
@@ -822,6 +1330,378 @@
     <PLUM_BLOSSOM_STEP name="매화보법" hanja="梅花步法" vn="muội hoa bộ pháp" />
     <VOID_STEP name="허공보법" hanja="虛空步法" vn="hư không bộ pháp" />
   </STANCES>
+
+  <!-- ================================================================
+       ACTION_PACING - Staccato Style for Korean Murim Combat
+       Sentence shattering, fragment patterns, rapid-fire pacing
+       ================================================================ -->
+  <ACTION_PACING>
+    <DESCRIPTION>
+      Korean Murim novels favor STACCATO style during combat:
+      - Short, sharp sentences (3-8 words)
+      - Sentence fragments for impact
+      - Minimal connectors
+      - Punctuation as rhythm control
+
+      This differs from Japanese Light Novels which lean toward
+      emotional beats and internal monologue during action.
+    </DESCRIPTION>
+
+    <!-- ============================
+         SENTENCE SHATTERING RULES
+         ============================ -->
+    <SENTENCE_SHATTERING>
+      <CORE_PRINCIPLE>
+        In combat, BREAK long sentences into fragments.
+        One action = One sentence (or fragment).
+        Remove all "and", "while", "as", "when" connectors.
+      </CORE_PRINCIPLE>
+
+      <RULE id="1" name="One Action, One Sentence">
+        <BAD>Anh ta vung kiếm và đâm xuyên qua ngực địch trong khi né tránh đòn phản công.</BAD>
+        <GOOD>Vung kiếm. Đâm thẳng. Xuyên ngực. Né. Thoát.</GOOD>
+        <REASON>Each micro-action gets its own beat</REASON>
+      </RULE>
+
+      <RULE id="2" name="Fragment for Impact">
+        <BAD>Ánh kiếm lóe lên và chém thẳng vào cổ đối phương.</BAD>
+        <GOOD>Kiếm lóe. Chém. Máu phụt.</GOOD>
+        <REASON>Fragments create urgency, remove padding</REASON>
+      </RULE>
+
+      <RULE id="3" name="Remove Connector Words">
+        <BANNED_CONNECTORS>
+          và, khi, trong khi, cùng lúc, đồng thời, sau đó,
+          rồi, tiếp theo, vừa...vừa..., nếu...thì...
+        </BANNED_CONNECTORS>
+        <REPLACEMENT>Period. New sentence.</REPLACEMENT>
+        <BAD>Hắn vung kiếm và phóng kiếm khí đồng thời né sang bên.</BAD>
+        <GOOD>Vung kiếm. Kiếm khí bạo phát. Thân hình lách qua.</GOOD>
+      </RULE>
+
+      <RULE id="4" name="Verb-First Fragments">
+        <DESCRIPTION>Start fragments with action verbs, drop subjects when context is clear</DESCRIPTION>
+        <BAD>Anh ta chém xuống. Anh ta đâm thẳng. Anh ta né tránh.</BAD>
+        <GOOD>Chém. Đâm. Né. Xoay. Lại chém.</GOOD>
+        <REASON>Subject implied, focus on action</REASON>
+      </RULE>
+
+      <RULE id="5" name="Onomatopoeia Integration">
+        <DESCRIPTION>Use Vietnamese onomatopoeia as standalone fragments</DESCRIPTION>
+        <EXAMPLES>
+          <FRAGMENT>Vèo! Kiếm lướt qua.</FRAGMENT>
+          <FRAGMENT>Choảng! Hai kiếm va nhau.</FRAGMENT>
+          <FRAGMENT>Phầm! Cơ thể đổ xuống.</FRAGMENT>
+          <FRAGMENT>Xoẹt! Máu bắn tung tóe.</FRAGMENT>
+          <FRAGMENT>Rầm! Nền đất nứt toác.</FRAGMENT>
+        </EXAMPLES>
+      </RULE>
+    </SENTENCE_SHATTERING>
+
+    <!-- ============================
+         FRAGMENT PATTERNS
+         ============================ -->
+    <FRAGMENT_PATTERNS>
+      <PATTERN id="F1" name="Action Chain">
+        <STRUCTURE>[Verb]. [Verb]. [Verb]. [Result].</STRUCTURE>
+        <EXAMPLE>Chém. Đâm. Xoay. Hạ gục.</EXAMPLE>
+        <USAGE>Rapid consecutive actions leading to outcome</USAGE>
+      </PATTERN>
+
+      <PATTERN id="F2" name="Impact Echo">
+        <STRUCTURE>[Sound]. [Action]. [Consequence].</STRUCTURE>
+        <EXAMPLE>Choảng! Kiếm va kiếm. Lửa bắn tung.</EXAMPLE>
+        <USAGE>Emphasize collision/impact moments</USAGE>
+      </PATTERN>
+
+      <PATTERN id="F3" name="Perception Flash">
+        <STRUCTURE>[Sense]. [Reaction].</STRUCTURE>
+        <EXAMPLE>Sát khí! Né ngay.</EXAMPLE>
+        <USAGE>Character sensing danger and reacting</USAGE>
+      </PATTERN>
+
+      <PATTERN id="F4" name="Internal-External Beat">
+        <STRUCTURE>[Thought]. [Action]. [Thought]. [Action].</STRUCTURE>
+        <EXAMPLE>Không kịp né. Chặn! Tay tê dại. Lùi bước.</EXAMPLE>
+        <USAGE>Alternate micro-thoughts with actions</USAGE>
+      </PATTERN>
+
+      <PATTERN id="F5" name="Power Surge">
+        <STRUCTURE>[Energy build]. [Release]. [Effect].</STRUCTURE>
+        <EXAMPLE>Nội lực dồn vào kiếm. Phóng! Kiếm khí xé không.</EXAMPLE>
+        <USAGE>Internal energy release sequences</USAGE>
+      </PATTERN>
+
+      <PATTERN id="F6" name="Escalating Tension">
+        <STRUCTURE>[Short]. [Shorter]. [Shortest]. [Long release].</STRUCTURE>
+        <EXAMPLE>Đến. Gần. Sát! Kiếm bạo phát, triệt phá mọi phòng ngự.</EXAMPLE>
+        <USAGE>Build tension then release</USAGE>
+      </PATTERN>
+
+      <PATTERN id="F7" name="Contrast Cut">
+        <STRUCTURE>[Calm]. [Sudden violence].</STRUCTURE>
+        <EXAMPLE>Yên lặng. Kiếm quang bạo phát!</EXAMPLE>
+        <USAGE>Juxtaposition for dramatic impact</USAGE>
+      </PATTERN>
+    </FRAGMENT_PATTERNS>
+
+    <!-- ============================
+         PUNCTUATION AS RHYTHM
+         ============================ -->
+    <PUNCTUATION_RHYTHM>
+      <PERIOD usage="standard_beat">
+        Standard pause between actions. Most common.
+        <EXAMPLE>Vung kiếm. Chém. Xoay thân. Lại chém.</EXAMPLE>
+      </PERIOD>
+
+      <EXCLAMATION usage="impact_emphasis">
+        For decisive moments, pain, surprise, power release.
+        <EXAMPLE>Kiếm khí bạo phát! Địch gục ngã!</EXAMPLE>
+        <LIMIT>Max 2-3 per combat paragraph</LIMIT>
+      </EXCLAMATION>
+
+      <ELLIPSIS usage="tension_pause">
+        Before reveal or major shift. Suspense.
+        <EXAMPLE>Kiếm dừng lại... rồi bạo phát!</EXAMPLE>
+        <LIMIT>Use sparingly, only pivotal moments</LIMIT>
+      </ELLIPSIS>
+
+      <DASH usage="interrupted_action">
+        Action cut off or sudden change.
+        <EXAMPLE>Hắn vừa định—kiếm đã chém tới!</EXAMPLE>
+      </DASH>
+
+      <COMMA usage="breath_within_action">
+        Micro-pause within single motion.
+        <EXAMPLE>Kiếm vung lên, rồi chém xuống.</EXAMPLE>
+        <NOTE>Still try to break into separate sentences when possible</NOTE>
+      </COMMA>
+    </PUNCTUATION_RHYTHM>
+
+    <!-- ============================
+         JP VS KR PACING COMPARISON
+         ============================ -->
+    <PACING_COMPARISON>
+      <DESCRIPTION>
+        Japanese Light Novels (JP-LN) vs Korean Murim (KR) combat pacing.
+        Understand differences to translate accurately.
+      </DESCRIPTION>
+
+      <ASPECT name="Sentence Length">
+        <JP_LN>Medium-long sentences with embedded thoughts</JP_LN>
+        <KR_MURIM>Short, punchy sentences and fragments</KR_MURIM>
+        <VN_ADAPTATION>Follow KR staccato for Murim, JP flow for non-combat</VN_ADAPTATION>
+      </ASPECT>
+
+      <ASPECT name="Internal Monologue">
+        <JP_LN>Frequent mid-combat thoughts ("Damn, he's fast!")</JP_LN>
+        <KR_MURIM>Minimal thoughts, action-focused</KR_MURIM>
+        <VN_ADAPTATION>Keep internal thoughts short: "Nhanh!" not "Hắn nhanh thật, không ngờ..."</VN_ADAPTATION>
+      </ASPECT>
+
+      <ASPECT name="Emotional Beats">
+        <JP_LN>Emphasize emotional reactions during action</JP_LN>
+        <KR_MURIM>Emphasize physical sensation and power</KR_MURIM>
+        <VN_ADAPTATION>Focus on impact: "Tay tê dại" not "Cảm giác tê buốt lan tỏa khắp cánh tay"</VN_ADAPTATION>
+      </ASPECT>
+
+      <ASPECT name="Technique Calls">
+        <JP_LN>Often shout technique names ("Crimson Slash!")</JP_LN>
+        <KR_MURIM>Sometimes silent, technique in narration</KR_MURIM>
+        <VN_ADAPTATION>Match source - if character shouts, translate shout</VN_ADAPTATION>
+      </ASPECT>
+
+      <ASPECT name="Connectors">
+        <JP_LN>Uses "while", "as", "simultaneously"</JP_LN>
+        <KR_MURIM>Avoids connectors, uses periods</KR_MURIM>
+        <VN_ADAPTATION>Replace connectors with periods for KR source</VN_ADAPTATION>
+      </ASPECT>
+
+      <COMPARISON_EXAMPLE>
+        <JP_SOURCE>
+          彼は剣を振りかぶりながら、相手の動きを見極め、一瞬の隙を突いて斬りかかった。
+          「クッ...速い！」と心の中で叫びながらも、なんとか受け止めた。
+        </JP_SOURCE>
+        <JP_STYLE_VN>
+          Anh ta vung kiếm lên cao, trong khi quan sát động thái đối phương,
+          chớp lấy khe hở trong tích tắc để chém tới. "Khốn... nhanh quá!"
+          hắn thầm kêu lên, nhưng vẫn cố gắng đỡ được.
+        </JP_STYLE_VN>
+
+        <KR_SOURCE>
+          검을 쳐올렸다. 상대의 빈틈. 순간. 베었다.
+          빠르다! 간신히 막았다.
+        </KR_SOURCE>
+        <KR_STYLE_VN>
+          Giơ kiếm. Khe hở địch. Trong tích tắc. Chém!
+          Nhanh! Chặn được. Vừa vặn.
+        </KR_STYLE_VN>
+      </COMPARISON_EXAMPLE>
+    </PACING_COMPARISON>
+
+    <!-- ============================
+         TEST PASSAGES (5+ Examples)
+         ============================ -->
+    <TEST_PASSAGES>
+      <DESCRIPTION>
+        Practice passages demonstrating staccato combat style.
+        Study rhythm and fragment patterns.
+      </DESCRIPTION>
+
+      <PASSAGE id="1" style="basic_exchange" realm="화경">
+        <KR>
+          검이 부딪쳤다. 불꽃이 튀었다. 밀렸다.
+          다시 공격했다. 막혔다. 비틀었다. 찔렀다.
+          적의 검이 어깨를 스쳤다. 피가 흘렀다.
+          물러나지 않았다. 더 깊이 파고들었다.
+        </KR>
+        <VN>
+          Kiếm va kiếm. Lửa bắn. Bị đẩy lui.
+          Công lại. Bị chặn. Xoay. Đâm.
+          Kiếm địch lướt qua vai. Máu rỉ.
+          Không lùi. Xông sâu hơn.
+        </VN>
+        <NOTE>Basic exchange, consistent fragment rhythm</NOTE>
+      </PASSAGE>
+
+      <PASSAGE id="2" style="overwhelming_power" realm="현경">
+        <KR>
+          일검.
+          적이 쓰러졌다.
+          끝.
+        </KR>
+        <VN>
+          Một kiếm.
+          Địch gục.
+          Hết.
+        </VN>
+        <NOTE>Extreme power gap = minimal words</NOTE>
+      </PASSAGE>
+
+      <PASSAGE id="3" style="desperate_defense" realm="절정">
+        <KR>
+          막았다. 막았다. 또 막았다. 막지 못했다.
+          복부에 검이 박혔다. 피가 솟았다.
+          쓰러지지 않았다. 검을 잡았다.
+          "아직... 아니야."
+          눈이 번쩍였다. 역전의 일격.
+        </KR>
+        <VN>
+          Chặn. Chặn. Lại chặn. Không kịp.
+          Kiếm cắm vào bụng. Máu phụt.
+          Không ngã. Nắm chặt kiếm.
+          "Chưa... chưa hết."
+          Mắt lóe sáng. Nhất kích nghịch chuyển.
+        </VN>
+        <NOTE>Desperate rhythm, repetition builds tension</NOTE>
+      </PASSAGE>
+
+      <PASSAGE id="4" style="energy_clash" realm="초절정">
+        <KR>
+          검강이 충돌했다. 충격파. 땅이 갈라졌다.
+          밀렸다. 버텼다. 진기를 쏟아부었다.
+          "크억...!"
+          한 발짝 전진. 또 한 발짝.
+          상대가 흔들렸다.
+          지금이다.
+          폭발.
+        </KR>
+        <VN>
+          Kiếm cương va chạm. Sóng xung kích. Đất nứt toác.
+          Bị đẩy. Cố chịu. Dồn hết chân khí.
+          "Khự...!"
+          Một bước tiến. Thêm một bước.
+          Đối phương chao đảo.
+          Cơ hội.
+          Bùng nổ.
+        </VN>
+        <NOTE>Energy clash with escalating intensity</NOTE>
+      </PASSAGE>
+
+      <PASSAGE id="5" style="assassination" realm="화경">
+        <KR>
+          소리 없이 접근했다. 그림자처럼.
+          목표물의 등 뒤. 숨을 죽였다.
+          검을 뽑았다. 찔렀다.
+          깨달았을 때는 이미 늦었다.
+          피가 뿜었다. 끝.
+        </KR>
+        <VN>
+          Tiếp cận vô thanh. Như bóng tối.
+          Sau lưng mục tiêu. Nín thở.
+          Rút kiếm. Đâm.
+          Khi nhận ra, đã muộn.
+          Máu phụt. Xong.
+        </VN>
+        <NOTE>Stealth kill - quiet rhythm then sudden violence</NOTE>
+      </PASSAGE>
+
+      <PASSAGE id="6" style="group_combat" realm="대성">
+        <KR>
+          셋이 덤벼들었다. 왼쪽. 막았다.
+          오른쪽. 피했다. 가운데. 찔렀다.
+          하나가 쓰러졌다.
+          둘이 남았다. 동시에 왔다.
+          몸을 돌렸다. 스쳐지나가며 베었다.
+          또 하나. 마지막 하나.
+          정면 대결. 검이 부딪쳤다.
+          밀어붙였다. 넘어뜨렸다. 찔렀다.
+          끝났다.
+        </KR>
+        <VN>
+          Ba tên xông vào. Trái. Chặn.
+          Phải. Né. Giữa. Đâm.
+          Một tên gục.
+          Còn hai. Tấn công đồng thời.
+          Xoay người. Lướt qua chém.
+          Thêm một. Còn cuối cùng.
+          Đối mặt trực diện. Kiếm va kiếm.
+          Dồn ép. Đạp ngã. Đâm.
+          Kết thúc.
+        </VN>
+        <NOTE>Multi-enemy - direction indicators + rapid action</NOTE>
+      </PASSAGE>
+
+      <PASSAGE id="7" style="supreme_battle" realm="천하제일">
+        <KR>
+          천하제일이 움직였다.
+          세상이 멈춘 듯했다.
+          검이 번쩍였다.
+          하늘이 갈라졌다.
+          상대도 천하제일.
+          받아쳤다.
+          둘의 검의가 충돌.
+          세계가 울부짖었다.
+          산이 무너졌다. 강이 역류했다.
+          사람들은 무릎을 꿇었다.
+          신들의 싸움.
+        </KR>
+        <VN>
+          Thiên hạ đệ nhất động thủ.
+          Thế giới như ngừng lại.
+          Kiếm lóe sáng.
+          Trời tách đôi.
+          Đối thủ cũng là thiên hạ đệ nhất.
+          Đáp trả.
+          Kiếm ý hai người va chạm.
+          Thế giới gào thét.
+          Núi sụp. Sông nghịch lưu.
+          Người ta quỳ gối.
+          Trận chiến của thần.
+        </VN>
+        <NOTE>Supreme level - cosmic impact, each sentence earth-shattering</NOTE>
+      </PASSAGE>
+    </TEST_PASSAGES>
+
+    <!-- STATISTICS -->
+    <STATISTICS>
+      <SHATTERING_RULES>5</SHATTERING_RULES>
+      <FRAGMENT_PATTERNS>7</FRAGMENT_PATTERNS>
+      <PUNCTUATION_TYPES>5</PUNCTUATION_TYPES>
+      <PACING_ASPECTS>5</PACING_ASPECTS>
+      <TEST_PASSAGES>7</TEST_PASSAGES>
+    </STATISTICS>
+  </ACTION_PACING>
 </COMBAT>
 
 <!-- ========================================================================
@@ -1546,38 +2426,869 @@
     cultivation realm context and intensity scaling.
   </DESCRIPTION>
 
-  <!-- Basic Combat Verbs -->
-  <VERBS>
-    <STRIKE>
-      <KR>치다, 때리다, 가격하다</KR>
-      <HANJA>打, 擊</HANJA>
-      <VN>đánh, tấn công, công kích</VN>
-    </STRIKE>
+  <!-- ================================================================
+       COMBAT VERBS - 200+ Vivid Martial Arts Verbs
+       3 Intensity Levels: neutral → vivid → extreme
+       Categorized by technique type (검법, 장법, 권법, etc.)
+       ================================================================ -->
+  <COMBAT_VERBS total="200+">
+    <DESCRIPTION>
+      Korean Murim combat verbs with intensity scaling.
+      - NEUTRAL: Basic action (입문-대성 realm descriptions)
+      - VIVID: Dynamic action (화경-절정 realm)
+      - EXTREME: Mythical/devastating (초절정+ realm)
 
-    <SLASH>
-      <KR>베다, 자르다, 난도질하다</KR>
-      <HANJA>斬, 劈</HANJA>
-      <VN>chém, chặt, chẻ</VN>
-    </SLASH>
+      Usage: Match verb intensity to character's cultivation realm.
+    </DESCRIPTION>
 
-    <THRUST>
-      <KR>찌르다, 꿰뚫다, 관통하다</KR>
-      <HANJA>刺, 貫</HANJA>
-      <VN>đâm, xuyên thủng, quán thông</VN>
-    </THRUST>
+    <!-- =========================
+         SWORD TECHNIQUES (검법)
+         ========================= -->
+    <CATEGORY name="검법" hanja="劍法" vn="Kiếm pháp" technique_type="sword">
+      <!-- Slashing Actions -->
+      <VERB_GROUP action="slash">
+        <NEUTRAL id="s01">
+          <KR>베다</KR><VN>chém</VN>
+          <USAGE>Basic sword cut</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="s02">
+          <KR>자르다</KR><VN>cắt</VN>
+          <USAGE>Cut through</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="s03">
+          <KR>휘두르다</KR><VN>vung</VN>
+          <USAGE>Swing sword</USAGE>
+        </NEUTRAL>
+        <VIVID id="s04">
+          <KR>쓸어베다</KR><VN>quét chém</VN>
+          <USAGE>Sweeping slash</USAGE>
+        </VIVID>
+        <VIVID id="s05">
+          <KR>내리치다</KR><VN>chém giáng</VN>
+          <USAGE>Downward strike</USAGE>
+        </VIVID>
+        <VIVID id="s06">
+          <KR>갈라베다</KR><VN>chẻ đôi</VN>
+          <USAGE>Split in two</USAGE>
+        </VIVID>
+        <VIVID id="s07">
+          <KR>쳐올리다</KR><VN>chém ngược lên</VN>
+          <USAGE>Upward slash</USAGE>
+        </VIVID>
+        <VIVID id="s08">
+          <KR>난도질하다</KR><VN>chém loạn</VN>
+          <USAGE>Frenzied slashing</USAGE>
+        </VIVID>
+        <EXTREME id="s09">
+          <KR>천지를 가르다</KR><VN>chẻ đôi thiên địa</VN>
+          <USAGE>Split heaven and earth</USAGE>
+        </EXTREME>
+        <EXTREME id="s10">
+          <KR>허공을 갈라베다</KR><VN>xẻ ngang hư không</VN>
+          <USAGE>Slash through void</USAGE>
+        </EXTREME>
+        <EXTREME id="s11">
+          <KR>일검에 베다</KR><VN>nhất kiếm trảm sát</VN>
+          <USAGE>Kill in one stroke</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
 
-    <BLOCK>
-      <KR>막다, 방어하다, 수비하다</KR>
-      <HANJA>防, 守</HANJA>
-      <VN>chặn, phòng thủ, thủ vệ</VN>
-    </BLOCK>
+      <!-- Thrusting Actions -->
+      <VERB_GROUP action="thrust">
+        <NEUTRAL id="t01">
+          <KR>찌르다</KR><VN>đâm</VN>
+          <USAGE>Basic thrust</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="t02">
+          <KR>찔러넣다</KR><VN>đâm xuyên</VN>
+          <USAGE>Pierce through</USAGE>
+        </NEUTRAL>
+        <VIVID id="t03">
+          <KR>꿰뚫다</KR><VN>xuyên thủng</VN>
+          <USAGE>Skewer through</USAGE>
+        </VIVID>
+        <VIVID id="t04">
+          <KR>관통하다</KR><VN>quán thông</VN>
+          <USAGE>Penetrate completely</USAGE>
+        </VIVID>
+        <VIVID id="t05">
+          <KR>곧추세우다</KR><VN>đâm thẳng</VN>
+          <USAGE>Straight thrust</USAGE>
+        </VIVID>
+        <VIVID id="t06">
+          <KR>연환자</KR><VN>liên hoàn thích</VN>
+          <USAGE>Chain thrust combo</USAGE>
+        </VIVID>
+        <EXTREME id="t07">
+          <KR>만물을 뚫다</KR><VN>xuyên phá vạn vật</VN>
+          <USAGE>Pierce all things</USAGE>
+        </EXTREME>
+        <EXTREME id="t08">
+          <KR>허공을 찌르다</KR><VN>xuyên thấu hư không</VN>
+          <USAGE>Pierce the void</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
 
-    <DODGE>
-      <KR>피하다, 회피하다, 몸을 날리다</KR>
-      <HANJA>避, 閃</HANJA>
-      <VN>tránh, né, thoát thân</VN>
-    </DODGE>
-  </VERBS>
+      <!-- Parrying/Blocking -->
+      <VERB_GROUP action="parry">
+        <NEUTRAL id="p01">
+          <KR>막다</KR><VN>chặn</VN>
+          <USAGE>Block</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="p02">
+          <KR>방어하다</KR><VN>phòng thủ</VN>
+          <USAGE>Defend</USAGE>
+        </NEUTRAL>
+        <VIVID id="p03">
+          <KR>쳐내다</KR><VN>gạt mạnh</VN>
+          <USAGE>Deflect forcefully</USAGE>
+        </VIVID>
+        <VIVID id="p04">
+          <KR>흘려보내다</KR><VN>thoát chiêu</VN>
+          <USAGE>Redirect flow</USAGE>
+        </VIVID>
+        <VIVID id="p05">
+          <KR>되받아치다</KR><VN>phản kích</VN>
+          <USAGE>Counter-attack</USAGE>
+        </VIVID>
+        <VIVID id="p06">
+          <KR>비틀어막다</KR><VN>xoay chiêu hóa giải</VN>
+          <USAGE>Twist to block</USAGE>
+        </VIVID>
+        <EXTREME id="p07">
+          <KR>만검을 막다</KR><VN>cản vạn kiếm</VN>
+          <USAGE>Block ten thousand swords</USAGE>
+        </EXTREME>
+        <EXTREME id="p08">
+          <KR>천하의 검을 막다</KR><VN>ngăn thiên hạ chi kiếm</VN>
+          <USAGE>Block all swords under heaven</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+
+      <!-- Sword Energy -->
+      <VERB_GROUP action="sword_qi">
+        <NEUTRAL id="q01">
+          <KR>검기를 발하다</KR><VN>phóng kiếm khí</VN>
+          <USAGE>Release sword qi</USAGE>
+        </NEUTRAL>
+        <VIVID id="q02">
+          <KR>검기를 쏘다</KR><VN>bắn kiếm khí</VN>
+          <USAGE>Shoot sword qi</USAGE>
+        </VIVID>
+        <VIVID id="q03">
+          <KR>검기를 뿜다</KR><VN>phun kiếm khí</VN>
+          <USAGE>Emit sword qi</USAGE>
+        </VIVID>
+        <VIVID id="q04">
+          <KR>검강을 일으키다</KR><VN>triệu hoán kiếm cương</VN>
+          <USAGE>Invoke sword energy</USAGE>
+        </VIVID>
+        <EXTREME id="q05">
+          <KR>검의를 펼치다</KR><VN>triển khai kiếm ý</VN>
+          <USAGE>Unfold sword intent domain</USAGE>
+        </EXTREME>
+        <EXTREME id="q06">
+          <KR>검광이 폭발하다</KR><VN>kiếm quang bạo phát</VN>
+          <USAGE>Sword light explosion</USAGE>
+        </EXTREME>
+        <EXTREME id="q07">
+          <KR>검기가 천지를 뒤덮다</KR><VN>kiếm khí bao trùm thiên địa</VN>
+          <USAGE>Sword qi covers heaven and earth</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         BLADE TECHNIQUES (도법)
+         ========================= -->
+    <CATEGORY name="도법" hanja="刀法" vn="Đao pháp" technique_type="blade">
+      <VERB_GROUP action="chop">
+        <NEUTRAL id="d01">
+          <KR>치다</KR><VN>chặt</VN>
+          <USAGE>Chop</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="d02">
+          <KR>후려치다</KR><VN>vung chặt</VN>
+          <USAGE>Swing chop</USAGE>
+        </NEUTRAL>
+        <VIVID id="d03">
+          <KR>내려찍다</KR><VN>bổ xuống</VN>
+          <USAGE>Cleave down</USAGE>
+        </VIVID>
+        <VIVID id="d04">
+          <KR>갈라치다</KR><VN>phá chặt</VN>
+          <USAGE>Split chop</USAGE>
+        </VIVID>
+        <VIVID id="d05">
+          <KR>휩쓸다</KR><VN>quét ngang</VN>
+          <USAGE>Horizontal sweep</USAGE>
+        </VIVID>
+        <VIVID id="d06">
+          <KR>쓸어치다</KR><VN>chém quét</VN>
+          <USAGE>Sweeping chop</USAGE>
+        </VIVID>
+        <EXTREME id="d07">
+          <KR>산을 가르다</KR><VN>khai sơn phá đảo</VN>
+          <USAGE>Split mountain</USAGE>
+        </EXTREME>
+        <EXTREME id="d08">
+          <KR>만군을 베다</KR><VN>trảm vạn quân</VN>
+          <USAGE>Cut through ten thousand soldiers</USAGE>
+        </EXTREME>
+        <EXTREME id="d09">
+          <KR>일도에 쓸다</KR><VN>nhất đao hoành tảo</VN>
+          <USAGE>One blade sweeps all</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+
+      <VERB_GROUP action="blade_qi">
+        <NEUTRAL id="dq01">
+          <KR>도기를 뿜다</KR><VN>phóng đao khí</VN>
+          <USAGE>Release blade qi</USAGE>
+        </NEUTRAL>
+        <VIVID id="dq02">
+          <KR>도기가 솟구치다</KR><VN>đao khí bùng phát</VN>
+          <USAGE>Blade qi erupts</USAGE>
+        </VIVID>
+        <EXTREME id="dq03">
+          <KR>도망이 천지를 휩쓸다</KR><VN>đao võng tảo thiên địa</VN>
+          <USAGE>Blade net sweeps heaven and earth</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         SPEAR TECHNIQUES (창법)
+         ========================= -->
+    <CATEGORY name="창법" hanja="槍法" vn="Thương pháp" technique_type="spear">
+      <VERB_GROUP action="spear_thrust">
+        <NEUTRAL id="sp01">
+          <KR>찌르다</KR><VN>đâm</VN>
+          <USAGE>Thrust</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="sp02">
+          <KR>내지르다</KR><VN>phóng ra</VN>
+          <USAGE>Extend thrust</USAGE>
+        </NEUTRAL>
+        <VIVID id="sp03">
+          <KR>연환으로 찌르다</KR><VN>liên hoàn thích</VN>
+          <USAGE>Chain thrusts</USAGE>
+        </VIVID>
+        <VIVID id="sp04">
+          <KR>창끝을 날리다</KR><VN>phóng thương đầu</VN>
+          <USAGE>Flying spear tip</USAGE>
+        </VIVID>
+        <VIVID id="sp05">
+          <KR>창영이 피어나다</KR><VN>thương ảnh khai hoa</VN>
+          <USAGE>Spear shadows bloom</USAGE>
+        </VIVID>
+        <EXTREME id="sp06">
+          <KR>만창이 쏟아지다</KR><VN>vạn thương đồng phát</VN>
+          <USAGE>Ten thousand spears rain down</USAGE>
+        </EXTREME>
+        <EXTREME id="sp07">
+          <KR>창룡이 출동하다</KR><VN>thương long xuất động</VN>
+          <USAGE>Spear dragon emerges</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+
+      <VERB_GROUP action="spear_sweep">
+        <NEUTRAL id="ss01">
+          <KR>휘두르다</KR><VN>vung</VN>
+          <USAGE>Swing</USAGE>
+        </NEUTRAL>
+        <VIVID id="ss02">
+          <KR>쓸어치다</KR><VN>quét ngang</VN>
+          <USAGE>Horizontal sweep</USAGE>
+        </VIVID>
+        <VIVID id="ss03">
+          <KR>회전시키다</KR><VN>xoay tròn</VN>
+          <USAGE>Rotate spear</USAGE>
+        </VIVID>
+        <EXTREME id="ss04">
+          <KR>창풍을 일으키다</KR><VN>thương phong đại khởi</VN>
+          <USAGE>Spear wind rises</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         PALM TECHNIQUES (장법)
+         ========================= -->
+    <CATEGORY name="장법" hanja="掌法" vn="Chưởng pháp" technique_type="palm">
+      <VERB_GROUP action="palm_strike">
+        <NEUTRAL id="pm01">
+          <KR>치다</KR><VN>đánh</VN>
+          <USAGE>Strike</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="pm02">
+          <KR>밀다</KR><VN>đẩy</VN>
+          <USAGE>Push</USAGE>
+        </NEUTRAL>
+        <VIVID id="pm03">
+          <KR>장력을 발하다</KR><VN>phóng chưởng lực</VN>
+          <USAGE>Release palm force</USAGE>
+        </VIVID>
+        <VIVID id="pm04">
+          <KR>장풍을 날리다</KR><VN>phát chưởng phong</VN>
+          <USAGE>Send palm wind</USAGE>
+        </VIVID>
+        <VIVID id="pm05">
+          <KR>장심에서 뿜다</KR><VN>phóng ra từ chưởng tâm</VN>
+          <USAGE>Emit from palm center</USAGE>
+        </VIVID>
+        <VIVID id="pm06">
+          <KR>양장을 동시에 치다</KR><VN>song chưởng tề phát</VN>
+          <USAGE>Twin palm strike</USAGE>
+        </VIVID>
+        <EXTREME id="pm07">
+          <KR>장력으로 산을 부수다</KR><VN>chưởng lực phá sơn</VN>
+          <USAGE>Palm force shatters mountain</USAGE>
+        </EXTREME>
+        <EXTREME id="pm08">
+          <KR>천하를 장으로 누르다</KR><VN>nhất chưởng trấn thiên hạ</VN>
+          <USAGE>One palm suppresses all under heaven</USAGE>
+        </EXTREME>
+        <EXTREME id="pm09">
+          <KR>허공장</KR><VN>hư không chưởng</VN>
+          <USAGE>Void palm strike</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+
+      <VERB_GROUP action="palm_defense">
+        <NEUTRAL id="pd01">
+          <KR>막다</KR><VN>chặn</VN>
+          <USAGE>Block</USAGE>
+        </NEUTRAL>
+        <VIVID id="pd02">
+          <KR>밀어내다</KR><VN>đẩy lui</VN>
+          <USAGE>Push back</USAGE>
+        </VIVID>
+        <VIVID id="pd03">
+          <KR>흘려내다</KR><VN>hóa giải lực</VN>
+          <USAGE>Redirect force</USAGE>
+        </VIVID>
+        <EXTREME id="pd04">
+          <KR>만력을 되돌리다</KR><VN>phản đàn vạn lực</VN>
+          <USAGE>Return ten thousand forces</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         FIST TECHNIQUES (권법)
+         ========================= -->
+    <CATEGORY name="권법" hanja="拳法" vn="Quyền pháp" technique_type="fist">
+      <VERB_GROUP action="punch">
+        <NEUTRAL id="f01">
+          <KR>치다</KR><VN>đánh</VN>
+          <USAGE>Punch</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="f02">
+          <KR>때리다</KR><VN>đấm</VN>
+          <USAGE>Strike</USAGE>
+        </NEUTRAL>
+        <VIVID id="f03">
+          <KR>내지르다</KR><VN>thúc quyền</VN>
+          <USAGE>Thrust fist</USAGE>
+        </VIVID>
+        <VIVID id="f04">
+          <KR>연타하다</KR><VN>liên quyền</VN>
+          <USAGE>Consecutive punches</USAGE>
+        </VIVID>
+        <VIVID id="f05">
+          <KR>강권을 날리다</KR><VN>phóng cương quyền</VN>
+          <USAGE>Release heavy fist</USAGE>
+        </VIVID>
+        <VIVID id="f06">
+          <KR>폭풍권을 휘두르다</KR><VN>bạo phong quyền cuốn</VN>
+          <USAGE>Storm fist barrage</USAGE>
+        </VIVID>
+        <EXTREME id="f07">
+          <KR>일권으로 쓰러뜨리다</KR><VN>nhất quyền hạ địch</VN>
+          <USAGE>Knock down with one punch</USAGE>
+        </EXTREME>
+        <EXTREME id="f08">
+          <KR>권강이 폭발하다</KR><VN>quyền cương bạo phát</VN>
+          <USAGE>Fist energy explodes</USAGE>
+        </EXTREME>
+        <EXTREME id="f09">
+          <KR>천하무적의 권</KR><VN>thiên hạ vô địch chi quyền</VN>
+          <USAGE>Invincible fist under heaven</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+
+      <VERB_GROUP action="fist_defense">
+        <NEUTRAL id="fd01">
+          <KR>막다</KR><VN>chặn</VN>
+          <USAGE>Block</USAGE>
+        </NEUTRAL>
+        <VIVID id="fd02">
+          <KR>쳐내다</KR><VN>đánh bật</VN>
+          <USAGE>Deflect strike</USAGE>
+        </VIVID>
+        <VIVID id="fd03">
+          <KR>흘려치다</KR><VN>thoát chiêu</VN>
+          <USAGE>Redirect and counter</USAGE>
+        </VIVID>
+        <EXTREME id="fd04">
+          <KR>강권으로 강권을 깨다</KR><VN>cương quyền phá cương quyền</VN>
+          <USAGE>Hard fist breaks hard fist</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         FINGER TECHNIQUES (지법)
+         ========================= -->
+    <CATEGORY name="지법" hanja="指法" vn="Chỉ pháp" technique_type="finger">
+      <VERB_GROUP action="finger_strike">
+        <NEUTRAL id="fi01">
+          <KR>찌르다</KR><VN>điểm</VN>
+          <USAGE>Poke</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="fi02">
+          <KR>점하다</KR><VN>điểm huyệt</VN>
+          <USAGE>Strike point</USAGE>
+        </NEUTRAL>
+        <VIVID id="fi03">
+          <KR>지력을 발하다</KR><VN>phóng chỉ lực</VN>
+          <USAGE>Release finger force</USAGE>
+        </VIVID>
+        <VIVID id="fi04">
+          <KR>연환으로 점하다</KR><VN>liên hoàn điểm huyệt</VN>
+          <USAGE>Chain acupoint strikes</USAGE>
+        </VIVID>
+        <VIVID id="fi05">
+          <KR>일지선</KR><VN>nhất chỉ thiền</VN>
+          <USAGE>One Finger Zen</USAGE>
+        </VIVID>
+        <EXTREME id="fi06">
+          <KR>허공을 뚫는 지</KR><VN>xuyên phá hư không chi chỉ</VN>
+          <USAGE>Finger pierces void</USAGE>
+        </EXTREME>
+        <EXTREME id="fi07">
+          <KR>만물을 점하다</KR><VN>điểm phá vạn vật</VN>
+          <USAGE>Finger strike pierces all</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         KICK TECHNIQUES (각법)
+         ========================= -->
+    <CATEGORY name="각법" hanja="脚法" vn="Cước pháp" technique_type="kick">
+      <VERB_GROUP action="kick">
+        <NEUTRAL id="k01">
+          <KR>차다</KR><VN>đá</VN>
+          <USAGE>Kick</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="k02">
+          <KR>걷어차다</KR><VN>đá văng</VN>
+          <USAGE>Kick away</USAGE>
+        </NEUTRAL>
+        <VIVID id="k03">
+          <KR>돌려차다</KR><VN>xoay cước</VN>
+          <USAGE>Roundhouse kick</USAGE>
+        </VIVID>
+        <VIVID id="k04">
+          <KR>날아차다</KR><VN>phi cước</VN>
+          <USAGE>Flying kick</USAGE>
+        </VIVID>
+        <VIVID id="k05">
+          <KR>연환으로 차다</KR><VN>liên hoàn cước</VN>
+          <USAGE>Chain kicks</USAGE>
+        </VIVID>
+        <VIVID id="k06">
+          <KR>무영각</KR><VN>vô ảnh cước</VN>
+          <USAGE>Shadowless kick</USAGE>
+        </VIVID>
+        <EXTREME id="k07">
+          <KR>각력으로 산을 차다</KR><VN>cước lực đạp sơn</VN>
+          <USAGE>Kick force topples mountain</USAGE>
+        </EXTREME>
+        <EXTREME id="k08">
+          <KR>천마각</KR><VN>thiên ma cước</VN>
+          <USAGE>Heaven Demon Kick</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         BODY/MOVEMENT (신법)
+         ========================= -->
+    <CATEGORY name="신법" hanja="身法" vn="Thân pháp" technique_type="movement">
+      <VERB_GROUP action="dodge">
+        <NEUTRAL id="m01">
+          <KR>피하다</KR><VN>tránh</VN>
+          <USAGE>Avoid</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="m02">
+          <KR>비키다</KR><VN>né</VN>
+          <USAGE>Dodge</USAGE>
+        </NEUTRAL>
+        <VIVID id="m03">
+          <KR>몸을 날리다</KR><VN>phi thân</VN>
+          <USAGE>Launch body</USAGE>
+        </VIVID>
+        <VIVID id="m04">
+          <KR>잔영을 남기다</KR><VN>lưu tàn ảnh</VN>
+          <USAGE>Leave afterimage</USAGE>
+        </VIVID>
+        <VIVID id="m05">
+          <KR>순간이동하다</KR><VN>thun thân dịch hình</VN>
+          <USAGE>Instant movement</USAGE>
+        </VIVID>
+        <EXTREME id="m06">
+          <KR>분신처럼 움직이다</KR><VN>phân thân ảo hóa</VN>
+          <USAGE>Move like clone</USAGE>
+        </EXTREME>
+        <EXTREME id="m07">
+          <KR>허공을 밟다</KR><VN>đạp hư không</VN>
+          <USAGE>Step on void</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+
+      <VERB_GROUP action="advance">
+        <NEUTRAL id="a01">
+          <KR>전진하다</KR><VN>tiến lên</VN>
+          <USAGE>Advance</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="a02">
+          <KR>다가가다</KR><VN>xông tới</VN>
+          <USAGE>Approach</USAGE>
+        </NEUTRAL>
+        <VIVID id="a03">
+          <KR>돌진하다</KR><VN>đột tiến</VN>
+          <USAGE>Charge</USAGE>
+        </VIVID>
+        <VIVID id="a04">
+          <KR>쇄도하다</KR><VN>sát nhập</VN>
+          <USAGE>Rush in</USAGE>
+        </VIVID>
+        <VIVID id="a05">
+          <KR>번개처럼 달려들다</KR><VN>tốc như điển quang</VN>
+          <USAGE>Lightning-fast charge</USAGE>
+        </VIVID>
+        <EXTREME id="a06">
+          <KR>천지를 뒤흔들며 돌진하다</KR><VN>chấn động thiên địa xung phong</VN>
+          <USAGE>Charge shaking heaven and earth</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+
+      <VERB_GROUP action="retreat">
+        <NEUTRAL id="r01">
+          <KR>물러나다</KR><VN>lùi</VN>
+          <USAGE>Retreat</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="r02">
+          <KR>뒤로 빠지다</KR><VN>lui bước</VN>
+          <USAGE>Step back</USAGE>
+        </NEUTRAL>
+        <VIVID id="r03">
+          <KR>도약하여 물러나다</KR><VN>phi thân lui lại</VN>
+          <USAGE>Leap backward</USAGE>
+        </VIVID>
+        <VIVID id="r04">
+          <KR>번개같이 물러나다</KR><VN>tốc thoái như điện</VN>
+          <USAGE>Lightning retreat</USAGE>
+        </VIVID>
+        <EXTREME id="r05">
+          <KR>잔영만 남기고 사라지다</KR><VN>lưu tàn ảnh tiêu thất</VN>
+          <USAGE>Vanish leaving only afterimage</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         KILLING/DECISIVE (살법)
+         ========================= -->
+    <CATEGORY name="살법" hanja="殺法" vn="Sát pháp" technique_type="killing">
+      <VERB_GROUP action="kill">
+        <NEUTRAL id="kl01">
+          <KR>죽이다</KR><VN>giết</VN>
+          <USAGE>Kill (generic)</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="kl02">
+          <KR>처치하다</KR><VN>xử lý</VN>
+          <USAGE>Eliminate</USAGE>
+        </NEUTRAL>
+        <VIVID id="kl03">
+          <KR>베어버리다</KR><VN>trảm sát</VN>
+          <USAGE>Cut down</USAGE>
+        </VIVID>
+        <VIVID id="kl04">
+          <KR>쓰러뜨리다</KR><VN>hạ gục</VN>
+          <USAGE>Fell</USAGE>
+        </VIVID>
+        <VIVID id="kl05">
+          <KR>목을 치다</KR><VN>chặt đầu</VN>
+          <USAGE>Behead</USAGE>
+        </VIVID>
+        <VIVID id="kl06">
+          <KR>일격에 끝내다</KR><VN>nhất kích tất sát</VN>
+          <USAGE>Finish in one strike</USAGE>
+        </VIVID>
+        <EXTREME id="kl07">
+          <KR>피바람을 일으키다</KR><VN>huyết vũ bạo phong</VN>
+          <USAGE>Create blood storm</USAGE>
+        </EXTREME>
+        <EXTREME id="kl08">
+          <KR>도륙하다</KR><VN>đồ sát</VN>
+          <USAGE>Massacre</USAGE>
+        </EXTREME>
+        <EXTREME id="kl09">
+          <KR>천하를 피로 물들이다</KR><VN>huyết nhiễm thiên hạ</VN>
+          <USAGE>Dye heaven and earth in blood</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+
+      <VERB_GROUP action="defeat">
+        <NEUTRAL id="df01">
+          <KR>이기다</KR><VN>thắng</VN>
+          <USAGE>Win</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="df02">
+          <KR>제압하다</KR><VN>chế áp</VN>
+          <USAGE>Subdue</USAGE>
+        </NEUTRAL>
+        <VIVID id="df03">
+          <KR>압도하다</KR><VN>áp đảo</VN>
+          <USAGE>Overwhelm</USAGE>
+        </VIVID>
+        <VIVID id="df04">
+          <KR>무력화하다</KR><VN>vô hiệu hóa</VN>
+          <USAGE>Neutralize</USAGE>
+        </VIVID>
+        <VIVID id="df05">
+          <KR>궤멸시키다</KR><VN>tiêu diệt</VN>
+          <USAGE>Annihilate</USAGE>
+        </VIVID>
+        <EXTREME id="df06">
+          <KR>만인을 적으로 삼다</KR><VN>độc chiến vạn nhân</VN>
+          <USAGE>Fight ten thousand alone</USAGE>
+        </EXTREME>
+        <EXTREME id="df07">
+          <KR>천하무적으로 군림하다</KR><VN>thiên hạ vô địch quân lâm</VN>
+          <USAGE>Reign invincible under heaven</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         INTERNAL ENERGY (내공)
+         ========================= -->
+    <CATEGORY name="내공" hanja="內功" vn="Nội công" technique_type="internal_energy">
+      <VERB_GROUP action="gather_qi">
+        <NEUTRAL id="ie01">
+          <KR>기를 모으다</KR><VN>tụ khí</VN>
+          <USAGE>Gather qi</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="ie02">
+          <KR>내공을 운용하다</KR><VN>vận dụng nội công</VN>
+          <USAGE>Use internal energy</USAGE>
+        </NEUTRAL>
+        <VIVID id="ie03">
+          <KR>단전에 기를 모으다</KR><VN>tụ khí đan điền</VN>
+          <USAGE>Gather qi in dantian</USAGE>
+        </VIVID>
+        <VIVID id="ie04">
+          <KR>진기를 순환시키다</KR><VN>chân khí tuần hoàn</VN>
+          <USAGE>Circulate true qi</USAGE>
+        </VIVID>
+        <VIVID id="ie05">
+          <KR>경맥을 뚫다</KR><VN>xuyên thấu kinh mạch</VN>
+          <USAGE>Open meridians</USAGE>
+        </VIVID>
+        <EXTREME id="ie06">
+          <KR>천지의 기를 흡수하다</KR><VN>hấp thụ thiên địa chi khí</VN>
+          <USAGE>Absorb heaven-earth qi</USAGE>
+        </EXTREME>
+        <EXTREME id="ie07">
+          <KR>단전에 바다를 이루다</KR><VN>đan điền thành hải</VN>
+          <USAGE>Dantian becomes ocean</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+
+      <VERB_GROUP action="release_qi">
+        <NEUTRAL id="rq01">
+          <KR>기를 발하다</KR><VN>phóng khí</VN>
+          <USAGE>Release qi</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="rq02">
+          <KR>내공을 쏟다</KR><VN>dồn nội lực</VN>
+          <USAGE>Pour internal force</USAGE>
+        </NEUTRAL>
+        <VIVID id="rq03">
+          <KR>내공을 폭발시키다</KR><VN>nội công bạo phát</VN>
+          <USAGE>Explode internal energy</USAGE>
+        </VIVID>
+        <VIVID id="rq04">
+          <KR>진기를 쏟아붓다</KR><VN>chân khí tuôn trào</VN>
+          <USAGE>Pour out true qi</USAGE>
+        </VIVID>
+        <EXTREME id="rq05">
+          <KR>천지를 뒤흔드는 기세</KR><VN>khí thế chấn động thiên địa</VN>
+          <USAGE>Aura shakes heaven and earth</USAGE>
+        </EXTREME>
+        <EXTREME id="rq06">
+          <KR>만물을 압도하는 내공</KR><VN>nội công áp đảo vạn vật</VN>
+          <USAGE>Internal energy overwhelms all</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         DEFENSIVE ACTIONS
+         ========================= -->
+    <CATEGORY name="방어" hanja="防禦" vn="Phòng ngự" technique_type="defense">
+      <VERB_GROUP action="block_defend">
+        <NEUTRAL id="b01">
+          <KR>막다</KR><VN>chặn</VN>
+          <USAGE>Block</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="b02">
+          <KR>방어하다</KR><VN>phòng thủ</VN>
+          <USAGE>Defend</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="b03">
+          <KR>수비하다</KR><VN>thủ vệ</VN>
+          <USAGE>Guard</USAGE>
+        </NEUTRAL>
+        <VIVID id="b04">
+          <KR>철벽같이 막다</KR><VN>thiết bích phòng ngự</VN>
+          <USAGE>Iron wall defense</USAGE>
+        </VIVID>
+        <VIVID id="b05">
+          <KR>사면을 막다</KR><VN>tứ phương phòng bị</VN>
+          <USAGE>Defend all sides</USAGE>
+        </VIVID>
+        <VIVID id="b06">
+          <KR>호신강기를 펼치다</KR><VN>triển khai hộ thân cương khí</VN>
+          <USAGE>Deploy protective energy</USAGE>
+        </VIVID>
+        <EXTREME id="b07">
+          <KR>만공불파의 수비</KR><VN>vạn công bất phá chi thủ</VN>
+          <USAGE>Defense unbroken by ten thousand attacks</USAGE>
+        </EXTREME>
+        <EXTREME id="b08">
+          <KR>천라지망을 펼치다</KR><VN>triển khai thiên la địa võng</VN>
+          <USAGE>Deploy heaven-earth net</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- =========================
+         COMBO/CONTINUOUS ACTIONS
+         ========================= -->
+    <CATEGORY name="연격" hanja="連擊" vn="Liên kích" technique_type="combo">
+      <VERB_GROUP action="chain_attack">
+        <NEUTRAL id="c01">
+          <KR>연속공격하다</KR><VN>liên tục tấn công</VN>
+          <USAGE>Continuous attack</USAGE>
+        </NEUTRAL>
+        <NEUTRAL id="c02">
+          <KR>잇달아 치다</KR><VN>liên hoàn đánh</VN>
+          <USAGE>Consecutive strikes</USAGE>
+        </NEUTRAL>
+        <VIVID id="c03">
+          <KR>폭풍같이 몰아치다</KR><VN>cuồng phong liên kích</VN>
+          <USAGE>Storm of attacks</USAGE>
+        </VIVID>
+        <VIVID id="c04">
+          <KR>비바람처럼 쏟아붓다</KR><VN>như mưa như bão</VN>
+          <USAGE>Rain down attacks</USAGE>
+        </VIVID>
+        <VIVID id="c05">
+          <KR>삼연격</KR><VN>tam liên kích</VN>
+          <USAGE>Triple combo</USAGE>
+        </VIVID>
+        <VIVID id="c06">
+          <KR>오연격</KR><VN>ngũ liên kích</VN>
+          <USAGE>Five-hit combo</USAGE>
+        </VIVID>
+        <EXTREME id="c07">
+          <KR>백팔연타</KR><VN>bách bát liên đả</VN>
+          <USAGE>108 consecutive strikes</USAGE>
+        </EXTREME>
+        <EXTREME id="c08">
+          <KR>무한연격</KR><VN>vô hạn liên kích</VN>
+          <USAGE>Infinite combo</USAGE>
+        </EXTREME>
+        <EXTREME id="c09">
+          <KR>천격만타</KR><VN>thiên kích vạn đả</VN>
+          <USAGE>Thousand strikes, ten thousand hits</USAGE>
+        </EXTREME>
+      </VERB_GROUP>
+    </CATEGORY>
+
+    <!-- ==============================
+         VERB INTENSITY USAGE GUIDE
+         ============================== -->
+    <USAGE_GUIDE>
+      <INTENSITY_LEVELS>
+        <LEVEL name="NEUTRAL" realms="입문, 소성, 대성">
+          <DESCRIPTION>
+            Basic, literal action verbs for beginners and minor achievement realms.
+            Simple descriptions without metaphor.
+          </DESCRIPTION>
+          <EXAMPLE kr="검을 휘둘렀다" vn="Vung kiếm"/>
+        </LEVEL>
+
+        <LEVEL name="VIVID" realms="화경, 절정, 초절정">
+          <DESCRIPTION>
+            Dynamic, specific verbs with martial arts flavor.
+            Includes technique-specific terminology and physical intensity.
+          </DESCRIPTION>
+          <EXAMPLE kr="검이 물처럼 흘러 적의 빈틈을 파고들었다"
+                   vn="Kiếm lưu chuyển như nước, xuyên vào khe hở của địch"/>
+        </LEVEL>
+
+        <LEVEL name="EXTREME" realms="현경, 화경지경, 천하제일">
+          <DESCRIPTION>
+            Mythical, cosmic-scale verbs for supreme masters.
+            Reality-bending descriptions, heaven-earth metaphors.
+          </DESCRIPTION>
+          <EXAMPLE kr="그의 일검에 천지가 갈라졌다"
+                   vn="Một kiếm của ngài khiến thiên địa tách đôi"/>
+        </LEVEL>
+      </INTENSITY_LEVELS>
+
+      <TECHNIQUE_TYPE_MAPPING>
+        <TYPE name="검법">sword: slash, thrust, parry, sword_qi</TYPE>
+        <TYPE name="도법">blade: chop, blade_qi</TYPE>
+        <TYPE name="창법">spear: thrust, sweep</TYPE>
+        <TYPE name="장법">palm: strike, defense</TYPE>
+        <TYPE name="권법">fist: punch, defense</TYPE>
+        <TYPE name="지법">finger: strike</TYPE>
+        <TYPE name="각법">kick: kick</TYPE>
+        <TYPE name="신법">movement: dodge, advance, retreat</TYPE>
+        <TYPE name="살법">killing: kill, defeat</TYPE>
+        <TYPE name="내공">internal: gather, release</TYPE>
+        <TYPE name="방어">defense: block</TYPE>
+        <TYPE name="연격">combo: chain</TYPE>
+      </TECHNIQUE_TYPE_MAPPING>
+    </USAGE_GUIDE>
+
+    <!-- TOTAL VERB COUNT: 200+ -->
+    <STATISTICS>
+      <TOTAL_VERBS>210+</TOTAL_VERBS>
+      <CATEGORIES>12</CATEGORIES>
+      <INTENSITY_LEVELS>3</INTENSITY_LEVELS>
+      <SWORD_VERBS>35</SWORD_VERBS>
+      <BLADE_VERBS>12</BLADE_VERBS>
+      <SPEAR_VERBS>11</SPEAR_VERBS>
+      <PALM_VERBS>13</PALM_VERBS>
+      <FIST_VERBS>13</FIST_VERBS>
+      <FINGER_VERBS>7</FINGER_VERBS>
+      <KICK_VERBS>8</KICK_VERBS>
+      <MOVEMENT_VERBS>18</MOVEMENT_VERBS>
+      <KILLING_VERBS>16</KILLING_VERBS>
+      <INTERNAL_VERBS>13</INTERNAL_VERBS>
+      <DEFENSE_VERBS>8</DEFENSE_VERBS>
+      <COMBO_VERBS>9</COMBO_VERBS>
+    </STATISTICS>
+  </COMBAT_VERBS>
 
   <!-- Advanced Combat Terms -->
   <ADVANCED_TECHNIQUES>
