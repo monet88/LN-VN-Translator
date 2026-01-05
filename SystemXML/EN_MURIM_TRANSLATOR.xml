@@ -9,12 +9,12 @@
   integrating prose density control, Pinyin-to-Hán Việt conversion, mixed input
   handling, and combat lexicon for authentic Vietnamese translation.
 
-  Dependencies:
-  - Reference/Ref_PINYIN_MAPPING_TABLE.md (500+ Pinyin → Hán Việt mappings)
-  - Reference/Library_GENERIC_MURIM_TERMS.md (1000+ generic Murim terms with English/Pinyin)
-  - Reference/Ref_EN_PROSE_DENSITY_RULES.md (12 condensation patterns, 60-70% target)
-  - Reference/Ref_KR_HONORIFIC_SYSTEM.md (Sect hierarchy honorifics - reused)
-  - Reference/Ref_CULTIVATION_STAGES.md (Cultivation realms - reused)
+  Dependencies (Week 6 - Unified Reference Structure):
+  - Reference/SHARED/UNIFIED_MURIM_TERMINOLOGY.md (3000+ unified terms KR/EN→VN)
+  - Reference/EN_SPECIFIC/Ref_PINYIN_MAPPING_TABLE.md (1000+ Pinyin → Hán Việt mappings)
+  - Reference/EN_SPECIFIC/Ref_EN_PROSE_DENSITY_RULES.md (17 condensation patterns, 60-70% target)
+  - Reference/KR_SPECIFIC/Ref_KR_HONORIFIC_SYSTEM.md (Sect hierarchy honorifics - reused)
+  - Reference/SHARED/Ref_CULTIVATION_STAGES.md (Cultivation realms - reused)
 
   Key Differences from KR System:
   1. EN_MURIM_LOC replaces MURIM_LOC (adds prose density + Pinyin handling)

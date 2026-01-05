@@ -9,12 +9,13 @@
   integrating sect hierarchy, cultivation realms, faction alignment, Hanja protocol,
   and combat lexicon for authentic Vietnamese translation.
 
-  Dependencies:
-  - Reference/Library_ROTMHS_GLOSSARY.md (300+ ROTMHS-specific terms)
-  - Reference/Library_GENERIC_MURIM_TERMS.md (1000+ generic Murim terms)
-  - Reference/Library_HANJA_MURIM_TERMS.md (Hanja database with frequency indexing)
-  - Reference/Ref_KR_HONORIFIC_SYSTEM.md (Sect hierarchy honorifics)
-  - Reference/Ref_CULTIVATION_STAGES.md (Cultivation realms with language scaling)
+  Dependencies (Week 6 - Unified Reference Structure):
+  - Reference/SHARED/UNIFIED_MURIM_TERMINOLOGY.md (3000+ unified terms KR/EN→VN)
+  - Reference/KR_SPECIFIC/Library_ROTMHS_GLOSSARY.md (300+ ROTMHS-specific terms)
+  - Reference/KR_SPECIFIC/Library_GENERIC_MURIM_TERMS.md (Legacy - replaced by UNIFIED)
+  - Reference/KR_SPECIFIC/Library_HANJA_MURIM_TERMS.md (Hanja database with frequency indexing)
+  - Reference/KR_SPECIFIC/Ref_KR_HONORIFIC_SYSTEM.md (Sect hierarchy honorifics)
+  - Reference/SHARED/Ref_CULTIVATION_STAGES.md (Cultivation realms with language scaling)
 -->
 
 <TRANSLATION_SYSTEM>
@@ -1839,7 +1840,7 @@
 
   <!-- Mapping Database Reference -->
   <DATABASE_STRUCTURE>
-    <SOURCE file="Reference/Library_HANJA_MURIM_TERMS.md">
+    <SOURCE file="Reference/SHARED/UNIFIED_MURIM_TERMINOLOGY.md">
       500KB structured database with unique IDs and frequency tiers
     </SOURCE>
 
