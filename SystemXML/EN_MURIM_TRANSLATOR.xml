@@ -1,0 +1,1758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  EN_MURIM_TRANSLATOR.xml
+  English Murim Novel Translation System
+  Version: 1.0
+  Target: English → Vietnamese Murim Translation with Prose Condensation
+
+  Purpose: Comprehensive English Murim (martial arts) novel translation system
+  integrating prose density control, Pinyin-to-Hán Việt conversion, mixed input
+  handling, and combat lexicon for authentic Vietnamese translation.
+
+  Dependencies:
+  - Reference/Ref_PINYIN_MAPPING_TABLE.md (500+ Pinyin → Hán Việt mappings)
+  - Reference/Library_GENERIC_MURIM_TERMS.md (1000+ generic Murim terms with English/Pinyin)
+  - Reference/Ref_EN_PROSE_DENSITY_RULES.md (12 condensation patterns, 60-70% target)
+  - Reference/Ref_KR_HONORIFIC_SYSTEM.md (Sect hierarchy honorifics - reused)
+  - Reference/Ref_CULTIVATION_STAGES.md (Cultivation realms - reused)
+
+  Key Differences from KR System:
+  1. EN_MURIM_LOC replaces MURIM_LOC (adds prose density + Pinyin handling)
+  2. TERMINOLOGY_PROTOCOL uses Pinyin lookup instead of Hanja
+  3. FORMATTING adapted for English punctuation conventions
+  4. 90%+ reuse of COMBAT, GUARD, IO_PROTOCOL, COMBAT_LEXICON modules
+-->
+
+<TRANSLATION_SYSTEM>
+
+<!-- ========================================================================
+     SECTION 1: EN_MURIM_LOC - English Source Localization & Prose Control
+     Lines 1-400
+     ======================================================================== -->
+<EN_MURIM_LOC>
+  <DESCRIPTION>
+    English source-specific handling: prose density control, Pinyin/English term
+    detection, mixed input normalization, and name conversion strategies.
+  </DESCRIPTION>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       1.1 PROSE_DENSITY_CONTROL - Automatic Condensation (60-70% target)
+       ═══════════════════════════════════════════════════════════════════ -->
+  <PROSE_DENSITY_CONTROL>
+    <OVERVIEW>
+      English Murim translations are 2-3x more verbose than Korean/Chinese sources.
+      Target: 60-70% word count reduction while preserving meaning.
+      Reference: Ref_EN_PROSE_DENSITY_RULES.md (12 core patterns)
+    </OVERVIEW>
+
+    <TARGET_METRICS>
+      <IDEAL_RATIO>60-70% of source word count</IDEAL_RATIO>
+      <ACCEPTABLE_RANGE>50-80%</ACCEPTABLE_RANGE>
+      <FLAG_REVIEW_IF>
+        - Less than 50% (possible meaning loss)
+        - Greater than 80% (insufficient condensation)
+      </FLAG_REVIEW_IF>
+    </TARGET_METRICS>
+
+    <CONDENSATION_PATTERNS>
+      <!-- Pattern 1: Remove Redundant Adjectives -->
+      <PATTERN id="1" name="REDUNDANT_ADJECTIVES" priority="high">
+        <RULE>English over-uses stacked adjectives. VN prefers single strong adjectives.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"powerfully circulated his vast and mighty internal energy"</EN>
+            <VN>"vận hành nội công hùng hậu"</VN>
+            <DROPPED>"powerfully", "vast and"</DROPPED>
+            <REDUCTION>13 words → 7 từ (46%)</REDUCTION>
+          </EX>
+          <EX>
+            <EN>"ancient and venerable master stroked his long white beard"</EN>
+            <VN>"cao nhân vuốt râu trầm ngâm"</VN>
+            <DROPPED>"ancient and venerable", "long white"</DROPPED>
+            <REDUCTION>11 words → 5 từ (55%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 2: Merge Subordinate Clauses -->
+      <PATTERN id="2" name="MERGE_CLAUSES" priority="high">
+        <RULE>English uses complex clause structures. VN favors shorter, direct sentences.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"through all twelve of his primary meridians, which were located throughout his body"</EN>
+            <VN>"qua thập nhị kinh mạch"</VN>
+            <DROPPED>"all", "of his", "primary", "which were located throughout his body"</DROPPED>
+            <REDUCTION>17 words → 5 từ (71%)</REDUCTION>
+          </EX>
+          <EX>
+            <EN>"The sword technique that he had just used was one of the most profound skills"</EN>
+            <VN>"Chiêu kiếm vừa rồi là tuyệt kỹ"</VN>
+            <DROPPED>"that he had just used", "one of the most profound"</DROPPED>
+            <REDUCTION>20 words → 6 từ (70%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 3: Eliminate Filler Verbs -->
+      <PATTERN id="3" name="FILLER_VERBS" priority="high">
+        <RULE>Drop "could feel/see/sense" + action. VN goes directly to action/sensation.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"He could feel the energy surging powerfully through his body"</EN>
+            <VN>"Năng lượng dâng trào trong cơ thể"</VN>
+            <DROPPED>"He could feel", "powerfully"</DROPPED>
+            <REDUCTION>10 words → 5 từ (50%)</REDUCTION>
+          </EX>
+          <EX>
+            <EN>"She could sense that someone was approaching from behind"</EN>
+            <VN>"Có người đang tiếp cận từ phía sau"</VN>
+            <DROPPED>"She could sense that"</DROPPED>
+            <REDUCTION>10 words → 6 từ (40%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 4: Compress Prepositional Phrases -->
+      <PATTERN id="4" name="PREPOSITIONAL_PHRASES" priority="medium">
+        <RULE>VN uses possessive markers or implicit context instead of verbose prepositions.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"The sword in his hand gleamed with a cold light"</EN>
+            <VN>"Thanh kiếm lóe ánh sáng lạnh lẽo"</VN>
+            <DROPPED>"in his hand", "with a"</DROPPED>
+            <REDUCTION>10 words → 5 từ (50%)</REDUCTION>
+          </EX>
+          <EX>
+            <EN>"The energy within his dantian began to circulate rapidly"</EN>
+            <VN>"Nội lực trong đan điền vận hành mau lẹ"</VN>
+            <DROPPED>"began to", redundant "within"</DROPPED>
+            <REDUCTION>10 words → 6 từ (40%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 5: Condense Action Descriptions -->
+      <PATTERN id="5" name="ACTION_SEQUENCES" priority="high">
+        <RULE>English step-by-step actions → VN compressed phrases.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"He raised his hand and gathered his internal energy before striking out with his palm"</EN>
+            <VN>"Hắn tụ khí xuất chương"</VN>
+            <DROPPED>"raised his hand and", "before striking out with his"</DROPPED>
+            <REDUCTION>14 words → 4 từ (71%)</REDUCTION>
+          </EX>
+          <EX>
+            <EN>"She leaped into the air and twisted her body, slashing down with her sword in a graceful arc"</EN>
+            <VN>"Nàng bay lên xoay người chém kiếm"</VN>
+            <DROPPED>"into the air", "with her", "in a graceful arc"</DROPPED>
+            <REDUCTION>17 words → 5 từ (71%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 6: Remove Intensifiers and Hedges -->
+      <PATTERN id="6" name="INTENSIFIERS" priority="medium">
+        <RULE>Drop "extremely/very/quite/rather/somewhat". VN rarely needs them.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"His cultivation base was extremely powerful and far exceeded that of ordinary martial artists"</EN>
+            <VN>"Tu vi hắn mạnh mẽ vượt xa võ giả thường"</VN>
+            <DROPPED>"extremely", "far", "that of"</DROPPED>
+            <REDUCTION>14 words → 7 từ (50%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 7: Simplify Dialogue Tags -->
+      <PATTERN id="7" name="DIALOGUE_TAGS" priority="medium">
+        <RULE>Use simple "nói" or remove tag when speaker is clear.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"I will definitely defeat you," he declared with fierce determination</EN>
+            <VN>"Ta nhất định sẽ đánh bại ngươi," hắn nói quyết tâm</VN>
+            <DROPPED>"declared with fierce determination" → "nói quyết tâm"</DROPPED>
+            <REDUCTION>12 words → 8 từ (33%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 8: Compress Explanatory Clauses -->
+      <PATTERN id="8" name="EXPLANATORY_CLAUSES" priority="medium">
+        <RULE>Drop explanations that VN readers can infer from genre knowledge.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"He activated his movement technique, a high-level lightness skill that allowed him to move like the wind"</EN>
+            <VN>"Hắn thi triển khinh công tuyệt đỉnh"</VN>
+            <DROPPED>"a high-level lightness skill that allowed him to move like the wind"</DROPPED>
+            <REDUCTION>17 words → 5 từ (71%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 9: Eliminate Temporal Redundancy -->
+      <PATTERN id="9" name="TEMPORAL_REDUNDANCY" priority="low">
+        <RULE>Drop excessive time markers. VN uses context or minimal markers.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"After he finished cultivating for three hours, he finally opened his eyes"</EN>
+            <VN>"Tu luyện ba giờ xong, hắn mở mắt"</VN>
+            <DROPPED>"After", "finished", "finally"</DROPPED>
+            <REDUCTION>12 words → 6 từ (50%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 10: Condense Internal Monologue -->
+      <PATTERN id="10" name="INTERNAL_MONOLOGUE" priority="medium">
+        <RULE>Compress wordy thoughts to essential content.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"He thought to himself, 'If I can just break through to the next realm, I'll finally be strong enough'"</EN>
+            <VN>"Hắn nghĩ: 'Nếu đột phá được, ta sẽ đủ mạnh'"</VN>
+            <DROPPED>"to himself", "just", "to the next realm", "finally", "be"</DROPPED>
+            <REDUCTION>18 words → 9 từ (50%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 11: Remove Physical State Descriptions -->
+      <PATTERN id="11" name="PHYSICAL_STATES" priority="low">
+        <RULE>Imply or omit obvious physical reactions.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"His eyes widened in shock and his face turned pale as he witnessed the devastating attack"</EN>
+            <VN>"Hắn sửng sốt chứng kiến đòn tấn công hủy diệt"</VN>
+            <DROPPED>"His eyes widened in shock and his face turned pale"</DROPPED>
+            <REDUCTION>15 words → 7 từ (53%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+
+      <!-- Pattern 12: Compress Combat Descriptions -->
+      <PATTERN id="12" name="COMBAT_SEQUENCES" priority="high">
+        <RULE>Merge blow-by-blow into dynamic action verbs.</RULE>
+        <EXAMPLES>
+          <EX>
+            <EN>"He swung his sword in a wide arc, aiming for his opponent's head, but his opponent ducked and countered with a thrust"</EN>
+            <VN>"Hắn vung kiếm chém ngang, đối thủ né đâm ngược"</VN>
+            <DROPPED>"in a wide arc", "aiming for his opponent's head", "but", "and", "with a"</DROPPED>
+            <REDUCTION>21 words → 8 từ (62%)</REDUCTION>
+          </EX>
+        </EXAMPLES>
+      </PATTERN>
+    </CONDENSATION_PATTERNS>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         VERBOSITY_DETECTION - Automatic Analysis of Source Text
+         ═══════════════════════════════════════════════════════════════════ -->
+    <VERBOSITY_DETECTION>
+      <OVERVIEW>
+        Analyze source English text to identify verbosity patterns before condensation.
+        Triggers auto-condensation when thresholds exceeded.
+      </OVERVIEW>
+
+      <WORD_COUNT_ANALYSIS>
+        <RULE>Count total words in passage and track by sentence.</RULE>
+        <BASELINE>
+          - Average EN Murim sentence: 15-25 words
+          - Target VN sentence: 8-12 words (60-70% reduction)
+        </BASELINE>
+        <THRESHOLD>
+          <HIGH priority="high">Sentence &gt;25 words → Apply MERGE_CLAUSES, ACTION_SEQUENCES</HIGH>
+          <MEDIUM priority="medium">Sentence 20-25 words → Apply REDUNDANT_ADJECTIVES, FILLER_VERBS</MEDIUM>
+          <LOW priority="low">Sentence &lt;15 words → Minimal condensation (dialogue/technical)</LOW>
+        </THRESHOLD>
+      </WORD_COUNT_ANALYSIS>
+
+      <ADJECTIVE_RATIO_CHECK>
+        <RULE>Calculate adjective count per noun phrase.</RULE>
+        <PATTERN_MATCHING>
+          - Detect stacked adjectives: "vast and mighty", "ancient and venerable"
+          - Flag 2+ adjectives before single noun
+          - Flag adverbs modifying adjectives: "extremely powerful", "quite beautiful"
+        </PATTERN_MATCHING>
+        <THRESHOLD>
+          <HIGH priority="high">2+ adjectives per noun → Apply REDUNDANT_ADJECTIVES (keep strongest)</HIGH>
+          <MEDIUM priority="medium">Adverb + adjective → Remove adverb (Apply INTENSIFIERS)</MEDIUM>
+        </THRESHOLD>
+        <ADJECTIVE_KEYWORDS>
+          <!-- Common verbose adjectives in EN Murim prose -->
+          - powerful, mighty, vast, immense, tremendous
+          - ancient, venerable, esteemed, profound, mysterious
+          - fierce, intense, overwhelming, devastating
+          - graceful, elegant, beautiful, magnificent
+        </ADJECTIVE_KEYWORDS>
+      </ADJECTIVE_RATIO_CHECK>
+
+      <FILLER_WORD_IDENTIFICATION>
+        <RULE>Detect and flag filler verbs, hedges, and intensifiers for removal.</RULE>
+        <FILLER_VERBS>
+          <CATEGORY name="PERCEPTION_VERBS" priority="high">
+            <!-- "could feel/see/sense" + action → direct action -->
+            - "could feel", "could sense", "could see", "could hear"
+            - "seemed to", "appeared to", "began to", "started to"
+            - "managed to", "tried to", "attempted to"
+          </CATEGORY>
+          <CATEGORY name="HEDGE_WORDS" priority="medium">
+            <!-- Uncertainty/qualification markers -->
+            - "rather", "quite", "somewhat", "fairly", "pretty"
+            - "kind of", "sort of", "a bit", "a little"
+          </CATEGORY>
+          <CATEGORY name="INTENSIFIERS" priority="medium">
+            <!-- Over-emphasis markers -->
+            - "very", "extremely", "incredibly", "absolutely"
+            - "totally", "completely", "utterly", "thoroughly"
+            - "deeply", "profoundly", "vastly"
+          </CATEGORY>
+          <CATEGORY name="REDUNDANT_CONJUNCTIONS" priority="low">
+            <!-- Unnecessary connectors in action sequences -->
+            - "and then", "but then", "after that", "before that"
+            - "at that moment", "at that time", "just as", "just when"
+          </CATEGORY>
+        </FILLER_VERBS>
+        <DETECTION_LOGIC>
+          1. Tokenize sentence and identify filler words from categories above
+          2. Calculate filler word density: (filler_count / total_words) * 100
+          3. If density &gt;15%, flag for aggressive condensation
+          4. Remove fillers according to pattern priority (high → medium → low)
+        </DETECTION_LOGIC>
+      </FILLER_WORD_IDENTIFICATION>
+
+      <VERBOSITY_SCORE>
+        <CALCULATION>
+          verbosity_score = (word_count_factor * 0.4) + (adjective_ratio * 0.3) + (filler_density * 0.3)
+
+          where:
+          - word_count_factor = (avg_sentence_length - 12) / 12  (normalized to target 12 words)
+          - adjective_ratio = adjectives_per_noun / 1  (normalized to target 1 adj/noun max)
+          - filler_density = filler_count / total_words
+        </CALCULATION>
+        <THRESHOLD>
+          <HIGH>&gt;0.6 → Apply ALL high-priority patterns (1,2,3,5,12)</HIGH>
+          <MEDIUM>0.4-0.6 → Apply high + medium patterns (1-8)</MEDIUM>
+          <LOW>&lt;0.4 → Apply high patterns only + spot check</LOW>
+        </THRESHOLD>
+      </VERBOSITY_SCORE>
+    </VERBOSITY_DETECTION>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         AUTO_CONDENSATION_LOGIC - Pattern Application Engine
+         ═══════════════════════════════════════════════════════════════════ -->
+    <AUTO_CONDENSATION_LOGIC>
+      <OVERVIEW>
+        Apply condensation patterns based on verbosity detection results.
+        Priority-based pattern application with synergy optimization.
+      </OVERVIEW>
+
+      <PATTERN_APPLICATION_ORDER>
+        <PHASE name="PHASE_1_STRUCTURE" priority="high">
+          <!-- Structural condensation (affects clause/sentence structure) -->
+          <APPLY_PATTERNS>2 (MERGE_CLAUSES), 5 (ACTION_SEQUENCES), 12 (COMBAT_SEQUENCES)</APPLY_PATTERNS>
+          <REASON>Structural changes must happen first before detail-level condensation</REASON>
+        </PHASE>
+        <PHASE name="PHASE_2_LEXICAL" priority="high">
+          <!-- Lexical condensation (word-level removal) -->
+          <APPLY_PATTERNS>1 (REDUNDANT_ADJECTIVES), 3 (FILLER_VERBS), 6 (INTENSIFIERS)</APPLY_PATTERNS>
+          <REASON>Remove redundant words after structure is optimized</REASON>
+        </PHASE>
+        <PHASE name="PHASE_3_CONTEXT" priority="medium">
+          <!-- Context-dependent condensation -->
+          <APPLY_PATTERNS>4 (PREPOSITIONAL_PHRASES), 7 (DIALOGUE_TAGS), 8 (EXPLANATORY_CLAUSES)</APPLY_PATTERNS>
+          <REASON>Context-specific patterns applied after core condensation</REASON>
+        </PHASE>
+        <PHASE name="PHASE_4_POLISH" priority="low">
+          <!-- Final polish -->
+          <APPLY_PATTERNS>9 (TEMPORAL_REDUNDANCY), 10 (INTERNAL_MONOLOGUE), 11 (PHYSICAL_STATES)</APPLY_PATTERNS>
+          <REASON>Fine-tuning patterns to reach target ratio</REASON>
+        </PHASE>
+      </PATTERN_APPLICATION_ORDER>
+
+      <SYNERGY_WITH_TERM_DETECTION>
+        <RULE>
+          After condensation, apply TERM_DETECTION (Section 1.2) to convert English/Pinyin terms.
+          This prevents re-expanding condensed text with verbose translations.
+        </RULE>
+        <EXAMPLE>
+          <STEP1_CONDENSED>"He gathered internal energy" → "Tụ nội lực"</STEP1_CONDENSED>
+          <STEP2_TERM_DETECTED>"internal energy" → "nội công" (from Library lookup)</STEP2_TERM_DETECTED>
+          <FINAL>"Tụ nội công"</FINAL>
+          <NOTE>Condensation + terminology = compact + authentic</NOTE>
+        </EXAMPLE>
+      </SYNERGY_WITH_TERM_DETECTION>
+
+      <ITERATIVE_REFINEMENT>
+        <RULE>If initial condensation doesn't meet 60-70% target, apply additional phases.</RULE>
+        <LOGIC>
+          1. Apply Phase 1 (Structure) → measure word count
+          2. If reduction &lt;50%, apply Phase 2 (Lexical) → measure
+          3. If reduction &lt;60%, apply Phase 3 (Context) → measure
+          4. If reduction &lt;65%, apply Phase 4 (Polish) → measure
+          5. If reduction still &lt;60%, flag for manual review
+        </LOGIC>
+      </ITERATIVE_REFINEMENT>
+    </AUTO_CONDENSATION_LOGIC>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         OVERRIDE_HANDLING - Exception Detection + User Control
+         ═══════════════════════════════════════════════════════════════════ -->
+    <OVERRIDE_HANDLING>
+      <OVERVIEW>
+        Detect passages requiring exception handling (poetic, emotional, technical).
+        Provide user toggle for manual override.
+      </OVERVIEW>
+
+      <POETIC_PASSAGE_DETECTION>
+        <RULE>Detect intentionally lyrical/philosophical prose → reduce condensation to 70-80%.</RULE>
+        <DETECTION_PATTERNS>
+          <LINE_BREAKS>Multiple short lines (poetry-like formatting)</LINE_BREAKS>
+          <METER>Rhythmic repetition or parallel structure</METER>
+          <KEYWORDS>
+            - "Dao", "Way", "Heaven", "Earth", "nature", "universe"
+            - "like", "as if", "flows", "ceaselessly", "eternal"
+            - Metaphorical language (water, wind, mountain imagery)
+          </KEYWORDS>
+          <STRUCTURE>
+            - Em dashes or colons introducing philosophical statements
+            - Rhetorical questions
+            - Aphorisms or proverbs
+          </STRUCTURE>
+        </DETECTION_PATTERNS>
+        <OVERRIDE_ACTION>
+          If detected, reduce condensation target to 70-80% instead of 60-70%.
+          Preserve contemplative tone and metaphorical richness.
+        </OVERRIDE_ACTION>
+      </POETIC_PASSAGE_DETECTION>
+
+      <EMOTIONAL_CLIMAX_DETECTION>
+        <RULE>Detect pivotal emotional moments → retain 60-75% (less aggressive).</RULE>
+        <DETECTION_KEYWORDS>
+          <DEATH_FAREWELL>
+            - "Master", "Father", "Mother", "Brother", "Sister"
+            - "No!", "Please!", "Don't leave", "goodbye", "farewell"
+            - "last", "final", "never", "die", "death"
+          </DEATH_FAREWELL>
+          <LOVE_CONFESSION>
+            - "love", "heart", "feelings", "always", "forever"
+            - "I...", stutter patterns, ellipsis repetition
+          </LOVE_CONFESSION>
+          <BETRAYAL_SHOCK>
+            - "betray", "lie", "deceive", "how could you"
+            - "impossible", "can't be", "no way"
+          </BETRAYAL_SHOCK>
+          <BREAKTHROUGH_TRIUMPH>
+            - "finally", "breakthrough", "succeed", "achieved"
+            - "I did it!", exclamation marks, caps emphasis
+          </BREAKTHROUGH_TRIUMPH>
+        </DETECTION_KEYWORDS>
+        <STRUCTURAL_MARKERS>
+          - Dialogue with ellipsis ("I... I...")
+          - Repeated exclamation marks ("No! No! No!")
+          - Short, fragmented sentences (emotional urgency)
+        </STRUCTURAL_MARKERS>
+        <OVERRIDE_ACTION>
+          Preserve stutter/repetition patterns.
+          Keep emotional pacing intact (short bursts OK).
+          Target 60-75% condensation instead of 60-70%.
+        </OVERRIDE_ACTION>
+      </EMOTIONAL_CLIMAX_DETECTION>
+
+      <TECHNICAL_CULTIVATION_DETECTION>
+        <RULE>Detect step-by-step cultivation instructions → preserve 65-70% (accuracy &gt; brevity).</RULE>
+        <DETECTION_PATTERNS>
+          <SEQUENTIAL_MARKERS>
+            - "First", "Then", "Next", "After that", "Finally"
+            - "Step 1", "Step 2", numbered lists
+          </SEQUENTIAL_MARKERS>
+          <ANATOMICAL_TERMS>
+            - Meridians: "Governing Vessel", "Conception Vessel", "meridian channels"
+            - Acupoints: "Crown Point", "dantian", specific acupoint names
+            - Energy pathways: "circulate", "flow", "gather", "release"
+          </ANATOMICAL_TERMS>
+          <PRECISION_REQUIREMENTS>
+            - Specific time durations: "three breaths", "one hour"
+            - Exact sequences that must be followed
+            - Warning consequences: "if done incorrectly..."
+          </PRECISION_REQUIREMENTS>
+        </DETECTION_PATTERNS>
+        <OVERRIDE_ACTION>
+          Preserve technical terminology and sequential markers.
+          Do NOT remove instructional detail (safety-critical).
+          Target 65-70% condensation with bias toward 70%.
+        </OVERRIDE_ACTION>
+      </TECHNICAL_CULTIVATION_DETECTION>
+
+      <USER_OVERRIDE_TOGGLE>
+        <OPTION name="AGGRESSIVE_MODE" default="false">
+          <DESCRIPTION>Force 50-60% condensation even on exception passages.</DESCRIPTION>
+          <USE_CASE>When user prioritizes brevity over tone preservation.</USE_CASE>
+          <WARNING>May lose emotional impact or technical clarity.</WARNING>
+        </OPTION>
+        <OPTION name="CONSERVATIVE_MODE" default="false">
+          <DESCRIPTION>Limit condensation to 70-80% across all passages.</DESCRIPTION>
+          <USE_CASE>When user wants safer, less aggressive condensation.</USE_CASE>
+          <WARNING>May not meet 60-70% target, resulting in verbose output.</WARNING>
+        </OPTION>
+        <OPTION name="MANUAL_OVERRIDE" default="false">
+          <DESCRIPTION>Disable auto-condensation, require manual pattern application.</DESCRIPTION>
+          <USE_CASE>For quality review or training purposes.</USE_CASE>
+        </OPTION>
+        <IMPLEMENTATION>
+          User sets toggle via configuration or per-passage annotation.
+          System adjusts condensation targets accordingly.
+        </IMPLEMENTATION>
+      </USER_OVERRIDE_TOGGLE>
+    </OVERRIDE_HANDLING>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         QUALITY_GATE_VALIDATION - Enforcement + Metrics
+         ═══════════════════════════════════════════════════════════════════ -->
+    <QUALITY_GATE_VALIDATION>
+      <OVERVIEW>
+        Enforce quality gates during and after condensation.
+        Validate word count targets, meaning preservation, and readability.
+      </OVERVIEW>
+
+      <WORD_COUNT_ENFORCEMENT>
+        <TARGET>60-70% of source word count</TARGET>
+        <MEASUREMENT>
+          1. Count source English words (exclude punctuation)
+          2. Count target Vietnamese words (từ, not characters)
+          3. Calculate ratio: (target_words / source_words) * 100
+        </MEASUREMENT>
+        <THRESHOLDS>
+          <PASS>60-70% → Accept translation</PASS>
+          <ACCEPTABLE>50-59% OR 71-80% → Flag for spot check</ACCEPTABLE>
+          <FAIL>&lt;50% (possible meaning loss) OR &gt;80% (insufficient condensation) → Reject, reprocess</FAIL>
+        </THRESHOLDS>
+        <AUTO_ADJUSTMENT>
+          <IF condition="ratio &lt; 60%">
+            Expand key terms or add context (but preserve condensation intent)
+          </IF>
+          <IF condition="ratio &gt; 70%">
+            Apply additional Phase 4 patterns (TEMPORAL_REDUNDANCY, PHYSICAL_STATES)
+          </IF>
+        </AUTO_ADJUSTMENT>
+      </WORD_COUNT_ENFORCEMENT>
+
+      <MEANING_PRESERVATION_CHECK>
+        <REQUIREMENT>100% semantic accuracy (no information loss)</REQUIREMENT>
+        <VALIDATION_CRITERIA>
+          <PLOT_CRITICAL>All plot points, character actions, outcomes preserved</PLOT_CRITICAL>
+          <RELATIONSHIPS>Character relationships and dynamics clear</RELATIONSHIPS>
+          <TECHNICAL_DETAILS>Cultivation techniques, power levels accurate</TECHNICAL_DETAILS>
+          <EMOTIONAL_TONE>Emotional beats maintained (anger, joy, sorrow)</EMOTIONAL_TONE>
+          <NO_AMBIGUITY>Pronoun references clear, subject/object unambiguous</NO_AMBIGUITY>
+        </VALIDATION_CRITERIA>
+        <SPOT_CHECK_SAMPLING>
+          - Sample 10% of condensed passages (random selection)
+          - Manually verify against source for semantic equivalence
+          - If &gt;5% of samples fail, flag entire batch for review
+        </SPOT_CHECK_SAMPLING>
+      </MEANING_PRESERVATION_CHECK>
+
+      <READABILITY_VALIDATION>
+        <CRITERIA>
+          <NATURAL_WORD_ORDER>Vietnamese sentence structure (S-V-O, modifiers after nouns)</NATURAL_WORD_ORDER>
+          <SUBJECT_CLARITY>Subject identifiable even when implicit (context-driven)</SUBJECT_CLARITY>
+          <RHYTHM_FLOW>Sentence rhythm smooth, no awkward condensation artifacts</RHYTHM_FLOW>
+          <GENRE_CONVENTIONS>Murim terminology consistent, honorifics appropriate</GENRE_CONVENTIONS>
+        </CRITERIA>
+        <ANTI_PATTERNS>
+          <!-- Patterns indicating over-condensation -->
+          <ANTI_PATTERN name="CHOPPY_SYNTAX">
+            <PROBLEM>Too many short, disconnected phrases</PROBLEM>
+            <EXAMPLE_BAD>"Hắn. Kiếm. Chém. Đối thủ. Né."</EXAMPLE_BAD>
+            <EXAMPLE_GOOD>"Hắn vung kiếm chém, đối thủ né tránh."</EXAMPLE_GOOD>
+          </ANTI_PATTERN>
+          <ANTI_PATTERN name="PRONOUN_AMBIGUITY">
+            <PROBLEM>Unclear pronoun references after condensation</PROBLEM>
+            <EXAMPLE_BAD>"Hắn tấn công. Hắn phản đòn." (which "hắn"?)</EXAMPLE_BAD>
+            <EXAMPLE_GOOD>"Hắn tấn công. Đối thủ phản đòn."</EXAMPLE_GOOD>
+          </ANTI_PATTERN>
+          <ANTI_PATTERN name="MISSING_CONNECTIVES">
+            <PROBLEM>Removed too many logical connectors</PROBLEM>
+            <EXAMPLE_BAD>"Tu luyện ba năm. Đột phá cảnh giới." (causal link unclear)</EXAMPLE_BAD>
+            <EXAMPLE_GOOD>"Sau ba năm tu luyện, hắn đột phá cảnh giới."</EXAMPLE_GOOD>
+          </ANTI_PATTERN>
+        </ANTI_PATTERNS>
+      </READABILITY_VALIDATION>
+
+      <METRICS_DASHBOARD>
+        <BATCH_STATISTICS>
+          <!-- Track per chapter/batch for quality monitoring -->
+          - Total passages processed
+          - Average word count ratio (target: 65% median)
+          - Exception passages detected (poetic/emotional/technical %)
+          - Manual override invocations
+          - Failed quality gates (rejection count)
+        </BATCH_STATISTICS>
+        <PATTERN_USAGE>
+          <!-- Which patterns applied most frequently -->
+          - High-priority patterns: count per pattern
+          - Medium-priority patterns: count per pattern
+          - Low-priority patterns: count per pattern
+          - Most effective pattern (highest reduction ratio)
+        </PATTERN_USAGE>
+        <QUALITY_SCORES>
+          - Meaning preservation rate: pass/fail ratio
+          - Readability score: 1-5 scale (manual rating)
+          - User satisfaction: feedback rating
+        </QUALITY_SCORES>
+      </METRICS_DASHBOARD>
+    </QUALITY_GATE_VALIDATION>
+
+    <EXCEPTION_CASES>
+      <EXCEPTION type="POETIC_PASSAGES">
+        <RULE>Preserve 70-80% length for intentionally lyrical/philosophical prose.</RULE>
+        <EXAMPLE>
+          <EN>"The Dao is like water—it flows ceaselessly, adapting to every vessel, yet never losing its essential nature"</EN>
+          <VN>"Đạo như nước—trôi chảy không ngừng, thích nghi với mọi bình chứa, nhưng không bao giờ mất đi bản chất"</VN>
+          <NOTE>Retain contemplative tone, only minor condensation</NOTE>
+        </EXAMPLE>
+      </EXCEPTION>
+
+      <EXCEPTION type="EMOTIONAL_CLIMAX">
+        <RULE>Retain 60-75% for pivotal emotional moments where pacing matters.</RULE>
+        <EXAMPLE>
+          <EN>"Master! No! Please don't leave me! I... I haven't... I still have so much to learn from you!"</EN>
+          <VN>"Sư phụ! Không! Đừng bỏ đệ tử! Đệ tử... đệ tử vẫn... vẫn còn nhiều thứ phải học từ sư phụ!"</VN>
+          <NOTE>Keep stutter/repetition for emotional impact</NOTE>
+        </EXAMPLE>
+      </EXCEPTION>
+
+      <EXCEPTION type="TECHNICAL_CULTIVATION">
+        <RULE>Preserve 65-70% for specific cultivation technique instructions (clarity needed).</RULE>
+        <EXAMPLE>
+          <EN>"First, gather the qi at your lower dantian. Then, circulate it through the Governing Vessel up to the Crown Point"</EN>
+          <VN>"Đầu tiên, tụ khí tại hạ đan điền. Sau đó, vận khí qua Đốc mạch lên đến Bách Hội huyệt"</VN>
+          <NOTE>Technical accuracy > condensation</NOTE>
+        </EXAMPLE>
+      </EXCEPTION>
+    </EXCEPTION_CASES>
+
+    <QUALITY_GATES>
+      <WORD_COUNT_CHECK>
+        <IDEAL>60-70% of source</IDEAL>
+        <ACCEPTABLE>50-80%</ACCEPTABLE>
+        <FLAG_IF>&lt;50% OR &gt;80%</FLAG_IF>
+      </WORD_COUNT_CHECK>
+
+      <MEANING_PRESERVATION>
+        <SPOT_CHECK>10% of passages (manual validation)</SPOT_CHECK>
+        <VERIFY>
+          - Plot-critical information preserved
+          - Character relationships clear
+          - Technical details accurate
+          - Emotional tone maintained
+          - No ambiguity introduced
+        </VERIFY>
+      </MEANING_PRESERVATION>
+
+      <READABILITY_CHECK>
+        <CRITERIA>
+          - Natural Vietnamese word order
+          - Subject/object clarity (even when implicit)
+          - Smooth sentence rhythm
+          - Genre conventions followed
+        </CRITERIA>
+      </READABILITY_CHECK>
+    </QUALITY_GATES>
+  </PROSE_DENSITY_CONTROL>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       1.2 TERM_DETECTION - English/Pinyin → Hán Việt Mapping
+       ═══════════════════════════════════════════════════════════════════ -->
+  <TERM_DETECTION>
+    <OVERVIEW>
+      Detect English Murim terms and Pinyin romanizations in source text.
+      Map to Hán Việt equivalents using reference tables.
+      References: Ref_PINYIN_MAPPING_TABLE.md, Library_GENERIC_MURIM_TERMS.md
+    </OVERVIEW>
+
+    <DETECTION_STRATEGY>
+      <PRIORITY_ORDER>
+        1. Check Library_GENERIC_MURIM_TERMS.md English column (exact match)
+        2. Check Ref_PINYIN_MAPPING_TABLE.md Pinyin column (case-insensitive)
+        3. Check Wade-Giles romanization (fallback)
+        4. If no match, transliterate Pinyin → Hán Việt phonetically
+      </PRIORITY_ORDER>
+
+      <EXAMPLES>
+        <EX>
+          <SOURCE>"Internal Energy" OR "Neigong"</SOURCE>
+          <DETECTION>Match in Library: "Internal Energy / Neigong"</DETECTION>
+          <OUTPUT>"Nội công"</OUTPUT>
+        </EX>
+        <EX>
+          <SOURCE>"Jianghu" OR "Jiang Hu"</SOURCE>
+          <DETECTION>Match in Pinyin table: "Jianghu → Giang hồ"</DETECTION>
+          <OUTPUT>"Giang hồ"</OUTPUT>
+        </EX>
+        <EX>
+          <SOURCE>"Sword Qi" OR "Jianqi"</SOURCE>
+          <DETECTION>Match in Library: "Sword Qi / Jianqi"</DETECTION>
+          <OUTPUT>"Kiếm khí"</OUTPUT>
+        </EX>
+      </EXAMPLES>
+
+      <AMBIGUITY_RESOLUTION>
+        <RULE>When multiple matches exist, prefer Library (genre-specific) over Pinyin table (generic).</RULE>
+        <EXAMPLE>
+          <TERM>"Master"</TERM>
+          <CONTEXT>Sect context</CONTEXT>
+          <RESOLUTION>Use "Sư phụ" (Library: martial master) not "Chủ nhân" (generic master)</RESOLUTION>
+        </EXAMPLE>
+      </AMBIGUITY_RESOLUTION>
+    </DETECTION_STRATEGY>
+
+    <COMMON_ENGLISH_TERMS>
+      <!-- High-frequency English Murim terms requiring special handling -->
+      <TERM en="Internal Energy" pinyin="Neigong" hanviet="Nội công" frequency="very_high"/>
+      <TERM en="Martial Artist" pinyin="Wuren" hanviet="Võ nhân" frequency="very_high"/>
+      <TERM en="Cultivation" pinyin="Xiulian" hanviet="Tu luyện" frequency="very_high"/>
+      <TERM en="Dantian" pinyin="Dantian" hanviet="Đan điền" frequency="very_high"/>
+      <TERM en="Meridian" pinyin="Jingmai" hanviet="Kinh mạch" frequency="very_high"/>
+      <TERM en="Sword Qi" pinyin="Jianqi" hanviet="Kiếm khí" frequency="high"/>
+      <TERM en="Palm Strike" pinyin="Zhangfa" hanviet="Chưởng pháp" frequency="high"/>
+      <TERM en="Lightness Skill" pinyin="Qinggong" hanviet="Khinh công" frequency="high"/>
+      <TERM en="Killing Intent" pinyin="Shaqi" hanviet="Sát khí" frequency="high"/>
+      <TERM en="Sect" pinyin="Zongmen" hanviet="Tông môn" frequency="high"/>
+    </COMMON_ENGLISH_TERMS>
+  </TERM_DETECTION>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       1.3 NAME_STRATEGY - Pinyin Name Conversion
+       ═══════════════════════════════════════════════════════════════════ -->
+  <NAME_STRATEGY>
+    <OVERVIEW>
+      English Murim novels often use Pinyin romanization for character names.
+      Convert Pinyin → Hán Việt phonetic approximation for Vietnamese readers.
+    </OVERVIEW>
+
+    <CONVERSION_RULES>
+      <RULE id="1" type="PINYIN_TO_HANVIET">
+        <DESCRIPTION>Map Pinyin syllables to Hán Việt phonetic equivalents</DESCRIPTION>
+        <EXAMPLES>
+          <EX pinyin="Wei Xiaobao" hanviet="Vi Tiểu Bảo"/>
+          <EX pinyin="Zhang Wuji" hanviet="Trương Vô Kỵ"/>
+          <EX pinyin="Yang Guo" hanviet="Dương Quá"/>
+          <EX pinyin="Xiao Feng" hanviet="Tiêu Phong"/>
+          <EX pinyin="Ling Huchong" hanviet="Linh Hồ Xung"/>
+        </EXAMPLES>
+      </RULE>
+
+      <RULE id="2" type="PRESERVE_FAMOUS_NAMES">
+        <DESCRIPTION>Well-known character names from Jin Yong/Gu Long → keep Vietnamese conventions</DESCRIPTION>
+        <EXAMPLES>
+          <EX pinyin="Guo Jing" hanviet="Quách Tĩnh" note="Legend of the Condor Heroes"/>
+          <EX pinyin="Huang Rong" hanviet="Hoàng Dung" note="Legend of the Condor Heroes"/>
+          <EX pinyin="Linghu Chong" hanviet="Linh Hồ Xung" note="Smiling Proud Wanderer"/>
+        </EXAMPLES>
+      </RULE>
+
+      <RULE id="3" type="SECT_NAMES">
+        <DESCRIPTION>Translate sect names semantically when English translation exists</DESCRIPTION>
+        <EXAMPLES>
+          <EX en="Shaolin Temple" pinyin="Shaolin Si" hanviet="Thiếu Lâm Tự"/>
+          <EX en="Wudang Sect" pinyin="Wudang Pai" hanviet="Võ Đang Phái"/>
+          <EX en="Mount Hua Sect" pinyin="Huashan Pai" hanviet="Hoa Sơn Phái"/>
+          <EX en="Emei Sect" pinyin="Emei Pai" hanviet="Nga Mi Phái"/>
+        </EXAMPLES>
+      </RULE>
+    </CONVERSION_RULES>
+
+    <PINYIN_HANVIET_SYLLABLE_MAP>
+      <!-- Common Pinyin initial → Hán Việt mapping -->
+      <INITIAL pinyin="zh" hanviet="tr"/>  <!-- Zhang → Trương -->
+      <INITIAL pinyin="ch" hanviet="xuy"/> <!-- Chang → Xương -->
+      <INITIAL pinyin="sh" hanviet="th"/>  <!-- Shan → Sơn/Thiên -->
+      <INITIAL pinyin="x" hanviet="t"/>    <!-- Xiao → Tiêu -->
+      <INITIAL pinyin="q" hanviet="kh"/>   <!-- Qin → Khâm -->
+      <INITIAL pinyin="j" hanviet="gi"/>   <!-- Jiang → Giang -->
+
+      <!-- Common Pinyin final → Hán Việt mapping -->
+      <FINAL pinyin="ong" hanviet="ung"/>  <!-- Chong → Xung -->
+      <FINAL pinyin="ang" hanviet="ương"/> <!-- Yang → Dương -->
+      <FINAL pinyin="eng" hanviet="âng"/>  <!-- Feng → Phong -->
+      <FINAL pinyin="ing" hanviet="inh"/>  <!-- Ming → Minh -->
+      <FINAL pinyin="uan" hanviet="uyên"/> <!-- Yuan → Uyên -->
+    </PINYIN_HANVIET_SYLLABLE_MAP>
+  </NAME_STRATEGY>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       1.4 MIXED_INPUT_HANDLING - Hybrid EN/Pinyin Source Detection
+       ═══════════════════════════════════════════════════════════════════ -->
+  <MIXED_INPUT_HANDLING>
+    <OVERVIEW>
+      English Murim translations often mix:
+      1. English descriptions ("He gathered his internal energy")
+      2. Pinyin terminology ("He used Taijiquan")
+      3. English translations of Chinese terms ("Supreme Heavenly Demon")
+
+      Normalize all variants to consistent Hán Việt output.
+    </OVERVIEW>
+
+    <NORMALIZATION_PIPELINE>
+      <STEP order="1">
+        <ACTION>Detect Pinyin terms (capitalized, no spaces or hyphens)</ACTION>
+        <EXAMPLES>Taijiquan, Qinggong, Neigong, Shaolin</EXAMPLES>
+        <OUTPUT>Look up in Ref_PINYIN_MAPPING_TABLE.md → Hán Việt</OUTPUT>
+      </STEP>
+
+      <STEP order="2">
+        <ACTION>Detect English translations (common phrases)</ACTION>
+        <EXAMPLES>"Internal Energy", "Lightness Skill", "Sword Qi"</EXAMPLES>
+        <OUTPUT>Look up in Library_GENERIC_MURIM_TERMS.md English column → Hán Việt</OUTPUT>
+      </STEP>
+
+      <STEP order="3">
+        <ACTION>Detect English descriptive names</ACTION>
+        <EXAMPLES>"Supreme Heavenly Demon", "Azure Dragon Technique"</EXAMPLES>
+        <OUTPUT>Translate semantically: "Chí Tôn Thiên Ma", "Thanh Long Kỹ"</OUTPUT>
+      </STEP>
+
+      <STEP order="4">
+        <ACTION>Apply prose density condensation (Section 1.1)</ACTION>
+        <OUTPUT>Condense to 60-70% of original length</OUTPUT>
+      </STEP>
+    </NORMALIZATION_PIPELINE>
+
+    <EXAMPLES>
+      <EX>
+        <SOURCE>"He used his Qinggong to leap onto the roof and gather his internal energy before unleashing a powerful palm strike"</SOURCE>
+        <DETECTION>
+          - "Qinggong" → Pinyin (Step 1) → "Khinh công"
+          - "internal energy" → English term (Step 2) → "Nội công"
+          - "palm strike" → English term (Step 2) → "Chưởng pháp"
+        </DETECTION>
+        <CONDENSATION>Apply Pattern 5 (Action Sequences)</CONDENSATION>
+        <OUTPUT>"Hắn dùng khinh công nhảy lên mái nhà tụ nội công ra chưởng"</OUTPUT>
+        <REDUCTION>18 words → 10 từ (44%)</REDUCTION>
+      </EX>
+
+      <EX>
+        <SOURCE>"The Azure Dragon of the East technique was one of the Four Divine Beasts styles"</SOURCE>
+        <DETECTION>
+          - "Azure Dragon of the East" → Descriptive name (Step 3) → "Đông Phương Thanh Long"
+          - "Four Divine Beasts" → Descriptive term (Step 3) → "Tứ Thánh Thú"
+        </DETECTION>
+        <OUTPUT>"Đông Phương Thanh Long là một trong Tứ Thánh Thú chiêu thức"</OUTPUT>
+        <REDUCTION>14 words → 9 từ (36%)</REDUCTION>
+      </EX>
+    </EXAMPLES>
+  </MIXED_INPUT_HANDLING>
+</EN_MURIM_LOC>
+
+<!-- ========================================================================
+     SECTION 2: COMBAT_MODULE - Combat Scene Translation (90% reuse from KR)
+     Lines 401-600
+     ======================================================================== -->
+<COMBAT_MODULE>
+  <DESCRIPTION>
+    Combat terminology, technique naming, and action sequence translation.
+    Adapted from KR system with English/Pinyin term handling.
+  </DESCRIPTION>
+
+  <!-- Technique Translation for English Sources -->
+  <TECHNIQUE_TRANSLATION>
+    <RULE_1>
+      English technique names → Translate semantically or use Pinyin lookup
+      Example: "Plum Blossom Sword" → "Muội Hoa Kiếm Pháp"
+      Example: "Taiji Fist" → "Thái Cực Quyền"
+    </RULE_1>
+    <RULE_2>
+      Generic combat actions → Direct Vietnamese translation
+      Example: "slash" → "chém", "thrust" → "đâm", "block" → "chặn"
+    </RULE_2>
+    <RULE_3>
+      Pinyin technique names → Look up Hán Việt equivalent
+      Example: "Taijiquan" → "Thái Cực Quyền"
+      Example: "Baguazhang" → "Bát Quái Chưởng"
+    </RULE_3>
+  </TECHNIQUE_TRANSLATION>
+
+  <!-- Action Intensity by Cultivation Realm (reused from KR) -->
+  <INTENSITY_SCALING>
+    <BEGINNER realm="Novice" intensity="1">
+      <VN_VERBS>chém, đâm, chặn, né</VN_VERBS>
+      <EXAMPLE>He swung his sword → Hắn vung kiếm</EXAMPLE>
+    </BEGINNER>
+    <INTERMEDIATE realm="Expert" intensity="2">
+      <VN_VERBS>chảy, ngấm, xuyên thủng, lướt</VN_VERBS>
+      <EXAMPLE>His sword flowed like water → Kiếm hắn chảy như nước</EXAMPLE>
+    </INTERMEDIATE>
+    <ADVANCED realm="Master" intensity="3">
+      <VN_VERBS>chẻ đôi, phân ly, chấn động, dồn</VN_VERBS>
+      <EXAMPLE>His sword split the void → Kiếm hắn chẻ đôi hư không</EXAMPLE>
+    </ADVANCED>
+    <SUPREME realm="Grandmaster" intensity="4">
+      <VN_VERBS>vang dội, xé toạc, nuốt chửng, phá vỡ</VN_VERBS>
+      <EXAMPLE>One sword shook heaven and earth → Một kiếm làm thiên địa vang dội</EXAMPLE>
+    </SUPREME>
+  </INTENSITY_SCALING>
+
+  <!-- Qi Manifestation Terms -->
+  <QI_EFFECTS>
+    <SWORD_QI en="Sword Qi" pinyin="Jianqi" vn="Kiếm khí" realm="Peak Expert">Faint energy aura around blade</SWORD_QI>
+    <SWORD_ENERGY en="Sword Energy" pinyin="Jiangang" vn="Kiếm cương" realm="Master">Visible energy projectile</SWORD_ENERGY>
+    <SWORD_LIGHT en="Sword Light" pinyin="Jianguang" vn="Kiếm quang" realm="Advanced Master">Brilliant radiant attack</SWORD_LIGHT>
+    <SWORD_INTENT en="Sword Intent" pinyin="Jianyi" vn="Kiếm ý" realm="Grandmaster">Domain of sword will</SWORD_INTENT>
+  </QI_EFFECTS>
+
+  <!-- Simplified Qi Templates (condensed from KR's 15 templates) -->
+  <QI_TEMPLATES total="5">
+    <TEMPLATE id="T01" name="Qi Gathering" vn="Tụ khí">
+      <BASIC>He gathered his internal energy → Hắn tụ nội lực</BASIC>
+      <REFINED>True qi surged from his dantian through his meridians → Chân khí từ đan điền bùng phát qua kinh mạch</REFINED>
+      <PROFOUND>Internal energy swirled like a deep ocean → Nội công như biển sâu cuộn xoáy</PROFOUND>
+      <MYTHICAL>His dantian contained the universe itself → Đan điền ngài dung nạp cả vũ trụ</MYTHICAL>
+    </TEMPLATE>
+    <TEMPLATE id="T02" name="Qi Release" vn="Phóng khí">
+      <BASIC>He released his energy → Hắn phóng nội lực</BASIC>
+      <REFINED>Energy burst forth like a flood → Nội lực bạo phát như thác lũ</REFINED>
+      <PROFOUND>Sword qi roared like a storm → Kiếm khí cuồn cuộn như bão táp</PROFOUND>
+      <MYTHICAL>Heaven and earth moved with his strike → Thiên địa vận động theo đòn của ngài</MYTHICAL>
+    </TEMPLATE>
+    <TEMPLATE id="T03" name="Energy Clash" vn="Khí lực va chạm">
+      <BASIC>Their energies collided → Nội lực hai người va chạm</BASIC>
+      <REFINED>Two sword energies clashed mid-air → Hai kiếm cương va nhau giữa hư không</REFINED>
+      <PROFOUND>The void split as their sword intents collided → Hư không tách đôi khi kiếm ý va chạm</PROFOUND>
+      <MYTHICAL>The world paused as supreme powers met → Thế giới như ngừng lại khi thiên hạ đệ nhất va chạm</MYTHICAL>
+    </TEMPLATE>
+    <TEMPLATE id="T04" name="Meridian Flow" vn="Kinh mạch tuần hoàn">
+      <BASIC>Energy flowed through his meridians → Nội công chảy qua kinh mạch</BASIC>
+      <REFINED>Qi circulated through the twelve primary meridians → Chân khí tuần hoàn qua thập nhị kinh mạch</REFINED>
+      <PROFOUND>Energy completed the Microcosmic Orbit → Chân khí hoàn thành Tiểu Chu Thiên</PROFOUND>
+    </TEMPLATE>
+    <TEMPLATE id="T05" name="Breakthrough" vn="Đột phá">
+      <BASIC>He broke through to the next realm → Hắn đột phá lên cảnh giới mới</BASIC>
+      <REFINED>His dantian expanded as he ascended → Đan điền mở rộng khi thăng cấp</REFINED>
+      <PROFOUND>Heaven and earth resonated with his advancement → Thiên địa cộng hưởng với sự đột phá</PROFOUND>
+    </TEMPLATE>
+  </QI_TEMPLATES>
+</COMBAT_MODULE>
+
+<!-- ========================================================================
+     SECTION 3: FORMATTING - Style & Punctuation Rules (80% reuse from KR)
+     Lines 601-700
+     ======================================================================== -->
+<FORMATTING>
+  <DESCRIPTION>
+    Formatting conventions adapted for English source material.
+    Handles English punctuation, quotation marks, and dialogue formatting.
+  </DESCRIPTION>
+
+  <!-- English Punctuation Handling -->
+  <ENGLISH_PUNCTUATION>
+    <QUOTATION_MARKS>
+      <RULE>English uses "double quotes". Vietnamese uses guillemets or straight quotes.</RULE>
+      <EN>"He said, 'I will win.'"</EN>
+      <VN>Hắn nói: "Ta sẽ thắng."</VN>
+    </QUOTATION_MARKS>
+    <ELLIPSIS>
+      <RULE>English ... → Vietnamese ... (same, but watch spacing)</RULE>
+      <EN>"I... I can't..."</EN>
+      <VN>"Ta... ta không thể..."</VN>
+    </ELLIPSIS>
+    <EM_DASH>
+      <RULE>English em-dash (—) → Vietnamese comma or period depending on context</RULE>
+      <EN>"He attacked—swiftly and decisively."</EN>
+      <VN>"Hắn tấn công, mau lẹ và quyết đoán."</VN>
+    </EM_DASH>
+  </ENGLISH_PUNCTUATION>
+
+  <!-- Dialogue Formatting -->
+  <DIALOGUE_FORMATTING>
+    <ATTRIBUTION_PLACEMENT>
+      <RULE>English: "Quote," he said. / Vietnamese: Hắn nói: "Quote."</RULE>
+      <EN>"I understand," he nodded.</EN>
+      <VN>Hắn gật đầu: "Ta hiểu rồi."</VN>
+    </ATTRIBUTION_PLACEMENT>
+    <ACTION_BEATS>
+      <RULE>English action beats mid-dialogue → Vietnamese separate or merge</RULE>
+      <EN>"Wait," he raised his hand, "I'm not done."</EN>
+      <VN>Hắn giơ tay: "Đợi đã, ta chưa xong."</VN>
+    </ACTION_BEATS>
+  </DIALOGUE_FORMATTING>
+
+  <!-- Paragraph Breaks -->
+  <PARAGRAPH_STRUCTURE>
+    <RULE>Preserve paragraph breaks from source for pacing.</RULE>
+    <RULE>Merge very short paragraphs (1-2 words) with following paragraph unless dramatic pause intended.</RULE>
+    <EXAMPLE>
+      <EN>He stopped.
+
+"What was that?"</EN>
+      <VN>Hắn dừng lại.
+
+"Đó là gì?"</VN>
+    </EXAMPLE>
+  </PARAGRAPH_STRUCTURE>
+
+  <!-- Number Formatting -->
+  <NUMBERS>
+    <RULE>English numerals → Vietnamese Hán Việt for traditional terms</RULE>
+    <EXAMPLES>
+      <EX en="Twelve Meridians" vn="Thập Nhị Kinh Mạch"/>
+      <EX en="Nine Heavens" vn="Cửu Thiên"/>
+      <EX en="Three Dantians" vn="Tam Đan Điền"/>
+      <EX en="18 palm strikes" vn="18 chưởng pháp" note="Keep Arabic for counts"/>
+    </EXAMPLES>
+  </NUMBERS>
+</FORMATTING>
+
+<!-- ========================================================================
+     SECTION 4: GUARD - Anti-Translationese & Quality Control (95% reuse)
+     Lines 701-800
+     ======================================================================== -->
+<GUARD>
+  <DESCRIPTION>
+    Quality gates to prevent translationese and maintain natural Vietnamese.
+    Adapted from KR system with English-specific patterns.
+  </DESCRIPTION>
+
+  <!-- English-Specific Translationese Patterns -->
+  <ANTI_TRANSLATIONESE>
+    <PATTERN id="EN_01" type="PASSIVE_VOICE">
+      <PROBLEM>English passive constructions → awkward Vietnamese</PROBLEM>
+      <BAD_EN>"He was struck by the sword."</BAD_EN>
+      <BAD_VN>"Hắn bị đánh bởi thanh kiếm." (unnatural)</BAD_VN>
+      <GOOD_VN>"Kiếm đâm trúng hắn." or "Hắn bị kiếm đâm trúng."</GOOD_VN>
+    </PATTERN>
+
+    <PATTERN id="EN_02" type="GERUND_OVERUSE">
+      <PROBLEM>English -ing forms → Vietnamese doesn't have direct equivalent</PROBLEM>
+      <BAD_EN>"After gathering his qi, circulating it through his meridians, and focusing his intent..."</BAD_EN>
+      <BAD_VN>"Sau khi tụ khí, vận hành qua kinh mạch, và tập trung ý chí..." (too literal)</BAD_VN>
+      <GOOD_VN>"Hắn tụ khí, vận qua kinh mạch, tập trung ý chí rồi..." (more natural)</GOOD_VN>
+    </PATTERN>
+
+    <PATTERN id="EN_03" type="POSSESSIVE_OVERUSE">
+      <PROBLEM>English "his/her X" → Vietnamese often omits or uses context</PROBLEM>
+      <BAD_EN>"He raised his hand and his sword gleamed."</BAD_EN>
+      <BAD_VN>"Hắn giơ tay của hắn và kiếm của hắn lóe sáng." (redundant)</BAD_VN>
+      <GOOD_VN>"Hắn giơ tay, thanh kiếm lóe sáng."</GOOD_VN>
+    </PATTERN>
+
+    <PATTERN id="EN_04" type="ARTICLE_REMNANTS">
+      <PROBLEM>English articles (a/an/the) → no Vietnamese equivalent, but affects phrasing</PROBLEM>
+      <BAD>"He is a master of the sword."</BAD>
+      <AVOID>"Hắn là một bậc thầy của cái kiếm."</AVOID>
+      <GOOD>"Hắn là cao thủ kiếm đạo."</GOOD>
+    </PATTERN>
+  </ANTI_TRANSLATIONESE>
+
+  <!-- Naturalness Checks (reused from KR) -->
+  <NATURALNESS_GATES>
+    <CHECK id="C1">Pronoun consistency (hắn/y/ngài/ta based on POV)</CHECK>
+    <CHECK id="C2">No word-for-word English structure</CHECK>
+    <CHECK id="C3">Murim terminology consistent with Library</CHECK>
+    <CHECK id="C4">Verb tense appropriate (Vietnamese often uses context over explicit tense)</CHECK>
+    <CHECK id="C5">No orphaned English words (except proper nouns)</CHECK>
+  </NATURALNESS_GATES>
+</GUARD>
+
+<!-- ========================================================================
+     SECTION 5: TERMINOLOGY_PROTOCOL - Pinyin Lookup System (NEW for EN)
+     Lines 801-900
+     ======================================================================== -->
+<TERMINOLOGY_PROTOCOL>
+  <DESCRIPTION>
+    Pinyin-to-Hán Việt lookup protocol replacing KR's Hanja system.
+    Uses Ref_PINYIN_MAPPING_TABLE.md and Library_GENERIC_MURIM_TERMS.md.
+  </DESCRIPTION>
+
+  <!-- Lookup Priority Order -->
+  <LOOKUP_PRIORITY>
+    <PRIORITY level="1">
+      <SOURCE>Library_GENERIC_MURIM_TERMS.md - English column</SOURCE>
+      <REASON>Genre-specific terms with established Hán Việt equivalents</REASON>
+      <EXAMPLE>
+        <QUERY>"Internal Energy" or "Neigong"</QUERY>
+        <MATCH>Library row: "Internal Energy / Neigong | 內功 | Nội công"</MATCH>
+        <OUTPUT>"Nội công"</OUTPUT>
+      </EXAMPLE>
+    </PRIORITY>
+
+    <PRIORITY level="2">
+      <SOURCE>Ref_PINYIN_MAPPING_TABLE.md - Pinyin column</SOURCE>
+      <REASON>500+ common Murim terms with Pinyin/Wade-Giles/Hán Việt</REASON>
+      <EXAMPLE>
+        <QUERY>"Jianghu" or "Jiang Hu"</QUERY>
+        <MATCH>Pinyin table: "Jianghu | Chiang-hu | Giang hồ"</MATCH>
+        <OUTPUT>"Giang hồ"</OUTPUT>
+      </EXAMPLE>
+    </PRIORITY>
+
+    <PRIORITY level="3">
+      <SOURCE>Wade-Giles romanization (fallback)</SOURCE>
+      <REASON>Older English translations may use Wade-Giles</REASON>
+      <EXAMPLE>
+        <QUERY>"Nei-kung" (Wade-Giles)</QUERY>
+        <MATCH>Pinyin table: Wade-Giles column → Hán Việt</MATCH>
+        <OUTPUT>"Nội công"</OUTPUT>
+      </EXAMPLE>
+    </PRIORITY>
+
+    <PRIORITY level="4">
+      <SOURCE>Phonetic transliteration</SOURCE>
+      <REASON>Terms not in reference tables</REASON>
+      <RULE>Apply Pinyin → Hán Việt phonetic mapping (Section 1.3)</RULE>
+      <EXAMPLE>
+        <QUERY>"Xuanyuan" (name not in tables)</QUERY>
+        <PHONETIC>Xuan → Huyền, Yuan → Uyên</PHONETIC>
+        <OUTPUT>"Huyền Uyên"</OUTPUT>
+      </EXAMPLE>
+    </PRIORITY>
+  </LOOKUP_PRIORITY>
+
+  <!-- Term Caching for Performance -->
+  <CACHING_STRATEGY>
+    <RULE>Cache first lookup of each term per document</RULE>
+    <RULE>Reuse cached translation for subsequent occurrences</RULE>
+    <RULE>Flag inconsistent translations of same term for review</RULE>
+  </CACHING_STRATEGY>
+
+  <!-- Ambiguity Resolution -->
+  <AMBIGUITY_HANDLING>
+    <SCENARIO type="MULTIPLE_MATCHES">
+      <RULE>When term matches multiple entries, prefer context-specific meaning</RULE>
+      <EXAMPLE>
+        <TERM>"Master"</TERM>
+        <CONTEXT_1>Sect hierarchy → "Sư phụ" (martial master)</CONTEXT_1>
+        <CONTEXT_2>Slavery/servitude → "Chủ nhân" (owner/master)</CONTEXT_2>
+        <CONTEXT_3>Craftsman → "Thợ bậc thầy"</CONTEXT_3>
+      </EXAMPLE>
+    </SCENARIO>
+
+    <SCENARIO type="PARTIAL_MATCH">
+      <RULE>Match longest phrase first, then break into components</RULE>
+      <EXAMPLE>
+        <PHRASE>"Sword Qi Technique"</PHRASE>
+        <MATCH_FULL>"Sword Qi" → "Kiếm khí"</MATCH_FULL>
+        <MATCH_COMPONENT>"Technique" → "Kỹ"</MATCH_COMPONENT>
+        <OUTPUT>"Kiếm Khí Kỹ"</OUTPUT>
+      </EXAMPLE>
+    </SCENARIO>
+  </AMBIGUITY_HANDLING>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       MIXED_INPUT_NORMALIZATION - Unify Variants to Single Output
+       ═══════════════════════════════════════════════════════════════════ -->
+  <MIXED_INPUT_NORMALIZATION>
+    <OVERVIEW>
+      Normalize mixed English/Pinyin/Wade-Giles input into consistent Hán Việt output.
+      Handle 3 scenarios: Pure English, Pinyin embedded, Mixed variants.
+      Prevent duplicates and maintain consistency throughout document.
+    </OVERVIEW>
+
+    <!-- ─────────────────────────────────────────────────────────────────
+         Scenario 1: Pure English Input
+         ───────────────────────────────────────────────────────────────── -->
+    <SCENARIO type="PURE_ENGLISH">
+      <DESCRIPTION>
+        Source text contains only English terms (no Pinyin or Wade-Giles).
+        Use Library_GENERIC_MURIM_TERMS.md English column for keyword detection.
+      </DESCRIPTION>
+
+      <KEYWORD_DETECTION>
+        <RULE>Case-insensitive exact match or phrase match in Library English column.</RULE>
+        <MATCHING_STRATEGY>
+          1. Longest phrase match first (e.g., "Internal Energy" before "Energy")
+          2. Exact word boundary match (not substring)
+          3. Ignore punctuation and capitalization
+          4. Handle plural forms: "meridians" → "meridian" → lookup
+        </MATCHING_STRATEGY>
+        <EXAMPLES>
+          <EX>
+            <INPUT>"internal energy"</INPUT>
+            <DETECTION>Match Library: "Internal Energy / Neigong"</DETECTION>
+            <OUTPUT>"Nội công"</OUTPUT>
+          </EX>
+          <EX>
+            <INPUT>"meridians"</INPUT>
+            <DETECTION>Normalize to "meridian" → Match Library: "Meridian / Jingluo"</DETECTION>
+            <OUTPUT>"Kinh mạch"</OUTPUT>
+          </EX>
+          <EX>
+            <INPUT>"Sword Saint"</INPUT>
+            <DETECTION>Match Library: "Sword Saint / Jian Sheng"</DETECTION>
+            <OUTPUT>"Kiếm Thánh"</OUTPUT>
+          </EX>
+          <EX>
+            <INPUT>"cultivation base"</INPUT>
+            <DETECTION>Match Library: "Cultivation Base / Xiuwei"</DETECTION>
+            <OUTPUT>"Tu vi"</OUTPUT>
+          </EX>
+        </EXAMPLES>
+      </KEYWORD_DETECTION>
+
+      <FALLBACK_HANDLING>
+        <RULE>If no Library match, use generic translation (not romanized).</RULE>
+        <EXAMPLE>
+          <INPUT>"energy flow"</INPUT>
+          <NO_MATCH>Not in Library</NO_MATCH>
+          <FALLBACK>"dòng chảy năng lượng" (generic VN translation)</FALLBACK>
+          <NOTE>Do NOT transliterate English words phonetically</NOTE>
+        </EXAMPLE>
+      </FALLBACK_HANDLING>
+    </SCENARIO>
+
+    <!-- ─────────────────────────────────────────────────────────────────
+         Scenario 2: Pinyin Embedded Input
+         ───────────────────────────────────────────────────────────────── -->
+    <SCENARIO type="PINYIN_EMBEDDED">
+      <DESCRIPTION>
+        Source text contains Pinyin romanizations (with or without tone marks).
+        Use Ref_PINYIN_MAPPING_TABLE.md for Pinyin → Hán Việt conversion.
+      </DESCRIPTION>
+
+      <PINYIN_DETECTION>
+        <RULE>Detect lowercase romanized terms matching Pinyin patterns.</RULE>
+        <DETECTION_PATTERNS>
+          <PATTERN name="STANDALONE_PINYIN">
+            <!-- Single Pinyin words -->
+            - "qi", "chi" → Khí
+            - "dantian", "dan tian" → Đan điền
+            - "jianghu", "jiang hu" → Giang hồ
+          </PATTERN>
+          <PATTERN name="COMPOUND_PINYIN">
+            <!-- Multi-syllable Pinyin compounds -->
+            - "neigong" → Nội công
+            - "waigong" → Ngoại công
+            - "qigong" → Khí công
+            - "jianqi" → Kiếm khí
+          </PATTERN>
+          <PATTERN name="PINYIN_WITH_SPACES">
+            <!-- Spaced Pinyin (common in older texts) -->
+            - "nei gong" → Nội công
+            - "jian qi" → Kiếm khí
+            - "xin fa" → Tâm pháp
+          </PATTERN>
+          <PATTERN name="CAPITALIZED_PINYIN">
+            <!-- Names and titles (preserve capitalization in output) -->
+            - "Zhang" (name) → Trương
+            - "Wudang Sect" → Võ Đang Phái
+            - "Shaolin Temple" → Thiếu Lâm Tự
+          </PATTERN>
+        </DETECTION_PATTERNS>
+
+        <MATCHING_STRATEGY>
+          1. Check Library_GENERIC_MURIM_TERMS.md Pinyin column (Priority 1)
+          2. Check Ref_PINYIN_MAPPING_TABLE.md Pinyin column (Priority 2)
+          3. If no exact match, try syllable-by-syllable mapping (Priority 4)
+        </MATCHING_STRATEGY>
+
+        <EXAMPLES>
+          <EX>
+            <INPUT>"qi"</INPUT>
+            <DETECTION>Match Pinyin table: "Qi → Khí"</DETECTION>
+            <OUTPUT>"Khí"</OUTPUT>
+          </EX>
+          <EX>
+            <INPUT>"dantian"</INPUT>
+            <DETECTION>Match Library: "Dantian → Đan điền"</DETECTION>
+            <OUTPUT>"Đan điền"</OUTPUT>
+          </EX>
+          <EX>
+            <INPUT>"jian qi"</INPUT>
+            <DETECTION>Match Library: "Jianqi → Kiếm khí" (normalize spacing)</DETECTION>
+            <OUTPUT>"Kiếm khí"</OUTPUT>
+          </EX>
+          <EX>
+            <INPUT>"neigong"</INPUT>
+            <DETECTION>Match Library: "Neigong → Nội công"</DETECTION>
+            <OUTPUT>"Nội công"</OUTPUT>
+          </EX>
+        </EXAMPLES>
+      </PINYIN_DETECTION>
+
+      <WADE_GILES_HANDLING>
+        <RULE>Convert Wade-Giles to Pinyin first, then to Hán Việt.</RULE>
+        <CONVERSION_TABLE>
+          <!-- Common Wade-Giles → Pinyin conversions -->
+          - "ch'i" → "qi" → Khí
+          - "nei-kung" → "neigong" → Nội công
+          - "chiang-hu" → "jianghu" → Giang hồ
+          - "ch'uan" → "quan" → Quyền
+          - "chien" → "jian" → Kiếm
+        </CONVERSION_TABLE>
+        <EXAMPLES>
+          <EX>
+            <INPUT>"ch'i"</INPUT>
+            <CONVERT>"ch'i" → "qi"</CONVERT>
+            <LOOKUP>"qi" → Match Pinyin table</LOOKUP>
+            <OUTPUT>"Khí"</OUTPUT>
+          </EX>
+          <EX>
+            <INPUT>"nei-kung"</INPUT>
+            <CONVERT>"nei-kung" → "neigong"</CONVERT>
+            <LOOKUP>"neigong" → Match Library</LOOKUP>
+            <OUTPUT>"Nội công"</OUTPUT>
+          </EX>
+        </EXAMPLES>
+      </WADE_GILES_HANDLING>
+    </SCENARIO>
+
+    <!-- ─────────────────────────────────────────────────────────────────
+         Scenario 3: Mixed Variants Input
+         ───────────────────────────────────────────────────────────────── -->
+    <SCENARIO type="MIXED_VARIANTS">
+      <DESCRIPTION>
+        Source text contains both English and Pinyin/Wade-Giles in same passage or sentence.
+        Normalize all variants to single consistent Hán Việt output.
+      </DESCRIPTION>
+
+      <NORMALIZATION_STRATEGY>
+        <RULE>Detect all variants of same term, output Hán Việt once.</RULE>
+        <DETECTION_LOGIC>
+          1. Identify both English and Pinyin forms in passage
+          2. Check if they map to same Hán Việt term via Library cross-reference
+          3. Use first occurrence's position to determine output placement
+          4. Suppress duplicate translation of synonym variants
+        </DETECTION_LOGIC>
+      </NORMALIZATION_STRATEGY>
+
+      <EXAMPLES>
+        <EX>
+          <INPUT>"He gathered his internal energy (qi) and struck out."</INPUT>
+          <DETECTION>
+            - "internal energy" → Library: "Nội công"
+            - "qi" → Library: "Khí" OR contextually "Nội công" (if synonym)
+          </DETECTION>
+          <ANALYSIS>
+            Check Library: "Internal Energy / Neigong / Qi" row
+            - If "qi" is listed as Pinyin for "Internal Energy", they're synonyms
+          </ANALYSIS>
+          <OUTPUT>"Hắn tụ nội công và xuất chiêu."</OUTPUT>
+          <NOTE>Output "nội công" once, not both "nội công" and "khí"</NOTE>
+        </EX>
+
+        <EX>
+          <INPUT>"The Sword Qi (Jianqi) technique was devastating."</INPUT>
+          <DETECTION>
+            - "Sword Qi" → Library: "Kiếm khí"
+            - "Jianqi" → Library: "Kiếm khí"
+          </DETECTION>
+          <ANALYSIS>Both map to same Hán Việt term</ANALYSIS>
+          <OUTPUT>"Chiêu Kiếm khí cực kỳ hủy diệt."</OUTPUT>
+          <NOTE>Output "Kiếm khí" once only</NOTE>
+        </EX>
+
+        <EX>
+          <INPUT>"He activated his movement technique, a type of qinggong (lightness skill)."</INPUT>
+          <DETECTION>
+            - "movement technique" → Generic (no Library match)
+            - "qinggong" → Library: "Khinh công"
+            - "lightness skill" → Library: "Khinh công" (English synonym)
+          </DETECTION>
+          <ANALYSIS>
+            "qinggong" and "lightness skill" both → "Khinh công"
+          </ANALYSIS>
+          <OUTPUT>"Hắn thi triển khinh công."</OUTPUT>
+          <NOTE>Use Pinyin match "khinh công", drop redundant "movement technique"</NOTE>
+        </EX>
+
+        <EX>
+          <INPUT>"Sword Saint Zhang wielded his jian with unmatched skill."</INPUT>
+          <DETECTION>
+            - "Sword Saint" → Library: "Kiếm Thánh"
+            - "Zhang" → Name → Pinyin syllable mapping: "Trương"
+            - "jian" → Library: "kiếm" (sword)
+          </DETECTION>
+          <OUTPUT>"Kiếm Thánh Trương vung kiếm với kỹ năng vô song."</OUTPUT>
+          <NOTE>Mixed English title + Pinyin name + Pinyin weapon → all normalized</NOTE>
+        </EX>
+      </EXAMPLES>
+
+      <PARENTHETICAL_HANDLING>
+        <RULE>Pinyin in parentheses after English is explanatory → output Hán Việt once.</RULE>
+        <PATTERN>"English Term (Pinyin)" → Output Hán Việt, drop parenthetical</PATTERN>
+        <EXAMPLES>
+          <EX>
+            <INPUT>"internal energy (qi)"</INPUT>
+            <OUTPUT>"nội công" (not "nội công (khí)")</OUTPUT>
+          </EX>
+          <EX>
+            <INPUT>"dantian (energy center)"</INPUT>
+            <OUTPUT>"đan điền" (drop English explanation)</OUTPUT>
+          </EX>
+        </EXAMPLES>
+      </PARENTHETICAL_HANDLING>
+    </SCENARIO>
+
+    <!-- ─────────────────────────────────────────────────────────────────
+         Consistency Lock Mechanism
+         ───────────────────────────────────────────────────────────────── -->
+    <CONSISTENCY_LOCK>
+      <OVERVIEW>
+        Lock first translation of each term for entire document.
+        Prevent synonym drift and ensure consistent terminology.
+      </OVERVIEW>
+
+      <LOCKING_STRATEGY>
+        <RULE>First occurrence of term establishes canonical translation.</RULE>
+        <RULE>All subsequent occurrences use locked translation, regardless of variant.</RULE>
+        <RULE>Lock persists across chapters within same novel/series.</RULE>
+      </LOCKING_STRATEGY>
+
+      <LOCK_TABLE_STRUCTURE>
+        <!-- In-memory term lock table during translation -->
+        <ENTRY>
+          <SOURCE_VARIANTS>["Internal Energy", "Neigong", "qi" (contextual), "nei gong"]</SOURCE_VARIANTS>
+          <LOCKED_OUTPUT>"Nội công"</LOCKED_OUTPUT>
+          <FIRST_SEEN_AT>Chapter 1, Paragraph 3</FIRST_SEEN_AT>
+        </ENTRY>
+        <ENTRY>
+          <SOURCE_VARIANTS>["Sword Qi", "Jianqi", "jian qi", "Sword Energy"]</SOURCE_VARIANTS>
+          <LOCKED_OUTPUT>"Kiếm khí"</LOCKED_OUTPUT>
+          <FIRST_SEEN_AT>Chapter 1, Paragraph 15</FIRST_SEEN_AT>
+        </ENTRY>
+        <ENTRY>
+          <SOURCE_VARIANTS>["lightness skill", "qinggong", "movement technique"]</SOURCE_VARIANTS>
+          <LOCKED_OUTPUT>"Khinh công"</LOCKED_OUTPUT>
+          <FIRST_SEEN_AT>Chapter 2, Paragraph 8</FIRST_SEEN_AT>
+        </ENTRY>
+      </LOCK_TABLE_STRUCTURE>
+
+      <!-- ─────────────────────────────────────────────────────────────────
+           Novel-Specific Terminology Locks (Override General Rules)
+           ───────────────────────────────────────────────────────────────── -->
+      <NOVEL_SPECIFIC_LOCKS>
+        <OVERVIEW>
+          Certain novels use hybrid systems requiring specific terminology overrides.
+          These locks take precedence over general Library/Pinyin lookups.
+        </OVERVIEW>
+
+        <COILING_DRAGON_LOCKS>
+          <DESCRIPTION>
+            Coiling Dragon blends Western fantasy + Chinese cultivation.
+            Requires non-standard term locks for hybrid system.
+          </DESCRIPTION>
+          <TERMINOLOGY_LOCK>
+            <term en="battle qi" locked="đấu khí" note="CD-specific energy system - NOT nội công"/>
+            <term en="warrior" locked="chiến sĩ" note="Western fantasy context - NOT võ sĩ"/>
+            <term en="magical beasts" locked="ma thú" note="Fantasy creatures - NOT cultivation yêu thú"/>
+            <term en="saint level" locked="thánh cấp" note="CD realm system - NOT thánh nhân"/>
+            <term en="commoners" locked="thường dân" note="Prefer over bình dân"/>
+          </TERMINOLOGY_LOCK>
+          <USAGE>
+            When translating Coiling Dragon (盘龙) or similar Western-fantasy-influenced Murim novels,
+            apply these locks BEFORE checking Library/Pinyin tables.
+          </USAGE>
+        </COILING_DRAGON_LOCKS>
+
+        <OVERRIDE_PRIORITY>
+          <RULE>Novel-specific locks > General Library > Pinyin table > Wade-Giles > Phonetic</RULE>
+          <IMPLEMENTATION>
+            1. Check if source novel matches known hybrid system (e.g., Coiling Dragon)
+            2. If match found, check novel-specific locks first
+            3. If no match in novel locks, proceed with normal LOOKUP_PRIORITY
+          </IMPLEMENTATION>
+        </OVERRIDE_PRIORITY>
+      </NOVEL_SPECIFIC_LOCKS>
+
+      <LOCKING_LOGIC>
+        <STEP1>Detect term in source text (English, Pinyin, or Wade-Giles)</STEP1>
+        <STEP2>Check lock table for existing entry matching any known variant</STEP2>
+        <STEP3_IF_LOCKED>Use locked Hán Việt output</STEP3_IF_LOCKED>
+        <STEP3_IF_NOT_LOCKED>
+          - Perform lookup via LOOKUP_PRIORITY (Library → Pinyin table → Wade-Giles → Phonetic)
+          - Create new lock entry with source variant and Hán Việt output
+          - Add all known variants from Library to lock entry
+        </STEP3_IF_NOT_LOCKED>
+        <STEP4>Output Hán Việt translation</STEP4>
+      </LOCKING_LOGIC>
+
+      <EXAMPLES>
+        <EX>
+          <PASSAGE>
+            Chapter 1: "He circulated his internal energy through his meridians."
+            Chapter 3: "His neigong was incredibly powerful."
+            Chapter 5: "The qi within his dantian surged."
+          </PASSAGE>
+          <LOCKING>
+            - First occurrence: "internal energy" → Lock as "Nội công"
+            - Chapter 3: "neigong" → Matches locked "Nội công" (synonym)
+            - Chapter 5: "qi" → Context suggests "Nội công" (locked), not standalone "Khí"
+          </LOCKING>
+          <OUTPUT>
+            Chapter 1: "Hắn vận hành nội công qua kinh mạch."
+            Chapter 3: "Nội công hắn cực kỳ mạnh mẽ."
+            Chapter 5: "Nội công trong đan điền dâng trào."
+          </OUTPUT>
+        </EX>
+
+        <EX>
+          <PASSAGE>
+            Chapter 2: "Sword Qi erupted from his blade."
+            Chapter 4: "He unleashed his jianqi in a devastating attack."
+          </PASSAGE>
+          <LOCKING>
+            - First occurrence: "Sword Qi" → Lock as "Kiếm khí"
+            - Chapter 4: "jianqi" → Matches locked "Kiếm khí"
+          </LOCKING>
+          <OUTPUT>
+            Chapter 2: "Kiếm khí bùng phát từ lưỡi kiếm."
+            Chapter 4: "Hắn giải phóng kiếm khí trong đòn tấn công hủy diệt."
+          </OUTPUT>
+        </EX>
+      </EXAMPLES>
+
+      <OVERRIDE_MECHANISM>
+        <RULE>User can manually override locked translation if context requires different term.</RULE>
+        <USE_CASE>
+          When "qi" should be "Khí" (generic energy) not "Nội công" (internal energy) in specific context.
+        </USE_CASE>
+        <IMPLEMENTATION>
+          User annotation: "qi @force:Khí" → Override lock for this instance only
+        </IMPLEMENTATION>
+      </OVERRIDE_MECHANISM>
+    </CONSISTENCY_LOCK>
+
+    <!-- ─────────────────────────────────────────────────────────────────
+         Duplicate Term Prevention
+         ───────────────────────────────────────────────────────────────── -->
+    <DUPLICATE_PREVENTION>
+      <OVERVIEW>
+        Prevent outputting same Hán Việt term multiple times for synonym variants in same sentence.
+        Applies to Scenario 3 (Mixed Variants) primarily.
+      </OVERVIEW>
+
+      <DETECTION_SCOPE>
+        <RULE>Check for duplicates within sentence boundary (period, exclamation, question mark).</RULE>
+        <RULE>Cross-reference all detected English/Pinyin terms against lock table.</RULE>
+        <RULE>If multiple source terms map to same Hán Việt output, suppress duplicates.</RULE>
+      </DETECTION_SCOPE>
+
+      <SUPPRESSION_STRATEGY>
+        <PRIORITY_ORDER>
+          <!-- Which variant to keep when duplicates detected -->
+          1. Keep Pinyin match over English generic term
+          2. Keep Library-listed term over unlisted synonym
+          3. Keep first occurrence in sentence if priority equal
+        </PRIORITY_ORDER>
+      </SUPPRESSION_STRATEGY>
+
+      <EXAMPLES>
+        <EX>
+          <INPUT>"His internal energy, or qi, was immense."</INPUT>
+          <DETECTION>
+            - "internal energy" → "Nội công"
+            - "qi" → "Nội công" (locked synonym)
+          </DETECTION>
+          <DUPLICATE_FOUND>Both map to "Nội công"</DUPLICATE_FOUND>
+          <SUPPRESSION>Keep first occurrence, drop second</SUPPRESSION>
+          <OUTPUT>"Nội công hắn to lớn."</OUTPUT>
+          <NOTE>Not "Nội công, hay nội công, to lớn" (redundant)</NOTE>
+        </EX>
+
+        <EX>
+          <INPUT>"Sword Qi and Jianqi are different manifestations."</INPUT>
+          <DETECTION>
+            - "Sword Qi" → "Kiếm khí"
+            - "Jianqi" → "Kiếm khí"
+          </DETECTION>
+          <DUPLICATE_FOUND>Both identical</DUPLICATE_FOUND>
+          <ANALYSIS>Original likely meant two different concepts, but translation merged</ANALYSIS>
+          <OUTPUT_OPTION_1>"Kiếm khí có nhiều biểu hiện khác nhau." (merge if truly synonyms)</OUTPUT_OPTION_1>
+          <OUTPUT_OPTION_2>"Kiếm khí và kiếm khí..." (keep if context requires, but flag for review)</OUTPUT_OPTION_2>
+          <RECOMMENDATION>Flag for manual review - possible semantic distinction lost</RECOMMENDATION>
+        </EX>
+
+        <EX>
+          <INPUT>"He used his lightness skill (qinggong) to evade."</INPUT>
+          <DETECTION>
+            - "lightness skill" → "Khinh công"
+            - "qinggong" → "Khinh công"
+          </DETECTION>
+          <DUPLICATE_FOUND>Parenthetical synonym</DUPLICATE_FOUND>
+          <SUPPRESSION>Drop parenthetical, keep main term</SUPPRESSION>
+          <OUTPUT>"Hắn dùng khinh công để né tránh."</OUTPUT>
+        </EX>
+
+        <EX>
+          <INPUT>"Meridians, or jingluo in Chinese, are energy channels."</INPUT>
+          <DETECTION>
+            - "Meridians" → "Kinh mạch"
+            - "jingluo" → "Kinh mạch"
+          </DETECTION>
+          <DUPLICATE_FOUND>Explanatory appositive</DUPLICATE_FOUND>
+          <SUPPRESSION>Drop "in Chinese" explanation, keep term once</SUPPRESSION>
+          <OUTPUT>"Kinh mạch là kênh năng lượng."</OUTPUT>
+        </EX>
+      </EXAMPLES>
+
+      <EDGE_CASES>
+        <CASE name="INTENTIONAL_REPETITION">
+          <PROBLEM>Source repeats term for emphasis, not synonym explanation</PROBLEM>
+          <EXAMPLE>"Qi, qi, everywhere was qi!"</EXAMPLE>
+          <SOLUTION>Preserve repetition: "Khí, khí, khắp nơi đều là khí!"</SOLUTION>
+          <RULE>If same term repeated 3+ times, likely emphatic → preserve</RULE>
+        </CASE>
+
+        <CASE name="DIFFERENT_CONTEXTS">
+          <PROBLEM>"qi" as generic energy vs "qi" as internal energy in same sentence</PROBLEM>
+          <EXAMPLE>"The qi in the air was different from his internal qi."</EXAMPLE>
+          <SOLUTION>"Khí trong không khí khác với nội công của hắn."</SOLUTION>
+          <RULE>Use context to distinguish: environmental qi → "Khí", internal qi → "Nội công"</RULE>
+        </CASE>
+
+        <CASE name="COMPOUND_TERMS">
+          <PROBLEM>"Sword Qi" contains "Sword" and "Qi" as components</PROBLEM>
+          <EXAMPLE>"His sword radiated Sword Qi."</EXAMPLE>
+          <SOLUTION>"Thanh kiếm tỏa ra kiếm khí."</SOLUTION>
+          <RULE>"kiếm" in "Kiếm khí" is not duplicate of standalone "thanh kiếm" (different roles)</RULE>
+        </CASE>
+      </EDGE_CASES>
+    </DUPLICATE_PREVENTION>
+
+    <!-- ─────────────────────────────────────────────────────────────────
+         Integration with Other Modules
+         ───────────────────────────────────────────────────────────────── -->
+    <MODULE_INTEGRATION>
+      <WITH_PROSE_DENSITY_CONTROL>
+        <RULE>Apply MIXED_INPUT_NORMALIZATION AFTER prose condensation.</RULE>
+        <REASON>Condensation may remove explanatory variants, simplifying normalization.</REASON>
+        <EXAMPLE>
+          <SOURCE>"He gathered his internal energy (qi)" → After condensation: "He gathered qi"</SOURCE>
+          <NORMALIZATION>"qi" → "Nội công" (single lookup needed)</NORMALIZATION>
+        </EXAMPLE>
+      </WITH_PROSE_DENSITY_CONTROL>
+
+      <WITH_TERM_DETECTION>
+        <RULE>MIXED_INPUT_NORMALIZATION is core logic of TERM_DETECTION (Section 1.2).</RULE>
+        <RULE>Share lock table between modules for consistency.</RULE>
+      </WITH_TERM_DETECTION>
+
+      <WITH_NAME_STRATEGY>
+        <RULE>Names follow Section 1.3 Pinyin → Hán Việt syllable mapping.</RULE>
+        <RULE>Names use consistency lock (first occurrence determines spelling).</RULE>
+        <EXAMPLE>
+          - Chapter 1: "Zhang" → "Trương" (locked)
+          - Chapter 5: "Chang" (Wade-Giles) → Convert to "Zhang" → "Trương" (locked)
+        </EXAMPLE>
+      </WITH_NAME_STRATEGY>
+    </MODULE_INTEGRATION>
+
+  </MIXED_INPUT_NORMALIZATION>
+
+</TERMINOLOGY_PROTOCOL>
+
+<!-- ========================================================================
+     SECTION 6: IO_PROTOCOL - Input/Output Formatting (100% reuse from KR)
+     Lines 901-950
+     ======================================================================== -->
+<IO_PROTOCOL>
+  <DESCRIPTION>
+    Standard input/output formatting for translation workflow.
+    Fully reused from KR system - format-agnostic.
+  </DESCRIPTION>
+
+  <!-- Input Expectations -->
+  <INPUT_FORMAT>
+    <EXPECTED>Plain text English, may contain Pinyin terms</EXPECTED>
+    <ENCODING>UTF-8</ENCODING>
+    <LINE_BREAKS>Preserve source line breaks for paragraph structure</LINE_BREAKS>
+    <SPECIAL_MARKERS>
+      <MARKER>[[NAME:X]] - Preserve proper noun X untranslated</MARKER>
+      <MARKER>[[SKIP:X]] - Skip translation of segment X</MARKER>
+      <MARKER>[[NOTE:X]] - Translator note for reference</MARKER>
+    </SPECIAL_MARKERS>
+  </INPUT_FORMAT>
+
+  <!-- Output Format -->
+  <OUTPUT_FORMAT>
+    <ENCODING>UTF-8</ENCODING>
+    <LINE_BREAKS>Match source paragraph breaks</LINE_BREAKS>
+    <GLOSSARY>On first mention of key term, optionally append: (Hán Việt / Pinyin)</GLOSSARY>
+    <EXAMPLE>
+      <SOURCE>"He cultivated his Internal Energy at the Dantian."</SOURCE>
+      <OUTPUT>"Hắn tu luyện Nội Công (Internal Energy / Neigong) tại Đan Điền (Dantian)."</OUTPUT>
+      <NOTE>First mention includes gloss, subsequent uses drop it</NOTE>
+    </EXAMPLE>
+  </OUTPUT_FORMAT>
+
+  <!-- Quality Metadata -->
+  <METADATA>
+    <WORD_COUNT>Source vs. Target word count</WORD_COUNT>
+    <CONDENSATION_RATIO>Actual % reduction (target: 60-70%)</CONDENSATION_RATIO>
+    <TERM_COVERAGE>% of Murim terms successfully mapped</TERM_COVERAGE>
+    <PATTERN_USAGE>Which condensation patterns applied (from Section 1.1)</PATTERN_USAGE>
+  </METADATA>
+</IO_PROTOCOL>
+
+<!-- ========================================================================
+     SECTION 7: COMBAT_LEXICON - Combat Terminology Database (100% reuse)
+     Lines 951-1100
+     ======================================================================== -->
+<COMBAT_LEXICON>
+  <DESCRIPTION>
+    Comprehensive combat terminology reference.
+    Fully reused from KR system - language-agnostic term database.
+  </DESCRIPTION>
+
+  <!-- Weapon Categories -->
+  <WEAPONS>
+    <SWORD en="Sword" pinyin="Jian" vn="Kiếm" category="blade"/>
+    <SABER en="Saber/Dao" pinyin="Dao" vn="Đao" category="blade"/>
+    <SPEAR en="Spear" pinyin="Qiang" vn="Thương" category="polearm"/>
+    <STAFF en="Staff" pinyin="Gun" vn="Côn" category="polearm"/>
+    <PALM en="Palm" pinyin="Zhang" vn="Chưởng" category="unarmed"/>
+    <FIST en="Fist" pinyin="Quan" vn="Quyền" category="unarmed"/>
+    <FINGER en="Finger" pinyin="Zhi" vn="Chỉ" category="unarmed"/>
+    <KICK en="Kick/Leg" pinyin="Tui" vn="Cước" category="unarmed"/>
+  </WEAPONS>
+
+  <!-- Attack Types -->
+  <ATTACK_TYPES>
+    <STRIKE en="Strike/Hit" vn="đánh, đập"/>
+    <SLASH en="Slash" vn="chém"/>
+    <THRUST en="Thrust/Stab" vn="đâm"/>
+    <BLOCK en="Block" vn="chặn, đỡ"/>
+    <PARRY en="Parry" vn="rẽ, trệch"/>
+    <DODGE en="Dodge" vn="né, tránh"/>
+    <COUNTER en="Counter" vn="phản kích, đánh ngược"/>
+  </ATTACK_TYPES>
+
+  <!-- Energy Attacks -->
+  <ENERGY_TERMS>
+    <QI en="Qi/Internal Energy" pinyin="Qi" vn="Khí, Nội Lực"/>
+    <TRUE_QI en="True Qi" pinyin="Zhenqi" vn="Chân Khí"/>
+    <KILLING_INTENT en="Killing Intent" pinyin="Shaqi" vn="Sát Khí"/>
+    <SWORD_QI en="Sword Qi" pinyin="Jianqi" vn="Kiếm Khí"/>
+    <PALM_FORCE en="Palm Force" pinyin="Zhangji" vn="Chưởng Lực"/>
+    <FIST_INTENT en="Fist Intent" pinyin="Quanyi" vn="Quyền Ý"/>
+  </ENERGY_TERMS>
+
+  <!-- Body Locations -->
+  <BODY_TARGETS>
+    <DANTIAN en="Dantian/Energy Center" pinyin="Dantian" vn="Đan Điền"/>
+    <MERIDIAN en="Meridian" pinyin="Jingmai" vn="Kinh Mạch"/>
+    <ACUPOINT en="Acupoint/Pressure Point" pinyin="Xuewei" vn="Huyệt Vị"/>
+    <VITAL_POINT en="Vital Point" pinyin="Yaoxue" vn="Huyệt Tử"/>
+  </BODY_TARGETS>
+
+  <!-- Technique Modifiers -->
+  <MODIFIERS>
+    <SWIFT en="Swift/Fast" vn="mau lẹ, nhanh"/>
+    <FIERCE en="Fierce/Violent" vn="dữ dội, hung hãn"/>
+    <GENTLE en="Gentle/Soft" vn="nhẹ nhàng, êm ái"/>
+    <HEAVY en="Heavy/Powerful" vn="nặng nề, hùng hậu"/>
+    <SHARP en="Sharp/Keen" vn="sắc bén, tinh nhuệ"/>
+    <FLOWING en="Flowing/Fluid" vn="liền mạch, trôi chảy"/>
+    <RIGID en="Rigid/Firm" vn="cứng rắn, kiên định"/>
+  </MODIFIERS>
+
+  <!-- Outcome Verbs -->
+  <OUTCOMES>
+    <WOUND en="Wound/Injure" vn="làm bị thương, gây thương tích"/>
+    <KILL en="Kill/Slay" vn="giết chết, hạ sát"/>
+    <DEFEAT en="Defeat" vn="đánh bại, chiến thắng"/>
+    <REPEL en="Repel/Push Back" vn="đẩy lùi, đánh lui"/>
+    <SHATTER en="Shatter/Break" vn="phá vỡ, đập tan"/>
+    <PIERCE en="Pierce" vn="xuyên thủng, đâm thủng"/>
+  </OUTCOMES>
+</COMBAT_LEXICON>
+
+</TRANSLATION_SYSTEM>

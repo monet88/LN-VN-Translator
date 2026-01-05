@@ -24,6 +24,37 @@ English Murim/Wuxia novels (translated from Chinese) use a Pinyin-based honorifi
 
 ---
 
+## **CRITICAL: Prefix Disambiguation Rules**
+
+**Chinese Sect Terms (EN Murim novels) → Use "Sư-" prefix**
+
+| ❌ WRONG (Korean Prefix) | ✅ CORRECT (Chinese Prefix) | English Source | Context |
+|-------------------------|----------------------------|----------------|---------|
+| Võ huynh | **Sư huynh** | Senior Brother | Chinese sect hierarchy |
+| Võ thúc | **Sư thúc** | Martial Uncle | Chinese sect hierarchy |
+| Võ tổ | **Sư tổ** | Martial Ancestor | Chinese sect hierarchy |
+| Võ sĩ | **Chiến sĩ** | Warrior | Coiling Dragon (Western fantasy context) |
+
+**Korean Murim Terms (KR novels) → Use "Võ-" prefix**
+
+| English Term | Korean Term | Vietnamese | Context |
+|--------------|-------------|------------|---------|
+| Martial Artist | Musa (무사) | Võ sĩ | Korean Murim ONLY |
+| Martial Alliance | Murim Maeng (무림맹) | Võ Lâm Minh | Korean Murim |
+
+**Rule Summary:**
+- **EN Murim (Chinese origin):** "Sư-" prefix for sect hierarchy (师 / 師)
+- **KR Murim (Korean origin):** "Võ-" prefix for martial terms (武)
+- **Coiling Dragon exception:** "Warrior" → "Chiến sĩ" (Western fantasy context, NOT "Võ sĩ")
+
+**Common Mistakes to Avoid:**
+1. ❌ Martial Uncle → Võ thúc (mixing Korean prefix with Chinese term)
+2. ✅ Martial Uncle → Sư thúc (correct Chinese sect term)
+3. ❌ Warrior (Coiling Dragon) → Võ sĩ (wrong - this is Korean)
+4. ✅ Warrior (Coiling Dragon) → Chiến sĩ (correct - Western fantasy)
+
+---
+
 ## Section 1: Sect Hierarchy Mappings
 
 ### Master-Disciple Relationship (師徒關係)

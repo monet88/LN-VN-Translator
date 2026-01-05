@@ -23,6 +23,17 @@
 - **Wade-Giles:** Traditional system (pre-1979), common in older translations
 - **English:** Common English approximations/terms used in translations
 
+**Translation Priority Rules:**
+- **PRIMARY Translation:** Default Hán Việt term (use unless novel glossary specifies alternate)
+- **ALTERNATE Translation:** Variant translation allowed in specific contexts
+- **Format:** `| English | Pinyin | Wade-Giles | **Hán Việt (PRIMARY)** | Hán Việt (ALT) | Usage Context |`
+- When multiple Hán Việt translations exist, ALWAYS use PRIMARY unless explicitly overridden
+
+**Example:**
+```markdown
+| True Essence | Zhenyuan | Chen-yüan | **Chân nguyên** | Chân khí | PRIMARY unless novel uses ALT |
+```
+
 ---
 
 ## Category 1: Power System & Internal Energy (100 terms)
@@ -35,6 +46,7 @@
 | Internal Force | Neiqi | Nei-ch'i | Nội khí | Cultivated energy |
 | Qi/Chi | Qi | Ch'i | Khí | Life force energy |
 | True Qi | Zhenqi | Chen-ch'i | Chân khí | Pure internal energy |
+| **True Essence** | **Zhenyuan** | **Chen-yüan** | **Chân nguyên (PRIMARY)** | Chân khí (ALT) | **Refined true qi - ALWAYS use PRIMARY** |
 | Vital Energy | Jingqi | Ching-ch'i | Tinh khí | Essential energy |
 | Spiritual Energy | Lingqi | Ling-ch'i | Linh khí | Spiritual power |
 | Heavenly Energy | Tianqi | T'ien-ch'i | Thiên khí | Heaven's energy |
